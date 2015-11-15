@@ -1,20 +1,18 @@
 \documentclass{scu-thesis}
-\usepackage{graphicx}	% for including graphics
+\usepackage[pdftex]{graphicx}	% for including graphics
 \usepackage{amsmath}	% for advanced typesetting of mathematics
 \usepackage{txfonts}	% for using the Times-Roman font
-\usepackage{natbib}	% for better citation styles
-
+\usepackage{natbib}		% for better citation styles
+\usepackage{emp}
 
 % These must be set first ... the rest of the thesis commands rely on them.
 
 \author{Alberto Diaz-Tostado}
 \author{Amy Nguyen Tran}
-\title{On the Construction of Matter, or Is There a God Particle?}
-\department{Department of Molecular Engineering}
-\department{Department of Religious Studies}
-\degree{Bachelor of Science in Molecular Engineering}
-\degree{Bachelor of Arts in Transcendental Meditation}
-
+\title{BLucasthaGod}
+\department{Department of Computer Science and Engineering}
+\degree{Bachelor of Science in Computer Science and Engineering}
+\degree{Bachelor of Science in Web Design and Engineering}
 
 % Only bachelor's theses should have multiple authors and/or be from
 % multiple departments.  Signatures required:
@@ -24,10 +22,9 @@
 % Doctoral theses: doctoral committee (including advisor), department chair
 
 \begin{document}
+\DeclareGraphicsRule{*}{mps}{*}{}
 \frontmatter
 \signature{Thesis Advisor}
-\signature{Thesis Advisor}
-\signature{Department Chair}
 \signature{Department Chair}
 
 \maketitle
@@ -39,5 +36,8 @@
 \mainmatter
 \include{introduction}
 
+\include{usecase}
+
 \backmatter
+\immediate\write18{mpost -tex=latex \jobname}
 \end{document}

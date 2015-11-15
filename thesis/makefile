@@ -1,3 +1,2 @@
-thesismake: main.tex main.dvi
-	latex main.tex
-	dvipdfm main.dvi
+thesismake: 
+	pdflatex --shell-escape main.tex

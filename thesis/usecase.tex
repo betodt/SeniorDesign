@@ -1,0 +1,27 @@
+\begin{figure}[t]
+\begin{empfile}
+\begin{empcmds}
+input metauml;
+\end{empcmds}
+\begin{center}
+\begin{emp}[uml1](500,500)
+  Actor.user("User");
+
+  Usecase.create("Create Project");
+  Usecase.add("Add", "Team Members");
+  Usecase.assign("Create &", "Assign Tasks");
+
+  create.w = user.human.e + (0,60);
+  add.s = create.n + (0,10);
+  assign.n = create.s - (0,10);
+  
+  
+  drawObjects(user, create, add, assign);
+  clink(association)(user.human, create);
+  clink(association)(user.human, add);
+  clink(association)(user.human, assign);
+\end{emp}
+\end{center}
+\end{empfile}
+\caption{Use Case Diagram}
+\end{figure}
