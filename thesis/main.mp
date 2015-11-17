@@ -6,17 +6,18 @@ etex;
 input metauml;
 beginfig(1);
 LaTeX_unitlength := 1.0pt;
-w := 500*LaTeX_unitlength;
-h := 500*LaTeX_unitlength;
+w := 1000*LaTeX_unitlength;
+h := 1000*LaTeX_unitlength;
   Actor.user("User");
 
   Usecase.create("Create Project");
   Usecase.add("Add", "Team Members");
   Usecase.assign("Create &", "Assign Tasks");
 
-  create.w = user.human.e + (0,60);
-  add.s = create.n + (0,10);
-  assign.n = create.s - (0,10);
+  create.w = user.human.e + (10,0);
+ %create.s = user.human.n + (0,10);
+  add.n = create.s - (0,10);
+  assign.n = add.s - (0,10);
 
 
   drawObjects(user, create, add, assign);
