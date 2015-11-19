@@ -14,13 +14,13 @@ h := 1000*LaTeX_unitlength;
   Usecase.add("Add", "Team Members");
   Usecase.assign("Create &", "Assign Tasks");
 
-  create.w = user.human.e + (10,0);
- %create.s = user.human.n + (0,10);
-  add.n = create.s - (0,10);
+  add.w = user.human.e + (10,0);
+
+  create.s = add.n + (0,10);
   assign.n = add.s - (0,10);
 
 
-  drawObjects(user, create, add, assign);
+  drawObjects(user, add, create, assign);
   clink(association)(user.human, create);
   clink(association)(user.human, add);
   clink(association)(user.human, assign);

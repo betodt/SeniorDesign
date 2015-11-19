@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.14)  15 NOV 2015 14:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.14)  17 NOV 2015 00:01
 entering extended mode
-**main.tex
+**main
 (main.tex
 LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
@@ -223,77 +223,119 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \c@empfig=\count106
 \emp@TeX=\toks22
 \emp@prelude=\toks23
-) (main.aux
+)
+(usecases.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen114
+\lightrulewidth=\dimen115
+\cmidrulewidth=\dimen116
+\belowrulesep=\dimen117
+\belowbottomsep=\dimen118
+\aboverulesep=\dimen119
+\abovetopsep=\dimen120
+\cmidrulesep=\dimen121
+\cmidrulekern=\dimen122
+\defaultaddspace=\dimen123
+\@cmidla=\count107
+\@cmidlb=\count108
+\@aboverulesep=\dimen124
+\@belowrulesep=\dimen125
+\@thisruleclass=\count109
+\@lastruleclass=\count110
+\@thisrulewidth=\dimen126
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen127
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count111
+\LTcapwidth=\dimen128
+\LT@head=\box28
+\LT@firsthead=\box29
+\LT@foot=\box30
+\LT@lastfoot=\box31
+\LT@cols=\count112
+\LT@rows=\count113
+\c@LT@tables=\count114
+\c@LT@chunks=\count115
+\LT@p@ftn=\toks24
+)) (main.aux
 (abstract.aux) (introduction.aux) (usecase.aux))
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 24.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 24.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 25.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 25.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\omltxmi.fd"
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 24.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 25.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 25.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\omstxsy.fd"
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 24.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 25.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 25.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\omxtxex.fd"
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 24.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 25.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 25.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\utxexa.fd"
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 24.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 25.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\ot1txr.fd"
 File: ot1txr.fd 2000/12/15 v3.1
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
-\scratchdimen=\dimen114
-\scratchbox=\box28
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count110
-\MPscratchDim=\dimen115
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count116
+\scratchdimen=\dimen129
+\scratchbox=\box32
+\nofMPsegments=\count117
+\nofMParguments=\count118
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen130
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
+\everyMPtoPDFconversion=\toks26
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 26.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 27.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\utxmia.fd"
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsya on input line 26.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 27.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\utxsya.fd"
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 26.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 27.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\utxsyb.fd"
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 26.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 27.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\txfonts\utxsyc.fd"
 File: utxsyc.fd 2000/12/15 v3.1
@@ -320,26 +362,31 @@ Chapter 1.
 
 ] [2] (usecase.tex
 File: main.1 Graphic file (type mps)
- [MP to PDF] (main.1)) [3]
-runsystem(mpost -tex=latex main)...disabled (restricted).
+ [MP to PDF] (main.1)
 
- (main.aux (abstract.aux)
-(introduction.aux) (usecase.aux)) ) 
+! LaTeX Error: Unknown float option `i'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \begin{figure}[ti]
+                       
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.32 \begin{figure}[ti]
+                       
+Option `i' ignored and `p' used.
+
+ 
 Here is how much of TeX's memory you used:
- 3040 strings out of 493673
- 37020 string characters out of 3141506
- 94284 words of memory out of 3000000
- 6325 multiletter control sequences out of 15000+200000
+ 3197 strings out of 493673
+ 39243 string characters out of 3141506
+ 96991 words of memory out of 3000000
+ 6477 multiletter control sequences out of 15000+200000
  25451 words of font info for 62 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,6n,22p,1826b,464s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc
-/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/tx
-fonts/rtxr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (8 pages, 46168 bytes).
-PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 29i,6n,22p,1822b,466s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

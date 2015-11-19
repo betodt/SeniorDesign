@@ -1,4 +1,6 @@
-\begin{figure}[t]
+\section{Use Cases}
+
+\begin{figure}[ht]
 \begin{empfile}
 \begin{empcmds}
 input metauml;
@@ -11,13 +13,13 @@ input metauml;
   Usecase.add("Add", "Team Members");
   Usecase.assign("Create &", "Assign Tasks");
 
-  create.w = user.human.e + (10,0);
- %create.s = user.human.n + (0,10);
-  add.n = create.s - (0,10);
+  add.w = user.human.e + (10,0);
+
+  create.s = add.n + (0,10);
   assign.n = add.s - (0,10);
   
   
-  drawObjects(user, create, add, assign);
+  drawObjects(user, add, create, assign);
   clink(association)(user.human, create);
   clink(association)(user.human, add);
   clink(association)(user.human, assign);
@@ -26,3 +28,130 @@ input metauml;
 \end{empfile}
 \caption{Use Case Diagram}
 \end{figure}
+
+\begin{figure}[ti]
+\begin{usecase}
+
+\addtitle{Use Case 1}{Template test} 
+
+\addfield{Goal:}{System-wide}
+
+\addfield{Actor:}{End-User}
+
+\addfield{Preconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{} 
+
+\addfield{Postconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+  \item The first action
+  \item The second action
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+  \item[2.a] Invalid login data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 1
+    \end{enumerate}
+  \item[5.a] Invalid subsriber data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 2 and corrects the errors
+    \end{enumerate}
+}
+
+\addfield{Exceptions:}{}
+
+\end{usecase}
+\end{figure}
+
+\begin{figure}[ti]
+\begin{usecase}
+
+\addtitle{Use Case 1}{Template test} 
+
+\addfield{Goal:}{System-wide}
+
+\addfield{Actor:}{End-User}
+
+\addfield{Preconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{} 
+
+\addfield{Postconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+  \item The first action
+  \item The second action
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+  \item[2.a] Invalid login data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 1
+    \end{enumerate}
+  \item[5.a] Invalid subsriber data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 2 and corrects the errors
+    \end{enumerate}
+}
+
+\addfield{Exceptions:}{}
+
+\end{usecase}
+\end{figure}
+
+\begin{figure}[ti]
+\begin{usecase}
+
+\addtitle{Use Case 1}{Template test} 
+
+\addfield{Goal:}{System-wide}
+
+\addfield{Actor:}{End-User}
+
+\addfield{Preconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{} 
+
+\addfield{Postconditions:}{}
+%when multiple
+%\additemizedfield{Preconditions:}{}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+  \item The first action
+  \item The second action
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+  \item[2.a] Invalid login data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 1
+    \end{enumerate}
+  \item[5.a] Invalid subsriber data:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User returns to step 2 and corrects the errors
+    \end{enumerate}
+}
+
+\addfield{Exceptions:}{}
+
+\end{usecase}
+\end{figure}
+
