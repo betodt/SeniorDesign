@@ -1,0 +1,34 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{gantt}
+\begin{document}
+  \begin{gantt}{16}{11}
+    \begin{ganttitle}
+    \titleelement{Fall Quarter (Weeks)}{11}
+    \end{ganttitle}
+    \begin{ganttitle}
+    \numtitle{1}{1}{11}{1}
+    \end{ganttitle}
+    \ganttgroup{Design Document}{0}{11}
+    	\ganttbar{Problem Statement}{0}{3}
+    	\ganttbar{Activity Diagram}{3}{1}
+    	\ganttbar{Architectural Diagram}{3}{1}
+		\ganttbar[color=red]{Use Case Diagrams}{3}{1}
+		\ganttbar{Mock Ups}{4}{1}
+
+		\ganttbar[color=cyan]{Requirements}{5}{1}
+		\ganttbar[color=cyan]{Conceptual Model}{5}{1}
+		\ganttbar[color=red]{Technologies Used}{6}{1}
+		\ganttbar[color=red]{Design Rationale}{6}{1}
+		\ganttbar[color=cyan]{Test Plan}{7}{1}
+		\ganttbar[color=cyan]{Risk Analysis}{8}{1}
+		\ganttbar{Begin Project Development}{9}{1}
+		\ganttbar{Design Document Review}{10}{1}
+
+
+  \end{gantt}
+\end{document}
+
+
+
