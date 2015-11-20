@@ -1,3 +1,5 @@
+#!/bin/make
+
 LATEX=pdflatex
 LATEXOPT=--shell-escape
 NONSTOP=--interaction=nonstopmode
@@ -5,6 +7,8 @@ NONSTOP=--interaction=nonstopmode
 LATEXMK=latexmk
 LATEXMKOPT=-pdf
 CONTINUOUS=-pvc
+
+UNAME_S := $(uname -s)
 
 MAIN=main
 SOURCES=$(MAIN).tex Makefile abstract.tex introduction.tex usecase.tex
@@ -16,8 +20,7 @@ all:    $(MAIN).pdf
 	touch .refresh
 
 $(MAIN).pdf: $(MAIN).tex .refresh $(SOURCES) $(FIGURES)
-		$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
-		    -pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" $(MAIN)
+		$(LATEX) $(LATEXOPT) $(NONSTOP) $(MAIN)
 
 force:
 	touch .refresh
@@ -26,10 +29,12 @@ force:
 	    -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)
 
 clean:
-	$(LATEXMK) -C $(MAIN)
+	$(LATEX) $(LATEXOPT) $(NONSTOP) $(MAIN)
+	$(LATEX) $(LATEXOPT) $(NONSTOP) $(MAIN)
 	rm -f $(MAIN).pdfsync
 	rm -rf *~ *.tmp
 	rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk
+	AcroRd32.exe $(MAIN).pdf
 
 once:
 	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)

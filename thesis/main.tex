@@ -4,13 +4,18 @@
 \usepackage{txfonts}	% for using the Times-Roman font
 \usepackage{natbib}		% for better citation styles
 \usepackage{emp}
+\usepackage{ifpdf,graphicx}
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
 \usepackage{usecases}
+\include{empDiags}
 
 % These must be set first ... the rest of the thesis commands rely on them.
 
 \author{Alberto Diaz-Tostado}
 \author{Amy Nguyen Tran}
-\title{BLucasthaGod}
+\title{Project Management Application}
 \department{Department of Computer Science and Engineering}
 \degree{Bachelor of Science in Computer Science and Engineering}
 \degree{Bachelor of Science in Web Design and Engineering}
@@ -23,7 +28,6 @@
 % Doctoral theses: doctoral committee (including advisor), department chair
 
 \begin{document}
-\DeclareGraphicsRule{*}{mps}{*}{}
 \frontmatter
 \signature{Thesis Advisor}
 \signature{Department Chair}
@@ -38,6 +42,7 @@
 \include{introduction}
 
 \include{usecase}
+\include{activity}
 
 \backmatter
 \immediate\write18{mpost -tex=latex \jobname}

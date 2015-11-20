@@ -25,6 +25,44 @@ h := 1000*LaTeX_unitlength;
   clink(association)(user.human, add);
   clink(association)(user.human, assign);
 endfig;
+beginfig(2);
+LaTeX_unitlength := 1.0pt;
+w := 1000*LaTeX_unitlength;
+h := 1000*LaTeX_unitlength;
+Begin.b;
+Activity.name("Name Project");
+Fork.fork("h", 50);
+Activity.define("Define project goal");
+Activity.deadline("Define project deadline");
+Fork.join("h", 50);
+Branch.membAdd;
+Activity.addProj("Add people to the project");
+End.e;
+
+leftToRight.top(10)(define, deadline);
+Group.defineListen(define, deadline);
+leftToRight(50)(membAdd, addProj);
+topToBottom(20)(b, name, fork, defineListen, join, membAdd, e);
+
+
+
+drawObjects(b, name, fork, defineListen, join, membAdd, addProj, e);
+
+clink(transition)(b, name);
+clink(transition)(name, fork);
+clink(transition)(fork, define);
+clink(transition)(fork, deadline);
+clink(transition)(define, join);
+clink(transition)(deadline, join);
+clink(transition)(join, membAdd);
+clink(transition)(join, membAdd);
+link(transition)(pathStepX(membAdd.e, addProj.n, 0));
+link(transition)(pathStepX(addProj.s, e.e, 0));
+clink(transition)(membAdd, e);
+
+item(iGuard)("add members")(obj.sw = membAdd.e);
+item(iGuard)("done")(obj.nw = membAdd.s + (0, -4));
+endfig;
 verbatimtex
 \end{document}
 etex;
