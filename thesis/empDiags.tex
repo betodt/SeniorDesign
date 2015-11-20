@@ -60,7 +60,7 @@ item(iGuard)("done")(obj.nw = membAdd.s + (0, -4));
 
 \begin{empdef}[activityR2](500,500)
 Begin.be;
-Activity.tName("Enter team name");
+Activity.tName("Enter team description");
 Branch.addMem;
 Activity.contact("Enter member contact");
 Branch.cFound;
@@ -70,16 +70,15 @@ Branch.cFoundJoin;
 Branch.isLead;
 Activity.assProj("Assign project lead role");
 Branch.isLeadJoin;
-Branch.addMemJoin;
 Activity.submit("Submit Team");
 End.en;
 assProj.midx = invite.midx;
 leftToRight.top(25)(addToTeam, invite);
-topToBottom(20)(be, tName, addMem, contact, cFound, addToTeam, cFoundJoin, isLead, isLeadJoin, addMemJoin, submit, en);
+topToBottom(20)(be, tName, addMem, contact, cFound, addToTeam, cFoundJoin, isLead, isLeadJoin, submit, en);
 assProj.top = isLead.bottom;
 
 
-drawObjects(be, tName, addMem, contact, cFound, addToTeam, invite, cFoundJoin, isLead, assProj, isLeadJoin, addMemJoin, submit, en);
+drawObjects(be, tName, addMem, contact, cFound, addToTeam, invite, cFoundJoin, isLead, assProj, isLeadJoin, submit, en);
 
 clink(transition)(be, tName);
 clink(transition)(tName, addMem);
@@ -93,56 +92,34 @@ clink(transition)(cFoundJoin,isLead);
 link(transition)(pathStepX(isLead.e, assProj.n, assProj.midx - isLead.width));
 link(transition)(pathStepX(assProj.s, isLeadJoin.e, 0));
 clink(transition)(isLead, isLeadJoin);
-clink(transition)(isLeadJoin, addMemJoin);
-clink(transition)(addMemJoin, submit); 
+clink(transition)(isLeadJoin, submit); 
 clink(transition)(submit, en);
-link(transition)(pathStepX(addMem.e, addMemJoin.e, 200));
-link(transition)(pathStepX(addMemJoin.w, addMem.w, -60));
+link(transition)(pathStepX(cFoundJoin.w, addMem.w, -60));
 
 item(iGuard)("add members")(obj.nw = addMem.s + (0, -5));
-item(iGuard)("done")(obj.sw = addMem.e + (10, 0));
 item(iGuard)("contact found")(obj.nw = cFound.s + (0, -5));
 item(iGuard)("contact not found")(obj.sw = cFound.e + (10, 0));
 item(iGuard)("member is not lead")(obj.nw = isLead.s + (0, -5));
 item(iGuard)("member is lead")(obj.sw = isLead.e + (20, 0));
-item(iGuard)("done")(obj.nw = addMemJoin.s + (0, -5));
-item(iGuard)("not done")(obj.se = addMemJoin.w + (-10, 0));
+item(iGuard)("done")(obj.nw = isLeadJoin.s + (0, -5));
+item(iGuard)("not done")(obj.se = cFoundJoin.w + (-10, 0));
 \end{empdef}
 
 \begin{empdef}[activityR4](500,500)
 Begin.beg;
 Activity.task("Select task");
 Activity.selectAss("Select members to assign");
-Activity.enterId("Enter the person ID");
-Branch.isPart;
-Activity.existMem("Select existing member");
-Activity.pContact("Enter person contact");
-Activity.eInvite("Send invite");
-Branch.isPartJoin;
 Activity.saveT("Save task");
 End.fin;
 
-leftToRight.top(20)(existMem, pContact);
-topToBottom(25)(pContact, eInvite);
-Group.personBranch(existMem, pContact, eInvite);
-topToBottom(20)(beg, task, selectAss, enterId, isPart, personBranch, isPartJoin, saveT, fin);
+topToBottom(20)(beg, task, selectAss, saveT, fin);
 
-drawObjects(beg, task, selectAss, enterId, isPart, personBranch, isPartJoin, saveT, fin);
+drawObjects(beg, task, selectAss, saveT, fin);
 
 clink(transition)(beg, task);
 clink(transition)(task, selectAss);
-clink(transition)(selectAss, enterId);
-clink(transition)(enterId, isPart);
-link(transition)(pathStepX(isPart.w, existMem.n, existMem.midx));
-link(transition)(pathStepX(existMem.s, isPartJoin.w, 0));
-link(transition)(pathStepX(isPart.e, pContact.n, pContact.midx - isPart.width));
-clink(transition)(pContact, eInvite);
-link(transition)(pathStepX(eInvite.s, isPartJoin.e, 0));
-clink(transition)(isPartJoin, saveT);
+clink(transition)(selectAss, saveT);
 clink(transition)(saveT, fin);
-
-item(iGuard)("person is part of project")(obj.se = isPart.n + (-20, 0));
-item(iGuard)("person is not part of project")(obj.sw = isPart.n + (20, 0));
 \end{empdef}
 
 \begin{empdef}[erdiag](500,500)
