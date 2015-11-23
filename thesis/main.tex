@@ -4,6 +4,7 @@
 \usepackage{txfonts}	% for using the Times-Roman font
 \usepackage{natbib}		% for better citation styles
 \usepackage{placeins}
+\usepackage{fancyref}
 \usepackage{emp}
 \usepackage{ifpdf,graphicx}
 \ifpdf
@@ -11,6 +12,10 @@
 \fi
 \usepackage{usecases}
 \include{empDiags}
+\usepackage{tikz}
+\usepackage{gantt}
+\usepackage{array}
+\usepackage{tabularx}
 
 % These must be set first ... the rest of the thesis commands rely on them.
 
@@ -38,11 +43,14 @@
 
 \tableofcontents
 \listoffigures
+\listoftables
 
 \mainmatter
 \include{introduction}
 
 \include{activity}
+
+\include{gantt}
 
 \backmatter
 \immediate\write18{mpost -tex=latex \jobname}

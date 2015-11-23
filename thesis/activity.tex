@@ -1,52 +1,67 @@
 \chapter{Design}
 
-\section{Conceptual Model}
-
-\subsection{State Diagram}
+\section{Conceptual Models}
+In this section, we discuss how some of the main components and processes of our system will function and behave. These models will lay the foundation for the initial development of our system. We included three models to clearly illustrate our vision for the system; an entity relationship diagram, activity diagrams, and a mockup of our primary application view.
+\subsection{Entity Relationship Diagram}
+An entity relationship diagram describes the types of connections between the main components of the system. Figure \ref{erd} shows us the five primary pieces that makeup our application; projects, teams, team members, a team leader, and project tasks. A project and a team can only have one leader. A project can have many teams, which are composed of many members. Lastly, members can have many tasks. 
+A team leader effectively makes the projects. He or she is the person who initially uses the application to enter all the details of the project, including tasks and deadlines. The team leader also invites other members to the application and starts to assign them tasks and even add to them to a team with its own set of subtasks. 
 \begin{figure}[ht]
 \centering
 \empuse{erdiag}
 \caption{Entity Relationship Diagram}
+\label{erd}
 \end{figure}
 \FloatBarrier
 
 \subsection{Activity Diagrams}
+An activity diagram is a flowchart of a user’s actions to accomplish a goal. Our first figure, figure \ref{activityOne}, depicts the actions necessary to create a project. Assuming that the user has signed in, the user must name his project, and also define the project’s goal and deadline. Next she will have the option to add team members to the project. (This process will be explained in Figure \ref{activityTwo}).  If he declines to add members, the project creation process is completed. 
 
 \begin{figure}[ht]
 \centering
 \empuse{activityR1}
 \caption{Activity Diagram: Creating a project.}
+\label{activityOne}
 \end{figure}
+\FloatBarrier
+\par The next activity diagram, figure \ref{activityTwo}, describes team creation. If the user wishes to add team members of his/her project, he/she must first add a team description. Next, he/she will add a team member by entering his/her email. If the member has an account in our application, he/she will be successfully added to the team. If he/she is not a member, our system will send him/her an email invitation. The user will then have the option to continue adding team members. Lastly, the project creator will assign a project lead role to either him/herself or another member. Once the project lead role is assigned, he/she has completed the team creation process. 
 
 
 \begin{figure}[ht]
 \centering
 \empuse{activityR2}
 \caption{Activity Diagram: Creating a team.}
+\label{activityTwo}
 \end{figure}
+\FloatBarrier
 
+\par The next activity diagram, figure \ref{activityFour}, depicts the assignment of  tasks process. The user will select a task and proceed to assign the task to team member(s). After this step, the process is complete. 
 
 \begin{figure}[ht]
 \centering
 \empuse{activityR4}
 \caption{Activity Diagram: Assigning tasks.}
+\label{activityFour}
 \end{figure}
 \FloatBarrier
 
+
 \subsection{Mockups}
 
+Our final model, the mockup, gives us a rough overview of the layout for the application. The nav bar and left side bar are minimalistic, having only as many features as necessary to accomplish any logistics such as account management and login buttons. The main feature, a blank canvas, will provide users with any interactivity related to the current project they are viewing, including tasks, timelines, and upcoming deadlines. 
+
 \begin{figure}[ht]
-\includegraphics[width=\textwidth]{mockup.jpg}
+\includegraphics[width=\textwidth]{mockup.png}
 \caption{A mockup of our system concept.}
 \end{figure}
 \FloatBarrier
 
 \section{Use Cases}
-A use case defines the steps required to accomplish a specific goal. The following use cases describe how the user interacts with the system to achieve these goals, including preconditions, postconditions, steps required, and common errors that might occur. The use case diagram, Figure XXX, helps to illustrate the user’s major actions in our application: creating a project, adding team members, and creating and assigning tasks. 
+A use case defines the steps required to accomplish a specific goal. The following use cases describe how the user interacts with the system to achieve these goals, including preconditions, postconditions, steps required, and common errors that might occur. The use case diagram, Figure \ref{ucd}, helps to illustrate the user’s major actions in our application: creating a project, adding team members, and creating and assigning tasks. 
 \begin{figure}[ht]
 \centering
 \empuse{usecasediag}
 \caption{Use Case Diagram}
+\label{ucd}
 \end{figure}
 
 \begin{figure}[ht]
@@ -79,11 +94,12 @@ A use case defines the steps required to accomplish a specific goal. The followi
   \item[A.] Invalid login data:
     \begin{enumerate}
     \item[1.] System shows failure message
-    \item[2.] User returns to step 1
+    \item[2.] User prompted to login
     \end{enumerate}
 }
 \end{usecase}
 \end{figure}
+
 \begin{figure}[ht]
 \begin{usecase}
 
@@ -93,7 +109,7 @@ A use case defines the steps required to accomplish a specific goal. The followi
 
 \addfield{Actor:}{User}
 
-\addfield{Preconditions:}{Logged in, project created}
+\addfield{Preconditions:}{Logged in, project created, members added}
 %when multiple
 %\additemizedfield{Preconditions:}{} 
 
@@ -105,58 +121,72 @@ A use case defines the steps required to accomplish a specific goal. The followi
 \addscenario{Steps:}{
   \item Enter team description
   \item Enter member contact
-  \item If found, add member 
+  \item If found, add member to team, if not found send e-mail invite
+  \item Once, all members are added, choose a leader
+  \item Submit
 }
 
 %Extensions: Alternate scenarios of success or failure.
 \addscenario{Exceptions:}{
-  \item[2.a] Invalid login data:
+  \item[A.] Invalid login data:
     \begin{enumerate}
     \item[1.] System shows failure message
-    \item[2.] User returns to step 1
+    \item[2.] User prompted to login
     \end{enumerate}
-  \item[5.a] Invalid subsriber data:
+  \item[B.] Project does not exist:
     \begin{enumerate}
     \item[1.] System shows failure message
-    \item[2.] User returns to step 2 and corrects the errors
+    \item[2.] User taken to project creation phase
+    \end{enumerate}
+  \item[C.] Project does not have members:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User prompted to add members
     \end{enumerate}
 }
 \end{usecase}
 \end{figure}
+
 \begin{figure}[ht]
 \begin{usecase}
 
-\addtitle{Use Case 1}{Template test} 
+\addtitle{Use Case 1}{Assign tasks} 
 
-\addfield{Goal:}{System-wide}
+\addfield{Goal:}{Assign tasks to individual members or teams}
 
-\addfield{Actor:}{End-User}
+\addfield{Actor:}{User}
 
-\addfield{Preconditions:}{}
+\addfield{Preconditions:}{Logged in, project created, tasks created}
 %when multiple
 %\additemizedfield{Preconditions:}{} 
 
-\addfield{Postconditions:}{}
+\addfield{Postconditions:}{Tasks assigned}
 %when multiple
 %\additemizedfield{Preconditions:}{}
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \addscenario{Steps:}{
-  \item The first action
-  \item The second action
+  \item Select a task
+  \item Select members who will be assigned the task
+  \item Save the task
 }
 
 %Extensions: Alternate scenarios of success or failure.
 \addscenario{Exceptions:}{
-  \item[2.a] Invalid login data:
+  \item[A.] Invalid login data:
     \begin{enumerate}
     \item[1.] System shows failure message
-    \item[2.] User returns to step 1
+    \item[2.] User prompted to login
     \end{enumerate}
-  \item[5.a] Invalid subsriber data:
+  \item[B.] Project does not exist:
     \begin{enumerate}
     \item[1.] System shows failure message
-    \item[2.] User returns to step 2 and corrects the errors
+    \item[2.] User taken to project creation phase
+    \end{enumerate}
+  \item[C.] Project does not have tasks:
+    \begin{enumerate}
+    \item[1.] System shows failure message
+    \item[2.] User prompted to add tasks
     \end{enumerate}
 }
 \end{usecase}

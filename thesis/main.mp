@@ -39,9 +39,12 @@ Branch.membAdd;
 Activity.addProj("Add people to the project");
 End.e;
 
+addProj.w = (50, 0.5(e.midy + membAdd.midy));
+
+
 leftToRight.top(10)(define, deadline);
 Group.defineListen(define, deadline);
-leftToRight(50)(membAdd, addProj);
+
 topToBottom(20)(b, name, fork, defineListen, join, membAdd, e);
 
 
@@ -56,7 +59,7 @@ clink(transition)(define, join);
 clink(transition)(deadline, join);
 clink(transition)(join, membAdd);
 clink(transition)(join, membAdd);
-link(transition)(pathStepX(membAdd.e, addProj.n, 0));
+link(transition)(pathStepX(membAdd.e, addProj.n,  addProj.midx + 0.5membAdd.width));
 link(transition)(pathStepX(addProj.s, e.e, 0));
 clink(transition)(membAdd, e);
 
@@ -75,18 +78,14 @@ Branch.cFound;
 Activity.addToTeam("Add member to team");
 Activity.invite("Send email invite");
 Branch.cFoundJoin;
-Branch.isLead;
 Activity.assProj("Assign project lead role");
-Branch.isLeadJoin;
 Activity.submit("Submit Team");
 End.en;
-assProj.midx = invite.midx;
+
 leftToRight.top(25)(addToTeam, invite);
-topToBottom(20)(be, tName, addMem, contact, cFound, addToTeam, cFoundJoin, isLead, isLeadJoin, submit, en);
-assProj.top = isLead.bottom;
+topToBottom(20)(be, tName, addMem, contact, cFound, addToTeam, cFoundJoin, assProj, submit, en);
 
-
-drawObjects(be, tName, addMem, contact, cFound, addToTeam, invite, cFoundJoin, isLead, assProj, isLeadJoin, submit, en);
+drawObjects(be, tName, addMem, contact, cFound, addToTeam, invite, cFoundJoin, assProj, submit, en);
 
 clink(transition)(be, tName);
 clink(transition)(tName, addMem);
@@ -96,20 +95,14 @@ clink(transition)(contact, cFound);
 link(transition)(pathStepX(invite.s, cFoundJoin.e, 0));
 clink(transition)(cFound, addToTeam);
 clink(transition)(addToTeam, cFoundJoin);
-clink(transition)(cFoundJoin,isLead);
-link(transition)(pathStepX(isLead.e, assProj.n, assProj.midx - isLead.width));
-link(transition)(pathStepX(assProj.s, isLeadJoin.e, 0));
-clink(transition)(isLead, isLeadJoin);
-clink(transition)(isLeadJoin, submit);
+clink(transition)(cFoundJoin, assProj);
+clink(transition)(assProj, submit);
 clink(transition)(submit, en);
 link(transition)(pathStepX(cFoundJoin.w, addMem.w, -60));
 
 item(iGuard)("add members")(obj.nw = addMem.s + (0, -5));
 item(iGuard)("contact found")(obj.nw = cFound.s + (0, -5));
 item(iGuard)("contact not found")(obj.sw = cFound.e + (10, 0));
-item(iGuard)("member is not lead")(obj.nw = isLead.s + (0, -5));
-item(iGuard)("member is lead")(obj.sw = isLead.e + (20, 0));
-item(iGuard)("done")(obj.nw = isLeadJoin.s + (0, -5));
 item(iGuard)("not done")(obj.se = cFoundJoin.w + (-10, 0));
 endfig;
 beginfig(4);
