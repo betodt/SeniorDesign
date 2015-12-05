@@ -17,12 +17,14 @@
 \usepackage{array}
 \usepackage{tabularx}
 
+\newcommand{\projectTitle}{The Tool}
+
 % These must be set first ... the rest of the thesis commands rely on them.
 
 \author{Alberto Diaz-Tostado}
 \author{Amy Nguyen Tran}
-\title{Project Management Application}
-\department{Department of Computer Science and Engineering}
+\title{\projectTitle}
+\department{Department of Computer Engineering}
 \degree{Bachelor of Science in Computer Science and Engineering}
 \degree{Bachelor of Science in Web Design and Engineering}
 
@@ -46,11 +48,11 @@
 \listoftables
 
 \mainmatter
-\include{introduction}
+\include{ch1}
 
-\include{activity}
+\include{ch2}
 
-\include{gantt}
+\include{ch3}
 
 \backmatter
 \immediate\write18{mpost -tex=latex \jobname}

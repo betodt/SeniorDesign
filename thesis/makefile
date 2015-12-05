@@ -8,6 +8,8 @@ LATEXMK=latexmk
 LATEXMKOPT=-pdf
 CONTINUOUS=-pvc
 
+PROGRAM="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+
 UNAME_S := $(uname -s)
 
 MAIN=main
@@ -34,7 +36,7 @@ clean:
 	rm -f $(MAIN).pdfsync
 	rm -rf *~ *.tmp
 	rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk
-	AcroRd32.exe $(MAIN).pdf
+	$(PROGRAM) $(MAIN).pdf
 
 once:
 	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)

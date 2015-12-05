@@ -39,9 +39,9 @@ addProj.w = (50, 0.5(e.midy + membAdd.midy));
 leftToRight.top(10)(define, deadline);
 Group.defineListen(define, deadline);
 
-topToBottom(20)(b, name, fork, defineListen, join, membAdd, e);
+topToBottom(20)(b, name, fork, defineListen, join, membAdd);
 
-
+e.n = membAdd.s - (0,40);
 
 drawObjects(b, name, fork, defineListen, join, membAdd, addProj, e);
 
@@ -53,7 +53,7 @@ clink(transition)(define, join);
 clink(transition)(deadline, join);
 clink(transition)(join, membAdd);
 clink(transition)(join, membAdd);
-link(transition)(pathStepX(membAdd.e, addProj.n,  addProj.midx + 0.5membAdd.width));
+link(transition)(pathStepX(membAdd.e, addProj.n,  addProj.midx - membAdd.width));
 link(transition)(pathStepX(addProj.s, e.e, 0));
 clink(transition)(membAdd, e);
 
@@ -117,11 +117,11 @@ clink(transition)(saveT, fin);
 
 \begin{empdef}[erdiag](500,500)
 
-Class.L("Leader")()();
-Class.P("Projects")()();
-Class.C("Teams")()();
-Class.T("Tasks")()();
-Class.M("Members")()();
+State.L("Leader")();
+State.P("Projects")();
+State.C("Teams")();
+State.T("Tasks")();
+State.M("Members")();
 
 leftToRight(150)(P, C);
 leftToRight(150)(T, M);
