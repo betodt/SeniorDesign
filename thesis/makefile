@@ -16,6 +16,8 @@ MAIN=main
 SOURCES=$(MAIN).tex Makefile abstract.tex introduction.tex usecase.tex
 FIGURES := 
 
+INTRO := intro
+
 all:    $(MAIN).pdf
 
 .refresh:
@@ -43,5 +45,9 @@ once:
 
 debug:
 	$(LATEX) $(LATEXOPT) $(MAIN)
+
+intro: $(INTRO).tex
+	$(LATEX) $(LATEXOPT) $(NONSTOP) $(INTRO).tex
+	$(PROGRAM) $(INTRO).pdf
 
 .PHONY: clean force once all
