@@ -19,7 +19,12 @@
      $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('#login').openModal(); 
-      });
+    
+    $('#signupButton').click(function(){
+      $('#signup').removeClass("hide");
+      $('#signupButton').addClass("hide");
+    });
+   });
   </script>
 
  </head>
@@ -46,42 +51,54 @@
 
 
   <!-- Modal Structure -->
-  <div id="login" class="modal modal-fixed-footer">
+  <div id="login" class="modal">
     <div class="modal-content">
       <h4 id= "formTitle">Sign Up</h4>
       <div id= "loginContent">
-        <div class="row">
-          <form class="col s12">
+        <div id="googleFacebook" class="center-align"><img src="signup.JPG"></div>
+        <h5><span>or</span></h5>
+        <div class="center-align">
+          <a class="waves-effect waves-light btn deep-purple darken-3" id= "signupButton"><i class="material-icons left">mail_outline</i>Sign Up With Email</a>
+        </div>
+        <div id="signup" class="hide"> 
           <div class="row">
-            <!-- first name -->
+            <form class="col s12">
+            <div class="row">
+              <!-- first name -->
+              <div class="input-field col s12">
+                <i class="material-icons prefix">perm_identity</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">First Name</label>
+              </div>
+              <!-- last name -->
+              <div class="input-field col s12">
+                <i class="material-icons prefix">perm_identity</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Last Name</label>
+              </div>
+            <!-- email -->
             <div class="input-field col s12">
-              <i class="material-icons prefix">perm_identity</i>
+              <i class="material-icons prefix">mail_outline</i>
               <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">First Name</label>
+              <label for="icon_prefix">Email</label>
             </div>
-            <!-- last name -->
+            <!-- username -->
             <div class="input-field col s12">
-              <i class="material-icons prefix">perm_identity</i>
+              <i class="material-icons prefix">face</i>
               <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Last Name</label>
+              <label for="icon_prefix">Username</label>
             </div>
-          <!-- email -->
-          <div class="input-field col s12">
-            <i class="material-icons prefix">mail_outline</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Email</label>
+            <!-- password -->
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock_outline</i>
+              <input id="icon_prefix" type="text" class="validate">
+              <label for="icon_prefix">Password</label>
+            </div>
+            <div class="center-align">
+             <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="action" formaction="mockup.html">Submit
+              <i class="material-icons right">send</i>
+            </button>
           </div>
-          <!-- username -->
-          <div class="input-field col s12">
-            <i class="material-icons prefix">face</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Username</label>
-          </div>
-          <!-- password -->
-          <div class="input-field col s12">
-            <i class="material-icons prefix">lock_outline</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Password</label>
           </div>
         </div>
       </div>
@@ -89,11 +106,6 @@
   </div>
         
     </div>
-    <div class="modal-footer">
-     <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
-     <a href="mockup.html" class="modal-action modal-close waves-effect waves-purple btn-flat ">Agree</a>
-    </div>
-  </div>
 
  </main>
 

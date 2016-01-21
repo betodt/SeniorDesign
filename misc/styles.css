@@ -31,6 +31,12 @@ body {
 
   #paper {
     flex: 1 0 auto;
+    overflow: hidden;
+  }
+
+  #paper input[type=text]:focus {
+    border-bottom: 1px solid #536dfe;
+    box-shadow: 0 1px 0 0 #536dfe;
   }
 
   #foot {
@@ -39,12 +45,18 @@ body {
   #profilePic{ 
     width:50%;
     margin: auto;
+
     
+  }
+  .teamPics{
+    width:50px;
+    height: auto;
+  
   }
   .card ul li {
     margin-top: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px lightgrey solid;
+    /*border-bottom: 1px lightgrey solid;*/
     height: 2em;
   }
   .card {
@@ -94,3 +106,21 @@ body {
    .input-field .prefix.active {
      color: #4527a0;
    }
+ #login{
+  width: 40%;
+
+ }  
+#login h5{
+  width:100%;
+  text-align: center;
+  border-bottom: 1px solid black;
+  line-height: .1em;
+  margin: 10px 0 20px;
+}
+
+#login h5 span{
+  background:#fafafa;
+  padding: 0 10px;
+}
+
+
