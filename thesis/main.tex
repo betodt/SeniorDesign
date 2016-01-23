@@ -1,0 +1,59 @@
+\documentclass{scu-thesis}
+\usepackage[pdftex]{graphicx}	% for including graphics
+\usepackage{amsmath}	% for advanced typesetting of mathematics
+\usepackage{txfonts}	% for using the Times-Roman font
+\usepackage{natbib}		% for better citation styles
+\usepackage{placeins}
+\usepackage{fancyref}
+\usepackage{emp}
+\usepackage{ifpdf,graphicx}
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{usecases}
+\include{empDiags}
+\usepackage{tikz}
+\usepackage{gantt}
+\usepackage{array}
+\usepackage{tabularx}
+
+\newcommand{\projectTitle}{Planly}
+
+% These must be set first ... the rest of the thesis commands rely on them.
+
+\author{Alberto Diaz-Tostado}
+\author{Amy Nguyen Tran}
+\title{\projectTitle}
+\department{Department of Computer Engineering}
+\degree{Bachelor of Science in Computer Science and Engineering}
+\degree{Bachelor of Science in Web Design and Engineering}
+
+% Only bachelor's theses should have multiple authors and/or be from
+% multiple departments.  Signatures required:
+%
+% Bachelor's theses: advisor(s), department chair(s)
+% Master's theses: advisor, reader, department chair
+% Doctoral theses: doctoral committee (including advisor), department chair
+
+\begin{document}
+\frontmatter
+\signature{Thesis Advisor}
+\signature{Department Chair}
+
+\maketitle
+\include{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\include{ch1}
+
+\include{ch2}
+
+\include{ch3}
+
+\backmatter
+\immediate\write18{mpost -tex=latex \jobname}
+\end{document}

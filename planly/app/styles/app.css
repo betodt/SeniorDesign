@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    max-height: 100%;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .mainContain {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .sideBar {
+    flex: 1 0 auto;
+  }
+
+  #paperContain {
+    display: flex;
+    min-height: 150vh;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #paper {
+    flex: 1 0 auto;
+    overflow: hidden;
+  }
+
+  #paper input[type=text]:focus {
+    border-bottom: 1px solid #536dfe;
+    box-shadow: 0 1px 0 0 #536dfe;
+  }
+
+  #foot {
+    margin: 0;
+  }
+  #profilePic{ 
+    width:50%;
+    margin: auto;
+
+    
+  }
+  .teamPics{
+    width:50px;
+    height: auto;
+  
+  }
+  .card ul li {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    /*border-bottom: 1px lightgrey solid;*/
+    height: 2em;
+  }
+  .card {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+.background {
+  overflow: hidden;
+}
+
+.background img {
+  width: 100%;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+#formTitle{
+  text-align:center;
+}
+
+#loginContent{
+  width: 50%;
+  margin: 0 auto;
+}
+
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #4527a0;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #4527a0;
+     box-shadow: 0 1px 0 0 #4527a0;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #4527a0;
+     box-shadow: 0 1px 0 0 #4527a0;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #4527a0;
+     box-shadow: 0 1px 0 0 #4527a0;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #4527a0;
+   }
+ #login{
+  width: 40%;
+
+ }  
+#login h5{
+  width:100%;
+  text-align: center;
+  border-bottom: 1px solid black;
+  line-height: .1em;
+  margin: 10px 0 20px;
+}
+
+#login h5 span{
+  background:#fafafa;
+  padding: 0 10px;
+}
+
+
