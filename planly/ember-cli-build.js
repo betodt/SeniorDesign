@@ -19,6 +19,12 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-
+ app.import('bower_components/Materialize/dist/css/materialize.css');
+ app.import('bower_components/Materialize/dist/js/materialize.js');
+ app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.eot');
+ app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.svg');
+ app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.ttf');
+ app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff');
+ app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff2');
   return app.toTree();
 };
