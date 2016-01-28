@@ -5,7 +5,10 @@ module.exports = function(environment) {
     modulePrefix: 'planly',
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://YOUR-FIREBASE-NAME.firebaseio.com/',
+    firebase: 'https://planly.firebaseio.com/',
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

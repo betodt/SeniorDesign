@@ -183,6 +183,26 @@ define('planly/router', ['exports', 'ember', 'planly/config/environment'], funct
 
   exports['default'] = Router;
 });
+define("planly/routes/application", ["exports", "ember"], function (exports, _ember) {
+  exports["default"] = _ember["default"].Route.extend({
+    beforeModel: function beforeModel() {
+      return this.get("session").fetch()["catch"](function () {});
+    },
+
+    actions: {
+      signIn: function signIn(provider) {
+        this.get("session").open("firebase", { provider: provider }).then(function (data) {
+          console.log(data.currentUser);
+        });
+      },
+
+      signOut: function signOut() {
+        this.get("session").close();
+      }
+    }
+  });
+});
+// app/routes/application.js
 define('planly/services/firebase', ['exports', 'emberfire/services/firebase', 'planly/config/environment'], function (exports, _emberfireServicesFirebase, _planlyConfigEnvironment) {
 
   _emberfireServicesFirebase['default'].config = _planlyConfigEnvironment['default'];
@@ -388,7 +408,9 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
         var el4 = dom.createElement("li");
         var el5 = dom.createTextNode(" ");
         dom.appendChild(el4, el5);
-        var el5 = dom.createComment("");
+        var el5 = dom.createElement("button");
+        var el6 = dom.createTextNode(" Sign Up ");
+        dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n     ");
@@ -403,11 +425,12 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [0, 1, 3, 1, 1]);
         var morphs = new Array(1);
-        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 1, 3, 1]), 1, 1);
+        morphs[0] = dom.createElementMorph(element0);
         return morphs;
       },
-      statements: [["inline", "link-to", ["Sign In", "index"], [], ["loc", [null, [5, 12], [5, 41]]]]],
+      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 20], [5, 48]]]]],
       locals: [],
       templates: []
     };
@@ -442,7 +465,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+341e129c"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+2dd3d767"});
 }
 
 /* jshint ignore:end */
