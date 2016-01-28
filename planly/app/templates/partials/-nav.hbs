@@ -2,7 +2,15 @@
    <div class="nav-wrapper indigo">
      <a href="#" class="brand-logo">Planly</a>
      <ul id="nav-mobile" class="right hide-on-med-and-down">
-       <li> <button {{action "signIn" "google"}}> Sign Up </button></li>
+      	 <li>
+		{{#if session.isAuthenticated}}
+		  Logged in as {{session.currentUser.displayName}}
+		  <button class="btn-flat" {{action "signOut"}}>Sign out</button>
+		  {{outlet}}
+		{{else}}
+		  <button class="btn-flat" {{action "signIn" "google"}}>Sign in</button>
+		{{/if}}
+		</li>
      </ul>
    </div>
  </nav>

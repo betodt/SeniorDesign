@@ -154,6 +154,15 @@ define('planly/tests/test-helper.jshint', ['exports'], function (exports) {
     assert.ok(true, 'test-helper.js should pass jshint.');
   });
 });
+define('planly/tests/torii-adapters/application.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - torii-adapters');
+  QUnit.test('torii-adapters/application.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'torii-adapters/application.js should pass jshint.');
+  });
+});
 define('planly/tests/unit/routes/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleFor)('route:application', 'Unit | Route | application', {

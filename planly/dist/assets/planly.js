@@ -41,11 +41,39 @@ define('planly/controllers/array', ['exports', 'ember'], function (exports, _emb
 define('planly/controllers/object', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
 });
+define('planly/helpers/copyright', ['exports', 'ember-cli-copyright/helpers/copyright'], function (exports, _emberCliCopyrightHelpersCopyright) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCliCopyrightHelpersCopyright['default'];
+    }
+  });
+  Object.defineProperty(exports, 'copyright', {
+    enumerable: true,
+    get: function get() {
+      return _emberCliCopyrightHelpersCopyright.copyright;
+    }
+  });
+});
 define('planly/initializers/app-version', ['exports', 'ember-cli-app-version/initializer-factory', 'planly/config/environment'], function (exports, _emberCliAppVersionInitializerFactory, _planlyConfigEnvironment) {
   exports['default'] = {
     name: 'App Version',
     initialize: (0, _emberCliAppVersionInitializerFactory['default'])(_planlyConfigEnvironment['default'].APP.name, _planlyConfigEnvironment['default'].APP.version)
   };
+});
+define('planly/initializers/copyright', ['exports', 'ember-cli-copyright/initializers/copyright'], function (exports, _emberCliCopyrightInitializersCopyright) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCliCopyrightInitializersCopyright['default'];
+    }
+  });
+  Object.defineProperty(exports, 'initialize', {
+    enumerable: true,
+    get: function get() {
+      return _emberCliCopyrightInitializersCopyright.initialize;
+    }
+  });
 });
 define('planly/initializers/emberfire', ['exports', 'emberfire/initializers/emberfire'], function (exports, _emberfireInitializersEmberfire) {
   exports['default'] = _emberfireInitializersEmberfire['default'];
@@ -334,7 +362,11 @@ define("planly/templates/partials/-footer", ["exports"], function (exports) {
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3, "class", "container");
-        var el4 = dom.createTextNode("\n      © 2014 Copyright Text\n      ");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n      ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("a");
         dom.setAttribute(el4, "class", "grey-text text-lighten-4 right");
@@ -353,10 +385,12 @@ define("planly/templates/partials/-footer", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes() {
-        return [];
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createUnsafeMorphAt(dom.childAt(fragment, [0, 3, 1]), 1, 1);
+        return morphs;
       },
-      statements: [],
+      statements: [["inline", "copyright", ["Planly"], [], ["loc", [null, [12, 6], [12, 30]]]]],
       locals: [],
       templates: []
     };
@@ -364,6 +398,104 @@ define("planly/templates/partials/-footer", ["exports"], function (exports) {
 });
 define("planly/templates/partials/-nav", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "revision": "Ember@1.13.12",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 10,
+              "column": 2
+            }
+          },
+          "moduleName": "planly/templates/partials/-nav.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("		  Logged in as ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n		  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("button");
+          dom.setAttribute(el1, "class", "btn-flat");
+          var el2 = dom.createTextNode("Sign out");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n		  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element1 = dom.childAt(fragment, [3]);
+          var morphs = new Array(3);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          morphs[1] = dom.createElementMorph(element1);
+          morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+          return morphs;
+        },
+        statements: [["content", "session.currentUser.displayName", ["loc", [null, [7, 17], [7, 52]]]], ["element", "action", ["signOut"], [], ["loc", [null, [8, 29], [8, 49]]]], ["content", "outlet", ["loc", [null, [9, 4], [9, 14]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "revision": "Ember@1.13.12",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 2
+            }
+          },
+          "moduleName": "planly/templates/partials/-nav.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("		  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("button");
+          dom.setAttribute(el1, "class", "btn-flat");
+          var el2 = dom.createTextNode("Sign in");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var morphs = new Array(1);
+          morphs[0] = dom.createElementMorph(element0);
+          return morphs;
+        },
+        statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [11, 29], [11, 57]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
     return {
       meta: {
         "revision": "Ember@1.13.12",
@@ -374,7 +506,7 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 8,
+            "line": 16,
             "column": 7
           }
         },
@@ -403,14 +535,14 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
         var el3 = dom.createElement("ul");
         dom.setAttribute(el3, "id", "nav-mobile");
         dom.setAttribute(el3, "class", "right hide-on-med-and-down");
-        var el4 = dom.createTextNode("\n       ");
+        var el4 = dom.createTextNode("\n      	 ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("li");
-        var el5 = dom.createTextNode(" ");
+        var el5 = dom.createTextNode("\n");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("button");
-        var el6 = dom.createTextNode(" Sign Up ");
-        dom.appendChild(el5, el6);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("		");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n     ");
@@ -425,16 +557,20 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0, 1, 3, 1, 1]);
         var morphs = new Array(1);
-        morphs[0] = dom.createElementMorph(element0);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 1, 3, 1]), 1, 1);
         return morphs;
       },
-      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 20], [5, 48]]]]],
+      statements: [["block", "if", [["get", "session.isAuthenticated", ["loc", [null, [6, 8], [6, 31]]]]], [], 0, 1, ["loc", [null, [6, 2], [12, 9]]]]],
       locals: [],
-      templates: []
+      templates: [child0, child1]
     };
   })());
+});
+define('planly/torii-adapters/application', ['exports', 'ember', 'emberfire/torii-adapters/firebase'], function (exports, _ember, _emberfireToriiAdaptersFirebase) {
+  exports['default'] = _emberfireToriiAdaptersFirebase['default'].extend({
+    firebase: _ember['default'].inject.service()
+  });
 });
 define('planly/torii-providers/firebase', ['exports', 'emberfire/torii-providers/firebase'], function (exports, _emberfireToriiProvidersFirebase) {
   exports['default'] = _emberfireToriiProvidersFirebase['default'];
@@ -465,7 +601,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+2dd3d767"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+066b2357"});
 }
 
 /* jshint ignore:end */
