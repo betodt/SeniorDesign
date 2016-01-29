@@ -386,8 +386,13 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         var el4 = dom.createTextNode("\n     ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "g-signin2");
-        dom.setAttribute(el4, "data-onsuccess", "onSignIn");
+        dom.setAttribute(el4, "class", "googleIcon");
+        var el5 = dom.createElement("img");
+        dom.setAttribute(el5, "src", "assets/g-logo.png");
+        dom.setAttribute(el5, "alt", "google");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("Sign Up with Google");
+        dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n      ");
         dom.appendChild(el3, el4);
@@ -958,7 +963,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+5913de29"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+f2bc0dea"});
 }
 
 /* jshint ignore:end */

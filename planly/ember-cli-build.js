@@ -38,7 +38,10 @@ module.exports = function(defaults) {
  app.import('bower_components/Materialize/dist/font/roboto/Roboto-Thin.ttf');
  app.import('bower_components/Materialize/dist/font/roboto/Roboto-Thin.woff');
  app.import('bower_components/Materialize/dist/font/roboto/Roboto-Thin.woff2');
- 
+ app.import('bower_components/Materialize/dist/font/roboto/Roboto-Medium.eot');
+ app.import('bower_components/Materialize/dist/font/roboto/Roboto-Medium.ttf');
+ app.import('bower_components/Materialize/dist/font/roboto/Roboto-Medium.woff');
+ app.import('bower_components/Materialize/dist/font/roboto/Roboto-Medium.woff2'); 
 
  app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.eot');
  app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.svg');
