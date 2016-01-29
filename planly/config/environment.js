@@ -4,7 +4,33 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'planly',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    contentSecurityPolicy: { // 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" //og 
+      // Deny everything by default
+      //'default-src': "'none'",
+
+      // Allow scripts from https://cdn.mxpnl.com
+      'script-src': ["'self'", "https://apis.google.com"],
+
+      // Allow fonts to be loaded from http://fonts.gstatic.com
+      'font-src': ["'self'", "http://fonts.gstatic.com"],
+
+      // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+      'connect-src': ["'self'", "https://auth.firebase.com", "wss://*.firebaseio.com", "https://*.firebaseio.com"],
+
+      // Allow images from the origin itself (i.e. current domain)
+      'img-src': "'self'",
+
+      // Allow inline styles and loaded CSS from http://fonts.googleapis.com
+      'style-src': ["'self'", "'unsafe-inline'", "http://fonts.googleapis.com"],
+
+      // `media-src` will be omitted from policy
+      // Browser will fallback to default-src for media resources (which is to deny, see above).
+      'media-src': null
+    },
+    googleFonts: [
+      'Open+Sans:300',
+      'Roboto:300'
+    ],
     firebase: 'https://planly.firebaseio.com/',
     torii: {
       sessionServiceName: 'session'

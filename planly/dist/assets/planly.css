@@ -148,23 +148,19 @@ body {
   padding: 0 10px;
 }
 
-
 .googleIcon {
-  background-color: #ffffff;
-  height: 40px;
-  width: auto;
-  font-family: dist/Roboto-Bold;
-  font-size: 14px;
-  color: rgba(0,0,0,.54);
-  padding: 8px;
-}
-
-.googleIcon:active {
-  background-color: #4285F4;
+  color: #000000; opacity: 0.54;
 }
 
 .googleIcon img {
   width: 18px;
-  height: auto;
+  height: 18px;
   margin-right: 24px;
+  display: inline-block;
 }
+
+.waves-effect.waves-blue .waves-ripple {
+     /* The alpha value allows the text and background color
+     of the button to still show through. */
+     background-color: #4285F4; opacity: 0.65;
+   }

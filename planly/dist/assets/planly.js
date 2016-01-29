@@ -36,14 +36,27 @@ define('planly/components/app-version', ['exports', 'ember-cli-app-version/compo
   });
 });
 define('planly/components/login-modal', ['exports', 'ember', 'planly/templates/components/login-modal'], function (exports, _ember, _planlyTemplatesComponentsLoginModal) {
-    exports['default'] = _ember['default'].Component.extend({
-        actions: {
-            toggleModal: function toggleModal() {
-                this.toggleProperty('enabled');
-            }
-        },
-        layout: _planlyTemplatesComponentsLoginModal['default']
-    });
+  exports['default'] = _ember['default'].Component.extend({
+    beforeModel: function beforeModel() {
+      return this.get("session").fetch()['catch'](function () {});
+    },
+    actions: {
+      signIn: function signIn(provider) {
+        this.get("session").open("firebase", { provider: provider }).then(function (data) {
+          console.log(data.currentUser);
+        });
+      },
+
+      signOut: function signOut() {
+        this.get("session").close();
+      },
+      openForm: function openForm() {
+        $('#signup').removeClass("hide");
+        $('#signupButton').addClass("hide");
+      }
+    },
+    layout: _planlyTemplatesComponentsLoginModal['default']
+  });
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -386,12 +399,16 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         var el4 = dom.createTextNode("\n     ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "googleIcon");
-        var el5 = dom.createElement("img");
-        dom.setAttribute(el5, "src", "assets/g-logo.png");
-        dom.setAttribute(el5, "alt", "google");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("Sign Up with Google");
+        dom.setAttribute(el4, "class", "center-align");
+        var el5 = dom.createElement("a");
+        dom.setAttribute(el5, "class", "googleIcon waves-effect waves-blue btn white");
+        var el6 = dom.createElement("img");
+        dom.setAttribute(el6, "class", "");
+        dom.setAttribute(el6, "src", "assets/g-logo.png");
+        dom.setAttribute(el6, "alt", "google");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("Sign Up with Google");
+        dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n      ");
@@ -646,10 +663,16 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes() {
-        return [];
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [0, 1, 3]);
+        var element1 = dom.childAt(element0, [1]);
+        var element2 = dom.childAt(element0, [5, 1]);
+        var morphs = new Array(2);
+        morphs[0] = dom.createElementMorph(element1);
+        morphs[1] = dom.createElementMorph(element2);
+        return morphs;
       },
-      statements: [],
+      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 30], [5, 58]]]], ["element", "action", ["openForm"], [], ["loc", [null, [8, 87], [8, 108]]]]],
       locals: [],
       templates: []
     };
@@ -963,7 +986,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+f2bc0dea"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+8bc9750b"});
 }
 
 /* jshint ignore:end */
