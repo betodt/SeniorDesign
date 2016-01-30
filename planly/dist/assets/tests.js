@@ -22,7 +22,7 @@ define('planly/tests/components/login-modal.jshint', ['exports'], function (expo
   QUnit.module('JSHint - components');
   QUnit.test('components/login-modal.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/login-modal.js should pass jshint.\ncomponents/login-modal.js: line 20, col 13, \'$\' is not defined.\ncomponents/login-modal.js: line 21, col 13, \'$\' is not defined.\n\n2 errors');
+    assert.ok(true, 'components/login-modal.js should pass jshint.');
   });
 });
 define('planly/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
