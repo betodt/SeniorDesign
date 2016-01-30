@@ -35,28 +35,14 @@ define('planly/components/app-version', ['exports', 'ember-cli-app-version/compo
     name: name
   });
 });
-define('planly/components/login-modal', ['exports', 'ember', 'planly/templates/components/login-modal'], function (exports, _ember, _planlyTemplatesComponentsLoginModal) {
-  exports['default'] = _ember['default'].Component.extend({
-    beforeModel: function beforeModel() {
-      return this.get("session").fetch()['catch'](function () {});
-    },
-    actions: {
-      signIn: function signIn(provider) {
-        this.get("session").open("firebase", { provider: provider }).then(function (data) {
-          console.log(data.currentUser);
-        });
-      },
-
-      signOut: function signOut() {
-        this.get("session").close();
-      },
-      openForm: function openForm() {
-        $('#signup').removeClass("hide");
-        $('#signupButton').addClass("hide");
-      }
-    },
-    layout: _planlyTemplatesComponentsLoginModal['default']
-  });
+define('planly/components/login-modal', ['exports', 'ember'], function (exports, _ember) {
+    exports['default'] = _ember['default'].Component.extend({
+        actions: {
+            signIn: function signIn(provider) {
+                this.sendAction('signIn', provider);
+            }
+        }
+    });
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -241,11 +227,13 @@ define('planly/routes/application', ['exports', 'ember'], function (exports, _em
     },
 
     actions: {
-      signIn: function signIn(provider) {
+      openModal: function openModal() {
         $('#login').openModal();
-        /*this.get("session").open("firebase", { provider: provider}).then(function(data) {
+      },
+      signIn: function signIn(provider) {
+        this.get("session").open("firebase", { provider: provider }).then(function (data) {
           console.log(data.currentUser);
-        });*/
+        });
       },
 
       signOut: function signOut() {
@@ -263,38 +251,6 @@ define('planly/services/firebase', ['exports', 'emberfire/services/firebase', 'p
 });
 define("planly/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "revision": "Ember@1.13.12",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 4,
-              "column": 1
-            },
-            "end": {
-              "line": 5,
-              "column": 2
-            }
-          },
-          "moduleName": "planly/templates/application.hbs"
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
         "revision": "Ember@1.13.12",
@@ -305,7 +261,7 @@ define("planly/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 9,
+            "line": 8,
             "column": 29
           }
         },
@@ -321,11 +277,11 @@ define("planly/templates/application", ["exports"], function (exports) {
         var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("main");
-        var el2 = dom.createTextNode("\n");
+        var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("	");
+        var el2 = dom.createTextNode(" \n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
@@ -349,9 +305,9 @@ define("planly/templates/application", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["block", "login-modal", [], [], 0, null, ["loc", [null, [4, 1], [5, 18]]]], ["content", "outlet", ["loc", [null, [6, 1], [6, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [9, 0], [9, 29]]]]],
+      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["inline", "login-modal", [], ["signIn", "signIn"], ["loc", [null, [4, 1], [4, 32]]]], ["content", "outlet", ["loc", [null, [5, 1], [5, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [8, 0], [8, 29]]]]],
       locals: [],
-      templates: [child0]
+      templates: []
     };
   })());
 });
@@ -367,7 +323,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
             "column": 0
           },
           "end": {
-            "line": 54,
+            "line": 55,
             "column": 6
           }
         },
@@ -408,6 +364,16 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         dom.setAttribute(el6, "alt", "google");
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("Sign Up with Google");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n     ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "center-align");
+        var el5 = dom.createElement("a");
+        dom.setAttribute(el5, "class", "googleIcon waves-effect waves-blue btn white");
+        var el6 = dom.createTextNode("Sign Up with Facebook");
         dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
@@ -665,14 +631,16 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [0, 1, 3]);
-        var element1 = dom.childAt(element0, [1]);
-        var element2 = dom.childAt(element0, [5, 1]);
-        var morphs = new Array(2);
+        var element1 = dom.childAt(element0, [1, 0]);
+        var element2 = dom.childAt(element0, [3, 0]);
+        var element3 = dom.childAt(element0, [7, 1]);
+        var morphs = new Array(3);
         morphs[0] = dom.createElementMorph(element1);
         morphs[1] = dom.createElementMorph(element2);
+        morphs[2] = dom.createElementMorph(element3);
         return morphs;
       },
-      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 30], [5, 58]]]], ["element", "action", ["openForm"], [], ["loc", [null, [8, 87], [8, 108]]]]],
+      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 87], [5, 115]]]], ["element", "action", ["signIn", "facebook"], [], ["loc", [null, [6, 87], [6, 117]]]], ["element", "action", ["openForm"], [], ["loc", [null, [9, 87], [9, 108]]]]],
       locals: [],
       templates: []
     };
@@ -876,7 +844,7 @@ define("planly/templates/partials/-nav", ["exports"], function (exports) {
           morphs[0] = dom.createElementMorph(element0);
           return morphs;
         },
-        statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [11, 29], [11, 57]]]]],
+        statements: [["element", "action", ["openModal"], [], ["loc", [null, [11, 29], [11, 51]]]]],
         locals: [],
         templates: []
       };
