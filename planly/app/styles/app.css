@@ -164,3 +164,6 @@ body {
      of the button to still show through. */
      background-color: #4285F4; opacity: 0.65;
    }
+   .input-field label.active:after{
+    position: relative;
+   }
