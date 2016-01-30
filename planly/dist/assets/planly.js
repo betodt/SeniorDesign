@@ -241,11 +241,13 @@ define('planly/routes/application', ['exports', 'ember'], function (exports, _em
     },
 
     actions: {
-      signIn: function signIn(provider) {
+      openModal: function openModal() {
         $('#login').openModal();
-        /*this.get("session").open("firebase", { provider: provider}).then(function(data) {
+      },
+      signIn: function signIn(provider) {
+        this.get("session").open("firebase", { provider: provider }).then(function (data) {
           console.log(data.currentUser);
-        });*/
+        });
       },
 
       signOut: function signOut() {
@@ -986,7 +988,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+8bc9750b"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+20a928bc"});
 }
 
 /* jshint ignore:end */
