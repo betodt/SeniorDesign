@@ -1,11 +1,7 @@
 {{partial "partials/nav"}}
 
 <main>
-
- 		{{login-modal signIn='signIn'}} 
-
- 	{{#sign-up}}
- 	{{/sign-up}}
+	{{login-modal signIn='signIn' submit='submit'}} 
 	{{outlet}}
 </main>
 

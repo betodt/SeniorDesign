@@ -18,6 +18,17 @@ export default Ember.Route.extend({
 
     signOut: function() {   
       this.get("session").close();
+    },
+
+    submit: function() {
+      console.log("router submitting");
+      this.get('session').open('firebase', {
+        provider: 'password',
+        email: 'test@example.com',
+        password: 'password1234'
+      }).then(function(data) {
+        console.log(data.currentUser);
+      });
     }
   }
 });
