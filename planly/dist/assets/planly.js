@@ -986,7 +986,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+8bc9750b"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+20a928bc"});
 }
 
 /* jshint ignore:end */
