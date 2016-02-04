@@ -131,6 +131,18 @@ body {
    .input-field .prefix.active {
      color: #4527a0;
    }
+
+   .input-field label.active {
+    transform:translateY(-50%);
+  }
+
+  .input-field label.active::after{
+    position: relative;
+    transform:translateY(-150%);
+ 
+  }
+
+
  #login{
   width: 40%;
 
@@ -148,15 +160,31 @@ body {
   padding: 0 10px;
 }
 
-.googleIcon {
-  color: #000000; opacity: 0.54;
-}
-
-.googleIcon img {
+/* ==========================================================================
+  Social Buttons
+========================================================================== */
+#googleIcon img {
   width: 18px;
   height: 18px;
-  margin-right: 24px;
+  margin-right: 10px;
   display: inline-block;
+  font-size: 12px;
+}
+
+#facebookIcon img{
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+a#googleIcon {
+  color: #000000; /*opacity: 0.54;*/
+}
+
+.fbBlue {
+    background-color: #3B5998 !important;
 }
 
 .waves-effect.waves-blue .waves-ripple {

@@ -363,7 +363,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
             "column": 0
           },
           "end": {
-            "line": 55,
+            "line": 56,
             "column": 6
           }
         },
@@ -392,12 +392,13 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3, "id", "loginContent");
-        var el4 = dom.createTextNode("\n     ");
+        var el4 = dom.createTextNode("\n\n     ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4, "class", "center-align");
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5, "class", "googleIcon waves-effect waves-blue btn white");
+        dom.setAttribute(el5, "id", "googleIcon");
+        dom.setAttribute(el5, "class", "waves-effect waves-blue btn white");
         var el6 = dom.createElement("img");
         dom.setAttribute(el6, "class", "");
         dom.setAttribute(el6, "src", "assets/g-logo.png");
@@ -412,7 +413,13 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         var el4 = dom.createElement("div");
         dom.setAttribute(el4, "class", "center-align");
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5, "class", "googleIcon waves-effect waves-blue btn white");
+        dom.setAttribute(el5, "id", "facebookIcon");
+        dom.setAttribute(el5, "class", "waves-effect waves-blue btn fbBlue");
+        var el6 = dom.createElement("img");
+        dom.setAttribute(el6, "class", "");
+        dom.setAttribute(el6, "src", "assets/facebooklogo.png");
+        dom.setAttribute(el6, "alt", "facebook");
+        dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("Sign Up with Facebook");
         dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
@@ -680,7 +687,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         morphs[2] = dom.createElementMorph(element3);
         return morphs;
       },
-      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [5, 87], [5, 115]]]], ["element", "action", ["signIn", "facebook"], [], ["loc", [null, [6, 87], [6, 117]]]], ["element", "action", ["openForm"], [], ["loc", [null, [9, 87], [9, 108]]]]],
+      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [6, 91], [6, 119]]]], ["element", "action", ["signIn", "facebook"], [], ["loc", [null, [7, 95], [7, 125]]]], ["element", "action", ["openForm"], [], ["loc", [null, [10, 87], [10, 108]]]]],
       locals: [],
       templates: []
     };
@@ -1294,7 +1301,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+71f9af10"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+ee59a6fa"});
 }
 
 /* jshint ignore:end */

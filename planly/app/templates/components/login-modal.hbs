@@ -2,8 +2,9 @@
   <div class="modal-content">
     <h4 id= "formTitle">Sign Up</h4>
     <div id= "loginContent">
-     <div class="center-align"><a class="googleIcon waves-effect waves-blue btn white" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign Up with Google</a></div>
-     <div class="center-align"><a class="googleIcon waves-effect waves-blue btn white" {{action "signIn" "facebook"}}>Sign Up with Facebook</a></div>
+
+     <div class="center-align"><a id="googleIcon"class="waves-effect waves-blue btn white" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign Up with Google</a></div>
+     <div class="center-align"><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign Up with Facebook</a></div>
       <h5><span>or</span></h5>
       <div class="center-align">
         <a class="waves-effect waves-light btn deep-purple darken-3" id= "signupButton"{{action "openForm"}}><i class="material-icons left">mail_outline</i>Sign Up With Email</a>
