@@ -20,14 +20,18 @@ export default Ember.Route.extend({
       this.get("session").close();
     },
 
-    submit: function() {
-      console.log("router submitting");
-      this.get('session').open('firebase', {
-        provider: 'password',
-        email: 'test@example.com',
-        password: 'password1234'
-      }).then(function(data) {
-        console.log(data.currentUser);
+    submit: function(data) {
+      var ref = new Firebase("https://planly.firebaseio.com");
+      ref.createUser({
+        email    : data.email,
+        password : data.password
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          console.log(this);
+        }
       });
     }
   }

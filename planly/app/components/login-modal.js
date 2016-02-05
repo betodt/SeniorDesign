@@ -8,9 +8,9 @@ export default Ember.Component.extend({
         toggleForm: function() {
         	this.toggleProperty('enabled');
         },
-        submit: function() {
+        submit: function(data) {
         	console.log("modal submitting");
-        	this.sendAction('submit');
+        	this.sendAction('submit', data);
         }
     }
 });

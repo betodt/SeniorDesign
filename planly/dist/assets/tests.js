@@ -31,7 +31,7 @@ define('planly/tests/components/sign-up.jshint', ['exports'], function (exports)
   QUnit.module('JSHint - components');
   QUnit.test('components/sign-up.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/sign-up.js should pass jshint.');
+    assert.ok(false, 'components/sign-up.js should pass jshint.\ncomponents/sign-up.js: line 18, col 15, Missing semicolon.\n\n1 error');
   });
 });
 define('planly/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
@@ -417,6 +417,15 @@ define('planly/tests/integration/components/sign-up-test.jshint', ['exports'], f
     assert.ok(true, 'integration/components/sign-up-test.js should pass jshint.');
   });
 });
+define('planly/tests/models/user.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/user.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'models/user.js should pass jshint.\nmodels/user.js: line 9, col 13, \'Ember\' is not defined.\n\n1 error');
+  });
+});
 define('planly/tests/router.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -432,7 +441,7 @@ define('planly/tests/routes/application.jshint', ['exports'], function (exports)
   QUnit.module('JSHint - routes');
   QUnit.test('routes/application.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\n\n1 error');
+    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\nroutes/application.js: line 24, col 21, \'Firebase\' is not defined.\n\n2 errors');
   });
 });
 define('planly/tests/test-helper', ['exports', 'planly/tests/helpers/resolver', 'ember-qunit'], function (exports, _planlyTestsHelpersResolver, _emberQunit) {
@@ -455,6 +464,28 @@ define('planly/tests/torii-adapters/application.jshint', ['exports'], function (
   QUnit.test('torii-adapters/application.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'torii-adapters/application.js should pass jshint.');
+  });
+});
+define('planly/tests/unit/models/user-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('user', 'Unit | Model | user', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('planly/tests/unit/models/user-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/user-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/user-test.js should pass jshint.');
   });
 });
 define('planly/tests/unit/routes/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

@@ -44,9 +44,9 @@ define('planly/components/login-modal', ['exports', 'ember'], function (exports,
             toggleForm: function toggleForm() {
                 this.toggleProperty('enabled');
             },
-            submit: function submit() {
+            submit: function submit(data) {
                 console.log("modal submitting");
-                this.sendAction('submit');
+                this.sendAction('submit', data);
             }
         }
     });
@@ -56,7 +56,18 @@ define('planly/components/sign-up', ['exports', 'ember'], function (exports, _em
 		actions: {
 			submit: function submit() {
 				console.log("submitting");
-				this.sendAction('submit');
+				this.sendAction('submit', {
+					firstName: this.get('first'),
+					lastName: this.get('last'),
+					email: this.get('email'),
+					password: this.get('password')
+				});
+				this.store.createRecord('user', {
+					firstName: this.get('first'),
+					lastName: this.get('last'),
+					email: this.get('email'),
+					password: this.get('password')
+				});
 			}
 		}
 	});
@@ -227,6 +238,18 @@ define('planly/instance-initializers/walk-providers', ['exports', 'torii/configu
     }
   };
 });
+define('planly/models/user', ['exports', 'ember-data'], function (exports, _emberData) {
+  exports['default'] = _emberData['default'].Model.extend({
+    firstName: _emberData['default'].attr('string'),
+    lastName: _emberData['default'].attr('string'),
+    uid: _emberData['default'].attr('string'),
+    email: _emberData['default'].attr('string'),
+
+    fullName: Ember.computed('firstName', 'lastName', function () {
+      return this.get('firstName') + ' ' + this.get('lastName');
+    })
+  });
+});
 define('planly/router', ['exports', 'ember', 'planly/config/environment'], function (exports, _ember, _planlyConfigEnvironment) {
 
   var Router = _ember['default'].Router.extend({
@@ -257,14 +280,18 @@ define('planly/routes/application', ['exports', 'ember'], function (exports, _em
         this.get("session").close();
       },
 
-      submit: function submit() {
-        console.log("router submitting");
-        this.get('session').open('firebase', {
-          provider: 'password',
-          email: 'test@example.com',
-          password: 'password1234'
-        }).then(function (data) {
-          console.log(data.currentUser);
+      submit: function submit(data) {
+        var ref = new Firebase("https://planly.firebaseio.com");
+        ref.createUser({
+          email: data.email,
+          password: data.password
+        }, function (error, userData) {
+          if (error) {
+            console.log("Error creating user:", error);
+          } else {
+            console.log("Successfully created user account with uid:", userData.uid);
+            console.log(this);
+          }
         });
       }
     }
@@ -800,7 +827,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 24], [4, 59]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "id", "first", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 87]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "id", "last", "class", "validate"], ["loc", [null, [15, 5], [15, 51]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 67]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "id", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 60]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "class", "validate"], ["loc", [null, [34, 5], [34, 74]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 24], [4, 59]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "name", "first", "id", "first", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "name", "id", "id", "last", "class", "validate"], ["loc", [null, [15, 5], [15, 61]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "name", "email", "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 80]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "name", "password", "id", "password", "type", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 92]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "type", "password", "class", "validate"], ["loc", [null, [34, 5], [34, 90]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
       locals: [],
       templates: [child0]
     };
@@ -1114,7 +1141,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+ee59a6fa"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+3368a0bd"});
 }
 
 /* jshint ignore:end */
