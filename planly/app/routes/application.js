@@ -18,6 +18,21 @@ export default Ember.Route.extend({
 
     signOut: function() {   
       this.get("session").close();
+    },
+
+    submit: function(data) {
+      var ref = new Firebase("https://planly.firebaseio.com");
+      ref.createUser({
+        email    : data.email,
+        password : data.password
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          console.log(this);
+        }
+      });
     }
   }
 });

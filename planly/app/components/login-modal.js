@@ -4,6 +4,13 @@ export default Ember.Component.extend({
     actions: {
         signIn: function(provider) {
             this.sendAction('signIn', provider);
+        },
+        toggleForm: function() {
+        	this.toggleProperty('enabled');
+        },
+        submit: function(data) {
+        	console.log("modal submitting");
+        	this.sendAction('submit', data);
         }
     }
 });

@@ -40,12 +40,37 @@ define('planly/components/login-modal', ['exports', 'ember'], function (exports,
         actions: {
             signIn: function signIn(provider) {
                 this.sendAction('signIn', provider);
+            },
+            toggleForm: function toggleForm() {
+                this.toggleProperty('enabled');
+            },
+            submit: function submit(data) {
+                console.log("modal submitting");
+                this.sendAction('submit', data);
             }
         }
     });
 });
 define('planly/components/sign-up', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Component.extend({});
+	exports['default'] = _ember['default'].Component.extend({
+		actions: {
+			submit: function submit() {
+				console.log("submitting");
+				this.sendAction('submit', {
+					firstName: this.get('first'),
+					lastName: this.get('last'),
+					email: this.get('email'),
+					password: this.get('password')
+				});
+				this.store.createRecord('user', {
+					firstName: this.get('first'),
+					lastName: this.get('last'),
+					email: this.get('email'),
+					password: this.get('password')
+				});
+			}
+		}
+	});
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -241,6 +266,21 @@ define('planly/routes/application', ['exports', 'ember'], function (exports, _em
 
       signOut: function signOut() {
         this.get("session").close();
+      },
+
+      submit: function submit(data) {
+        var ref = new Firebase("https://planly.firebaseio.com");
+        ref.createUser({
+          email: data.email,
+          password: data.password
+        }, function (error, userData) {
+          if (error) {
+            console.log("Error creating user:", error);
+          } else {
+            console.log("Successfully created user account with uid:", userData.uid);
+            console.log(this);
+          }
+        });
       }
     }
   });
@@ -254,38 +294,6 @@ define('planly/services/firebase', ['exports', 'emberfire/services/firebase', 'p
 });
 define("planly/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "revision": "Ember@1.13.12",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 7,
-              "column": 2
-            },
-            "end": {
-              "line": 8,
-              "column": 2
-            }
-          },
-          "moduleName": "planly/templates/application.hbs"
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
         "revision": "Ember@1.13.12",
@@ -296,7 +304,7 @@ define("planly/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 12,
+            "line": 8,
             "column": 29
           }
         },
@@ -312,15 +320,11 @@ define("planly/templates/application", ["exports"], function (exports) {
         var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("main");
-        var el2 = dom.createTextNode("\n\n 		");
+        var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode(" \n\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("	");
+        var el2 = dom.createTextNode(" \n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
@@ -335,24 +339,63 @@ define("planly/templates/application", ["exports"], function (exports) {
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [2]);
-        var morphs = new Array(5);
+        var morphs = new Array(4);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createMorphAt(element0, 1, 1);
         morphs[2] = dom.createMorphAt(element0, 3, 3);
-        morphs[3] = dom.createMorphAt(element0, 5, 5);
-        morphs[4] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[3] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         dom.insertBoundary(fragment, 0);
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["inline", "login-modal", [], ["signIn", "signIn"], ["loc", [null, [5, 3], [5, 34]]]], ["block", "sign-up", [], [], 0, null, ["loc", [null, [7, 2], [8, 14]]]], ["content", "outlet", ["loc", [null, [9, 1], [9, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [12, 0], [12, 29]]]]],
+      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [4, 1], [4, 48]]]], ["content", "outlet", ["loc", [null, [5, 1], [5, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [8, 0], [8, 29]]]]],
       locals: [],
-      templates: [child0]
+      templates: []
     };
   })());
 });
 define("planly/templates/components/login-modal", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "revision": "Ember@1.13.12",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 12,
+              "column": 6
+            },
+            "end": {
+              "line": 14,
+              "column": 6
+            }
+          },
+          "moduleName": "planly/templates/components/login-modal.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("      ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "sign-up", [], ["submit", "submit"], ["loc", [null, [13, 6], [13, 33]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
     return {
       meta: {
         "revision": "Ember@1.13.12",
@@ -363,7 +406,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
             "column": 0
           },
           "end": {
-            "line": 56,
+            "line": 17,
             "column": 6
           }
         },
@@ -452,220 +495,11 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         var el5 = dom.createTextNode("\n      ");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n      ");
+        var el4 = dom.createTextNode("\n");
         dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "id", "signup");
-        dom.setAttribute(el4, "class", "hide");
-        var el5 = dom.createTextNode(" \n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "row");
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("form");
-        dom.setAttribute(el6, "class", "col s12");
-        var el7 = dom.createTextNode("\n            ");
-        dom.appendChild(el6, el7);
-        var el7 = dom.createElement("div");
-        dom.setAttribute(el7, "class", "row");
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createComment(" first name ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "input-field col s12");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons prefix");
-        var el10 = dom.createTextNode("perm_identity");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("input");
-        dom.setAttribute(el9, "id", "icon_prefix");
-        dom.setAttribute(el9, "type", "text");
-        dom.setAttribute(el9, "class", "validate");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("label");
-        dom.setAttribute(el9, "for", "icon_prefix");
-        var el10 = dom.createTextNode("First Name");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createComment(" last name ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "input-field col s12");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons prefix");
-        var el10 = dom.createTextNode("perm_identity");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("input");
-        dom.setAttribute(el9, "id", "icon_prefix");
-        dom.setAttribute(el9, "type", "text");
-        dom.setAttribute(el9, "class", "validate");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("label");
-        dom.setAttribute(el9, "for", "icon_prefix");
-        var el10 = dom.createTextNode("Last Name");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createComment(" email ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "input-field col s12");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons prefix");
-        var el10 = dom.createTextNode("mail_outline");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("input");
-        dom.setAttribute(el9, "id", "icon_prefix");
-        dom.setAttribute(el9, "type", "text");
-        dom.setAttribute(el9, "class", "validate");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("label");
-        dom.setAttribute(el9, "for", "icon_prefix");
-        var el10 = dom.createTextNode("Email");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createComment(" username ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "input-field col s12");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons prefix");
-        var el10 = dom.createTextNode("face");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("input");
-        dom.setAttribute(el9, "id", "icon_prefix");
-        dom.setAttribute(el9, "type", "text");
-        dom.setAttribute(el9, "class", "validate");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("label");
-        dom.setAttribute(el9, "for", "icon_prefix");
-        var el10 = dom.createTextNode("Username");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createComment(" password ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "input-field col s12");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons prefix");
-        var el10 = dom.createTextNode("lock_outline");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("input");
-        dom.setAttribute(el9, "id", "icon_prefix");
-        dom.setAttribute(el9, "type", "text");
-        dom.setAttribute(el9, "class", "validate");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("label");
-        dom.setAttribute(el9, "for", "icon_prefix");
-        var el10 = dom.createTextNode("Password");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n              ");
-        dom.appendChild(el7, el8);
-        var el8 = dom.createElement("div");
-        dom.setAttribute(el8, "class", "center-align");
-        var el9 = dom.createTextNode("\n                ");
-        dom.appendChild(el8, el9);
-        var el9 = dom.createElement("button");
-        dom.setAttribute(el9, "class", "btn waves-effect waves-light deep-purple darken-3");
-        dom.setAttribute(el9, "type", "submit");
-        dom.setAttribute(el9, "name", "action");
-        dom.setAttribute(el9, "formaction", "mockup.html");
-        var el10 = dom.createTextNode("Submit ");
-        dom.appendChild(el9, el10);
-        var el10 = dom.createElement("i");
-        dom.setAttribute(el10, "class", "material-icons right");
-        var el11 = dom.createTextNode("send");
-        dom.appendChild(el10, el11);
-        dom.appendChild(el9, el10);
-        var el10 = dom.createTextNode("\n                ");
-        dom.appendChild(el9, el10);
-        dom.appendChild(el8, el9);
-        var el9 = dom.createTextNode("\n              ");
-        dom.appendChild(el8, el9);
-        dom.appendChild(el7, el8);
-        var el8 = dom.createTextNode("\n            ");
-        dom.appendChild(el7, el8);
-        dom.appendChild(el6, el7);
-        var el7 = dom.createTextNode("\n          ");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n        ");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n      ");
-        dom.appendChild(el4, el5);
+        var el4 = dom.createComment("");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
+        var el4 = dom.createTextNode("    ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n  ");
@@ -681,15 +515,16 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
         var element1 = dom.childAt(element0, [1, 0]);
         var element2 = dom.childAt(element0, [3, 0]);
         var element3 = dom.childAt(element0, [7, 1]);
-        var morphs = new Array(3);
+        var morphs = new Array(4);
         morphs[0] = dom.createElementMorph(element1);
         morphs[1] = dom.createElementMorph(element2);
         morphs[2] = dom.createElementMorph(element3);
+        morphs[3] = dom.createMorphAt(element0, 9, 9);
         return morphs;
       },
-      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [6, 91], [6, 119]]]], ["element", "action", ["signIn", "facebook"], [], ["loc", [null, [7, 95], [7, 125]]]], ["element", "action", ["openForm"], [], ["loc", [null, [10, 87], [10, 108]]]]],
+      statements: [["element", "action", ["signIn", "google"], [], ["loc", [null, [6, 91], [6, 119]]]], ["element", "action", ["signIn", "facebook"], [], ["loc", [null, [7, 95], [7, 125]]]], ["element", "action", ["toggleForm"], [], ["loc", [null, [10, 87], [10, 110]]]], ["block", "if", [["get", "enabled", ["loc", [null, [12, 12], [12, 19]]]]], [], 0, null, ["loc", [null, [12, 6], [14, 13]]]]],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   })());
 });
@@ -987,7 +822,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 24], [4, 59]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "id", "first", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 87]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "id", "last", "class", "validate"], ["loc", [null, [15, 5], [15, 51]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 67]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "id", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 60]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "class", "validate"], ["loc", [null, [34, 5], [34, 74]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 24], [4, 59]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "name", "first", "id", "first", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "name", "id", "id", "last", "class", "validate"], ["loc", [null, [15, 5], [15, 61]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "name", "email", "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 80]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "name", "password", "id", "password", "type", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 92]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "type", "password", "class", "validate"], ["loc", [null, [34, 5], [34, 90]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
       locals: [],
       templates: [child0]
     };
@@ -1301,7 +1136,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+ee59a6fa"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+f97a7685"});
 }
 
 /* jshint ignore:end */
