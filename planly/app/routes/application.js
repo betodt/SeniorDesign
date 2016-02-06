@@ -10,8 +10,13 @@ export default Ember.Route.extend({
     openModal: function(){
       $('#login').openModal();
     },
-    signIn: function(provider) {
-      this.get("session").open("firebase", { provider: provider}).then(function(data) {
+    signIn: function(provider, email, password) {
+      var provider = {
+        provider: provider,
+        email: email,
+        password: password
+      };
+      this.get("session").open("firebase", provider).then(function(data) {
         console.log(data.currentUser);
       });
     },

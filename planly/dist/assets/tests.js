@@ -432,7 +432,7 @@ define('planly/tests/routes/application.jshint', ['exports'], function (exports)
   QUnit.module('JSHint - routes');
   QUnit.test('routes/application.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\nroutes/application.js: line 24, col 21, \'Firebase\' is not defined.\n\n2 errors');
+    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 14, col 11, \'provider\' is already defined.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\nroutes/application.js: line 29, col 21, \'Firebase\' is not defined.\n\n3 errors');
   });
 });
 define('planly/tests/test-helper', ['exports', 'planly/tests/helpers/resolver', 'ember-qunit'], function (exports, _planlyTestsHelpersResolver, _emberQunit) {

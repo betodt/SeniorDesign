@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     actions: {
-        signIn: function(provider) {
-            this.sendAction('signIn', provider);
+        signIn: function(provider, email, password) {
+            this.sendAction('signIn', provider, email, password);
         },
         toggleForm: function() {
         	this.toggleProperty('enabled');

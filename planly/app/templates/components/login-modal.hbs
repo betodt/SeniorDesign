@@ -3,11 +3,27 @@
     <h4 id= "formTitle">Sign Up</h4>
     <div id= "loginContent">
 
-     <div class="center-align"><a id="googleIcon"class="waves-effect waves-blue btn white" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign Up with Google</a></div>
-     <div class="center-align"><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign Up with Facebook</a></div>
+     <div class="center-align"><a id="googleIcon"class="waves-effect waves-blue btn white" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign In with Google</a></div>
+     <div class="center-align"><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign In with Facebook</a></div>
       <h5><span>or</span></h5>
       <div class="center-align">
-        <a class="waves-effect waves-light btn deep-purple darken-3" id= "signupButton"{{action "toggleForm"}}><i class="material-icons left">mail_outline</i>Sign Up With Email</a>
+        {{#unless enabled}}
+        <!-- email -->
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mail_outline</i>
+          {{input value=email name='email' id='email' type="email" class="validate"}}
+          <label for="email" data-error="Please enter a valid email" data-success="valid">Email</label>
+          
+        </div>
+        <!-- password -->
+        <div class="input-field col s12">
+          <i class="material-icons prefix">lock_outline</i>
+          {{input value=password name='password' id='password' type='password' class="validate"}}
+          <label for="password" data-error="Please enter a valid email" data-success="valid">Password</label>
+        </div>
+        <a class="waves-effect waves-light btn deep-purple darken-3" id="signInButton"{{action "signIn" "password" email password}}><i class="material-icons left">mail_outline</i>Sign In</a>
+        {{/unless}}
+        <a class="waves-effect waves-light btn-flat deep-purple lighten-3" id="signupButton"{{action "toggleForm"}}><i class="material-icons left">mail_outline</i>Sign Up</a>
       </div>
       {{#if enabled}}
       {{sign-up submit='submit'}}
