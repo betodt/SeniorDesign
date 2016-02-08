@@ -6,14 +6,77 @@ Individuals currently live in a society that revolves around productivity. Peopl
 
 \section{Current Solutions} 
 
-Previous solutions have failed to provide an accessible and simple project management tool. One crucial issue is that most workflow management solutions, such as Asana and Basecamp, are often marketed and catered to large enterprises rather students and small groups. These solutions are exceedingly expensive, thus community organizations and students tend to avoid these applications. Another issue with current solutions is their steep learning curves that often require additional training. In addition, present solutions, such as Pivotal Tracker and Microsoft Outlook, are not straightforward and can make it difficult to setup a meeting or look up a contact. Furthermore, present project management applications are visually unappealing and not user-friendly. Most applications follow the conventional three panel layout, as seen in Outlook, pushing your tasks into some sidebar crevice where these tasks can easily be overlooked. These applications are not designed for students or small groups with minimal project management experience.
+Previous solutions have failed to provide an accessible and simple project management tool. The issues with current solutions are:
+\begin{enumerate} 
+	\item Most workflow management solutions, such as Asana and Basecamp, are often marketed and catered to large enterprises rather students and small groups. 
+	\item Current solutions are exceedingly expensive, thus community organizations and students tend to avoid these applications. 
+	\item Current solutions have a steep learning curves that often require additional training. 
+	\item Present solutions, such as Pivotal Tracker and Microsoft Outlook, have poor user interface design and are not straightforward, thus making it difficult to setup a meeting or look up a contact. 
+	\item Present project management applications are visually unappealing and not user-friendly. Most applications follow the conventional three panel layout, as seen in Outlook, pushing your tasks into some sidebar crevice where these tasks can easily be overlooked. These applications are not designed for students or small groups with minimal project management experience.
+\end{enumerate}
+
+\section{Literature Review}
+
+In order to build a new system, we needed to seek previous research in order to gain a strong foundation of project management and web applications. 
+\par Below is a summary of  the relevant literatures and its contribution to our project.
+
+\par The sources we discovered have not only given my team a foundation in project management, the sources further contributed to our understandings of the web. Through researching previous projects, we have taken to consideration all of the past projects and will carefully implement the best qualities into our design. 
+
+\FloatBarrier
+\begin{table}%
+\caption{Literature Review: Foundations}\label{FoundationLitReview}
+\begin{tabularx}{\textwidth}{|>{\hsize=.5\hsize}X|X|X|}
+    \hline
+    \textbf{Source} & \textbf{Summary} & \textbf{Relevance to Our Project}\\
+    \hline
+    ``Project management assets and project management performance: Preliminary findings''
+     \par \textit{Jugdev, K.; Mathur, G.; Tak Fung} & Provided a background of how managers use management techniques to aid them as well as which techniques are most effective. & The source helped us pinpoint which features of project management are most helpful for individuals. \\
+    \hline 
+    ``The Effect Of Project Based Web 2.0-Learning On Students' Outcome''
+	\par \textit{Mohamed, Bahaaeldin, and Thomas Koehler} & Offered important insights to how users perform using web-based applications. & Inspired us to use the results from the study in designing to UI/UX our web applications \\
+\end{tabularx}
+\end{table}%
+
+\begin{table}%
+\caption{Literature Review: Previous Web Applications}\label{PreviousWebAppLitReview}
+\begin{tabularx}{\textwidth}{|>{\hsize=.5\hsize}X|X|X|}
+    \hline
+    \textbf{Source} & \textbf{Summary} & \textbf{Relevance to Our Project}\\
+    \hline  
+    ``Web based project collaboration, monitoring and management system"
+    \par \textit{Seneviratna, G.A.D.P.S.; Nandasara, S.T.} & Authors built a system that helps facilitate project managements and increases organizations between teams. & From this research, the authors included features that we would like to implement in our system. 
+    \par The features are: document management and a feature for team collaboration (ie chat feature)\\
+    \hline
+    ``Web Application For Project Management Based On Open Source Solutions"
+    \par \textit{ Wojtera, M.; Sakowicz, B.} & The authors built a project management web application using open source solutions. & The authors uses JSP library to build their system, while my team is will use Ember.js, which is a JavaScript framework.\\ 
+    \hline
+    ``Web-based project management system" 
+    \par \textit{Galezowski, G.; Zabierowski, W.; Napieralski, A.} & The authors researched different project management tools and evaluated the problems with existing solutions & My team will keep the criticisms of current systems in mind as we design our project. \\
+    \hline
+\end{tabularx}
+\end{table}
+\FloatBarrier
 
 \section{Proposed Solution}
 
-We propose a simple, yet powerful, web-based solution that lives entirely within a browser. The goal is to have an easily accessible place for not only small groups of students or professionals to host a collaborative environment, but, we also want individuals to use our system for personal projects. Our accessibility will be achieved through a simple sign-on system without the hassle of painful payment systems and complex learning curves. Instead of struggling to learn the software, the user will be guided through a quick, interactive tutorial where he or she will establish goals, deadlines, and other project management tasks. The user will then be able to begin collaborating by creating groups and inviting other team members. Here, the user has the ability to add deadlines as well as assign internal tasks for him/herself or external tasks for others to view. The application will include a progress bar showing where the project is, where it was, and most importantly, where it needs to go. Current solutions provide users with a static page of checklists. In our application, when progress is made, the interface will reflect those changes. We will allow the user to travel through their project timeline, revealing a snapshot of previous or future tasks. Lastly, to further promote organization, we plan to allow teams to store files within their project portals, eliminating time spent searching for important documents. Our product will be tested in live working environments, showing how teams use our solution to better organize their projects in an effort to help us help them achieve their organizational goals. 
+We propose a simple, yet powerful, web-based solution that lives entirely within a browser. The goal is to have an easily accessible place for not only small groups of students or professionals to host a collaborative environment, but, we also want individuals to use our system for personal projects. To achieve our goal: 
+\begin{enumerate}
+	\item Our accessibility will be achieved through a simple sign-on system without the hassle of painful payment systems and complex learning curves. 
+	\item Instead of struggling to learn the software, the user will be guided through a quick, interactive tutorial where he or she will establish goals, deadlines, and other project management tasks. 
+	\item The user will then be able to begin collaborating by creating groups and inviting other team members. Here, the user has the ability to add deadlines as well as assign internal tasks for him/herself or external tasks for others to view. 
+	\item The application will include a progress bar showing where the project is, where it was, and most importantly, where it needs to go. 
+	\item Current solutions provide users with a static page of checklists. In our application, when progress is made, the interface will reflect those changes. We will allow the user to travel through their project timeline, revealing a snapshot of previous or future tasks. 
+	\item Lastly, to further promote organization, we plan to allow teams to store files within their project portals, eliminating time spent searching for important documents. 
+\end{enumerate}
+Our product will be tested in live working environments, showing how teams use our solution to better organize their projects in an effort to help us help them achieve their organizational goals. 
 
 \section{Requirements}
-We defined a set of functional and nonfunctional requirements for our web application. Functional requirements specifies criteria that can be used to judge the operations of a system. In other words, functional requirements define what must be done by the system. Nonfunctional requirements describe the behavior and the limits of the application. To prioritize our requirements, we created an Analytic Hierarchy Process (AHP) chart seen in Table \ref{ahp}. By using AHP, we were able to easily prioritize our requirements.
+We defined a set of functional and nonfunctional requirements for our web application. Functional requirements specifies criteria that can be used to judge the operations of a system. In other words, functional requirements define what must be done by the system. Nonfunctional requirements describe the behavior and the limits of the application. 
+
+\subsection{Functional Requirements}
+\begin{enumerate}
+\item \textbf{Critical}
+\par To prioritize our requirements, we created an Analytic Hierarchy Process (AHP) chart seen in Table \ref{ahp}. By using AHP, we were able to easily prioritize our requirements.
 \FloatBarrier
 \begin{table}[ht]
 \centering
@@ -29,12 +92,11 @@ We defined a set of functional and nonfunctional requirements for our web applic
 \end{table}
 \FloatBarrier
 
-\pagebreak
+\par From our AHP table, we recognized our critical requirements. Our critical requirements define the functionalities needed to have a basic working product. 
 
-\subsection{Functional Requirements}
-\begin{enumerate}
-\item \textbf{Critical}
-\par The categorized functional requirements for our web application are summarized below. Our critical requirements define the functionalities needed to have a basic working product. The critical requirements speak to the purpose of our project, which is providing an accessible tool for individuals to create projects, collaborate with team members, and manage their tasks.
+\par The critical requirements speak to the purpose of our project, which is providing an accessible tool for individuals to create projects, collaborate with team members, and manage their tasks.
+
+\par The critical requirements for our web application are summarized below.
 	\begin{enumerate}
 	\item[A.] The system will allow users to create teams and assign members to those teams as well as add a project lead who oversees the project. 
 	\item[B.] The system will allow users to assign tasks to team members.
@@ -58,13 +120,14 @@ We defined a set of functional and nonfunctional requirements for our web applic
 \end{enumerate}
 \subsection{Non-functional Requirements}
 In addition to functional requirements, we have outlined nonfunctional requirements, summarized below. Because we want to appeal to a variety of audiences, we designed our application to be effortless and user-friendly. We want our users to engage in a collaborative and interactive environment. Because we want our application to be accessible, we designed our project to work on major web browsers as well as be compatible with desktops, laptops and tablets.
+\par The system will be:
 \begin{enumerate}
-\item The system will be user-friendly.
-\item The system will be aesthetically pleasing.
-\item The system will be easy to use.
-\item The system will be collaborative.
-\item The system will work on major web browsers. 
-\item The system will be compatible with desktops, laptops, and tablets. 
+\item user-friendly.
+\item aesthetically pleasing.
+\item easy to use.
+\item collaborative.
+\item accesible on major web browsers. 
+\item compatible with desktops, laptops, and tablets. 
 \end{enumerate}
 \subsection{Design Constraints}
 With regards to design constraints, we have identified one constraint. Our application must be a web-based application because of senior design requirements for the web design and engineering major. However, we believe that a web-based system will allow our application to be easily accessible for our users. 

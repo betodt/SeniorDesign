@@ -133,12 +133,13 @@ body {
    }
 
    .input-field label.active {
-    transform:translateY(-50%);
+    transform:translateY(-75%);
   }
 
   .input-field label.active::after{
     position: relative;
-    transform:translateY(-150%);
+    text-align: left;
+    transform:translateY(-140%);
  
   }
 
@@ -192,6 +193,13 @@ a#googleIcon {
      of the button to still show through. */
      background-color: #4285F4; opacity: 0.65;
    }
-   .input-field label.active:after{
-    position: relative;
-   }
+
+/* ==========================================================================
+  Project Creation
+========================================================================== */
+#projectCreation{
+  overflow: hidden;
+  width:50%;
+}
+
+
