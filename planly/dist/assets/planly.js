@@ -390,7 +390,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
           var el1 = dom.createTextNode("\n        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "input-field col s12");
+          dom.setAttribute(el1, "class", "input-field col s12 m12 l12");
           var el2 = dom.createTextNode("\n          ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("i");
@@ -406,8 +406,6 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("label");
           dom.setAttribute(el2, "for", "email");
-          dom.setAttribute(el2, "data-error", "Please enter a valid email");
-          dom.setAttribute(el2, "data-success", "valid");
           var el3 = dom.createTextNode("Email");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -421,7 +419,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
           var el1 = dom.createTextNode("\n        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "input-field col s12");
+          dom.setAttribute(el1, "class", "input-field col s12 m12 l12");
           var el2 = dom.createTextNode("\n          ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("i");
@@ -437,8 +435,6 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("label");
           dom.setAttribute(el2, "for", "password");
-          dom.setAttribute(el2, "data-error", "Please enter a valid email");
-          dom.setAttribute(el2, "data-success", "valid");
           var el3 = dom.createTextNode("Password");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -470,7 +466,7 @@ define("planly/templates/components/login-modal", ["exports"], function (exports
           morphs[2] = dom.createElementMorph(element0);
           return morphs;
         },
-        statements: [["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [14, 24], [14, 29]]]]], [], []], "name", "email", "id", "email", "type", "email", "class", "validate"], ["loc", [null, [14, 10], [14, 85]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [21, 24], [21, 32]]]]], [], []], "name", "password", "id", "password", "type", "password", "class", "validate"], ["loc", [null, [21, 10], [21, 97]]]], ["element", "action", ["signIn", "password", ["get", "email", ["loc", [null, [24, 115], [24, 120]]]], ["get", "password", ["loc", [null, [24, 121], [24, 129]]]]], [], ["loc", [null, [24, 86], [24, 131]]]]],
+        statements: [["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [14, 24], [14, 29]]]]], [], []], "name", "email", "id", "email", "type", "email"], ["loc", [null, [14, 10], [14, 68]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [21, 24], [21, 32]]]]], [], []], "name", "password", "id", "password", "type", "password"], ["loc", [null, [21, 10], [21, 80]]]], ["element", "action", ["signIn", "password", ["get", "email", ["loc", [null, [24, 115], [24, 120]]]], ["get", "password", ["loc", [null, [24, 121], [24, 129]]]]], [], ["loc", [null, [24, 86], [24, 131]]]]],
         locals: [],
         templates: []
       };
@@ -730,7 +726,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el3 = dom.createTextNode("\n		");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("form");
-        dom.setAttribute(el3, "class", "col s12");
+        dom.setAttribute(el3, "class", "col s12 m12 l12");
         var el4 = dom.createTextNode("\n			");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
@@ -742,7 +738,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n				");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "input-field col s12");
+        dom.setAttribute(el5, "class", "input-field col s12 m12 l12");
         var el6 = dom.createTextNode("\n					");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("i");
@@ -758,8 +754,6 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("label");
         dom.setAttribute(el6, "for", "first");
-        dom.setAttribute(el6, "data-error", "Please enter a valid first name");
-        dom.setAttribute(el6, "data-success", "valid");
         var el7 = dom.createTextNode("First Name");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
@@ -773,7 +767,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n				");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "input-field col s12");
+        dom.setAttribute(el5, "class", "input-field col s12 m12 l12");
         var el6 = dom.createTextNode("\n					");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("i");
@@ -789,8 +783,6 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("label");
         dom.setAttribute(el6, "for", "last");
-        dom.setAttribute(el6, "data-error", "Please enter a valid last name");
-        dom.setAttribute(el6, "data-success", "valid");
         var el7 = dom.createTextNode("Last Name");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
@@ -804,7 +796,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n				");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "input-field col s12");
+        dom.setAttribute(el5, "class", "input-field col s12 m12 l12");
         var el6 = dom.createTextNode("\n					");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("i");
@@ -835,7 +827,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n				");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "input-field col s12");
+        dom.setAttribute(el5, "class", "input-field col s12 m12 l12");
         var el6 = dom.createTextNode("\n					");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("i");
@@ -866,7 +858,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n				");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
-        dom.setAttribute(el5, "class", "input-field col s12");
+        dom.setAttribute(el5, "class", "input-field col s12 m12 l12");
         var el6 = dom.createTextNode("\n					");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("i");
@@ -947,7 +939,7 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 24], [4, 59]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "name", "first", "id", "first", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "name", "id", "id", "last", "class", "validate"], ["loc", [null, [15, 5], [15, 61]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "name", "email", "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 80]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "name", "password", "id", "password", "type", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 92]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "type", "password", "class", "validate"], ["loc", [null, [34, 5], [34, 90]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["updateUser"], ["on", "submit"], ["loc", [null, [4, 32], [4, 67]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "first", ["loc", [null, [9, 19], [9, 24]]]]], [], []], "name", "first", "id", "first", "required", "", "aria-required", "true"], ["loc", [null, [9, 5], [9, 83]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "last", ["loc", [null, [15, 19], [15, 23]]]]], [], []], "name", "id", "id", "last"], ["loc", [null, [15, 5], [15, 45]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "email", ["loc", [null, [21, 19], [21, 24]]]]], [], []], "name", "email", "id", "email", "type", "email", "class", "validate"], ["loc", [null, [21, 5], [21, 80]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [28, 19], [28, 27]]]]], [], []], "name", "password", "id", "password", "type", "password", "class", "validate"], ["loc", [null, [28, 5], [28, 92]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "passwordConfirm", ["loc", [null, [34, 19], [34, 34]]]]], [], []], "id", "passwordConfirm", "type", "password", "class", "validate"], ["loc", [null, [34, 5], [34, 90]]]], ["element", "action", ["submit"], [], ["loc", [null, [39, 5], [39, 24]]]], ["block", "if", [["get", "loginFailed", ["loc", [null, [47, 6], [47, 17]]]]], [], 0, null, ["loc", [null, [47, 0], [49, 7]]]]],
       locals: [],
       templates: [child0]
     };
@@ -1261,7 +1253,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+ddfe86f3"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+675e215b"});
 }
 
 /* jshint ignore:end */

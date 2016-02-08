@@ -1,35 +1,35 @@
 {{yield}}
 <div id="login-content">
 	<div class="row">
-		<form class="col s12" {{action "updateUser" on="submit"}}>
+		<form class="col s12 m12 l12" {{action "updateUser" on="submit"}}>
 			<div class="row">
 				<!-- first name -->
-				<div class="input-field col s12">
+				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">perm_identity</i>
-					{{input value=first name='first' id='first' class="validate" required="" aria-required="true"}}
-					<label for="first" data-error="Please enter a valid first name" data-success="valid">First Name</label>
+					{{input value=first name='first' id='first' required="" aria-required="true"}}
+					<label for="first">First Name</label>
 				</div>
 				<!-- last name -->
-				<div class="input-field col s12">
+				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">perm_identity</i>
-					{{input value=last name='id' id='last'class="validate"}}
-					<label for="last" data-error="Please enter a valid last name" data-success="valid">Last Name</label>
+					{{input value=last name='id' id='last'}}
+					<label for="last">Last Name</label>
 				</div>
 				<!-- email -->
-				<div class="input-field col s12">
+				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">mail_outline</i>
 					{{input value=email name='email' id='email' type="email" class="validate"}}
 					<label for="email" data-error="Please enter a valid email" data-success="valid">Email</label>
 					
 				</div>
 				<!-- password -->
-				<div class="input-field col s12">
+				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">lock_outline</i>
 					{{input value=password name='password' id='password' type='password' class="validate"}}
 					<label for="password" data-error="Please enter a valid email" data-success="valid">Password</label>
 				</div>
 				<!-- confirm password -->
-				<div class="input-field col s12">
+				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">lock_outline</i>
 					{{input value=passwordConfirm id='passwordConfirm' type='password' class="validate"}}
 					<label for="passwordConfirm" data-error="Please enter a valid email" data-success="valid">Confirm Password</label>
