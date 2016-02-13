@@ -22,7 +22,16 @@ define('planly/tests/components/login-modal.jshint', ['exports'], function (expo
   QUnit.module('JSHint - components');
   QUnit.test('components/login-modal.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/login-modal.js should pass jshint.');
+    assert.ok(false, 'components/login-modal.js should pass jshint.\ncomponents/login-modal.js: line 11, col 13, \'$\' is not defined.\ncomponents/login-modal.js: line 24, col 13, \'$\' is not defined.\n\n2 errors');
+  });
+});
+define('planly/tests/components/project-creation.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/project-creation.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'components/project-creation.js should pass jshint.\ncomponents/project-creation.js: line 6, col 13, \'$\' is not defined.\n\n1 error');
   });
 });
 define('planly/tests/components/sign-up.jshint', ['exports'], function (exports) {
@@ -31,7 +40,7 @@ define('planly/tests/components/sign-up.jshint', ['exports'], function (exports)
   QUnit.module('JSHint - components');
   QUnit.test('components/sign-up.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/sign-up.js should pass jshint.\ncomponents/sign-up.js: line 18, col 15, Missing semicolon.\n\n1 error');
+    assert.ok(true, 'components/sign-up.js should pass jshint.');
   });
 });
 define('planly/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
@@ -279,6 +288,144 @@ define('planly/tests/integration/components/login-modal-test.jshint', ['exports'
     assert.ok(true, 'integration/components/login-modal-test.js should pass jshint.');
   });
 });
+define('planly/tests/integration/components/project-creation-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('project-creation', 'Integration | Component | project creation', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'revision': 'Ember@1.13.12',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 20
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'project-creation', ['loc', [null, [1, 0], [1, 20]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:" + EOL +
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'revision': 'Ember@1.13.12',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'revision': 'Ember@1.13.12',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'project-creation', [], [], 0, null, ['loc', [null, [2, 4], [4, 25]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('planly/tests/integration/components/project-creation-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/project-creation-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/project-creation-test.js should pass jshint.');
+  });
+});
 define('planly/tests/integration/components/sign-up-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('sign-up', 'Integration | Component | sign up', {
@@ -432,7 +579,7 @@ define('planly/tests/routes/application.jshint', ['exports'], function (exports)
   QUnit.module('JSHint - routes');
   QUnit.test('routes/application.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 14, col 11, \'provider\' is already defined.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\nroutes/application.js: line 29, col 21, \'Firebase\' is not defined.\n\n3 errors');
+    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 11, col 7, \'$\' is not defined.\nroutes/application.js: line 14, col 9, \'$\' is not defined.\nroutes/application.js: line 18, col 9, \'$\' is not defined.\nroutes/application.js: line 32, col 21, \'Firebase\' is not defined.\n\n4 errors');
   });
 });
 define('planly/tests/test-helper', ['exports', 'planly/tests/helpers/resolver', 'ember-qunit'], function (exports, _planlyTestsHelpersResolver, _emberQunit) {

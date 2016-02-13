@@ -3,8 +3,8 @@
     <h4 id= "formTitle">Sign Up</h4>
     <div id= "loginContent">
 
-     <div class="center-align"><a id="googleIcon"class="waves-effect waves-blue btn white" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign In with Google</a></div>
-     <div class="center-align"><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign In with Facebook</a></div>
+     <div class=""><a id="googleIcon"class="waves-effect waves-blue btn white col s10 m10 l10" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign In with Google</a></div>
+     <div class=""><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue col s10 m10 l10" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign In with Facebook</a></div>
       <h5><span>or</span></h5>
       <div class="center-align">
         {{#unless enabled}}
@@ -13,7 +13,6 @@
           <i class="material-icons prefix">mail_outline</i>
           {{input value=email name='email' id='email' type="email"}}
           <label for="email">Email</label>
-          
         </div>
         <!-- password -->
         <div class="input-field col s12 m12 l12">

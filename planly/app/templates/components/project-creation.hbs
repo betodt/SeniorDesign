@@ -1,0 +1,48 @@
+<div id="projectCreation" class="modal modal-fixed-footer">
+	<nav>
+		<div class="nav-wrapper teal"><h4 class="center-align">Create a Project</h4></div>
+	</nav>
+	<div class="modal-content">
+		<div class="row">
+			<form class="col s12" {{action "createProject" on="submit"}}>
+				<div class="center-align">
+					<!-- Project name -->
+					<div class="input-field col s12">
+						{{input value=name id='name' class="validate" required="" aria-required="true"}}
+						<label for="name" data-error="Please enter a project name" data-success="valid">Project Name</label>
+					</div>
+					<!-- Project goal-->
+					<div class="input-field col s12">
+						{{input value=goal name='goal' id='goal' class="validate"}}
+						<label for="goal" data-error="Please enter a project goal" data-success="valid">Project Goal</label>
+					</div>
+					<!-- deadline -->
+					<div class="input-field col s12">
+						{{input value=deadline name='deadline' id='deadline' type="date" class="datepicker validate"}}
+						<label for="deadline" data-error="Please select a deadline" data-success="valid">Deadline</label> 
+					</div>
+					<!-- team members -->
+					<div class="input-field col s12">
+						{{input value=member name='member' id='member'}}
+						<label for="password" data-error="Please enter a valid email" data-success="valid">Team Members</label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="input-field col s6">
+				<button class="btn waves-effect waves-light red darken-1 center-align" 
+				{{action "closeProjectCreation"}}> Cancel
+			</button>
+		</div>
+		<div class="input-field col s6 center-align">
+			<button class="btn waves-effect waves-light deep-purple darken-3" 
+			{{action "submit"}}> Create
+		</button>
+	</div>
+</div>
+</div>
+</div>
+{{yield}}
