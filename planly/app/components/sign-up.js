@@ -15,7 +15,7 @@ export default Ember.Component.extend({
 				lastName: this.get('last'),
 				email: this.get('email'),
 				password: this.get('password')
-			})
+			});
 		}
 	}
 });

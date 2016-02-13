@@ -2,7 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel: function() {
+  beforeModel: function() {        
     return this.get("session").fetch().catch(function() {});
   },
 
@@ -10,6 +10,13 @@ export default Ember.Route.extend({
     openModal: function(){
       $('#login').openModal();
     },
+    openProjectModel: function(){
+        $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
+        $('#projectCreation').openModal();
+      },
     signIn: function(provider) {
       this.get("session").open("firebase", { provider: provider}).then(function(data) {
         console.log(data.currentUser);
