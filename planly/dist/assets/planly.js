@@ -1412,7 +1412,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+82e214d0"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+dfd10d83"});
 }
 
 /* jshint ignore:end */
