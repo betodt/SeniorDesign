@@ -18,7 +18,7 @@ export default Ember.Route.extend({
         $('#projectCreation').openModal();
       },
     signIn: function(provider) {
-      this.get("session").open("firebase", { provider: provider}).then(function(data) {
+      this.get("session").open("firebase", provider).then(function(data) {
         console.log(data.currentUser);
       });
     },
@@ -28,7 +28,9 @@ export default Ember.Route.extend({
     },
 
     submit: function(data) {
+      var __this__ = this;
       var ref = new Firebase("https://planly.firebaseio.com");
+      
       ref.createUser({
         email    : data.email,
         password : data.password
@@ -37,7 +39,18 @@ export default Ember.Route.extend({
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          console.log(this);
+          __this__.session.open("firebase", {
+            provider: "password",
+            email: data.email,
+            password: data.password
+          }).then(function(data) {
+            console.log(data.currentUser);
+          });
+          __this__.store.createRecord('user', {
+           firstName: data.firstName,
+           lastName: data.lastName,
+           email: data.email
+          });
         }
       });
     }
