@@ -35,6 +35,16 @@ define('planly/components/app-version', ['exports', 'ember-cli-app-version/compo
     name: name
   });
 });
+define('planly/components/create-task', ['exports', 'ember'], function (exports, _ember) {
+	exports['default'] = _ember['default'].Component.extend({
+		actions: {
+			createSubtask: function createSubtask() {
+				console.log("hello");
+				this.toggleProperty('enabled');
+			}
+		}
+	});
+});
 define('planly/components/login-modal', ['exports', 'ember'], function (exports, _ember) {
     exports['default'] = _ember['default'].Component.extend({
         actions: {
@@ -83,6 +93,9 @@ define('planly/components/sign-up', ['exports', 'ember'], function (exports, _em
 			}
 		}
 	});
+});
+define('planly/components/sub-task', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -262,7 +275,9 @@ define('planly/router', ['exports', 'ember', 'planly/config/environment'], funct
 });
 define('planly/routes/application', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({
+
     beforeModel: function beforeModel() {
+
       return this.get("session").fetch()['catch'](function () {});
     },
 
@@ -323,7 +338,7 @@ define("planly/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 10,
+            "line": 13,
             "column": 29
           }
         },
@@ -349,7 +364,11 @@ define("planly/templates/application", ["exports"], function (exports) {
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n	");
+        var el2 = dom.createTextNode("\n	\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
@@ -373,20 +392,279 @@ define("planly/templates/application", ["exports"], function (exports) {
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [2]);
         var element1 = dom.childAt(element0, [1]);
-        var morphs = new Array(6);
+        var morphs = new Array(7);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createElementMorph(element1);
         morphs[2] = dom.createMorphAt(element0, 3, 3);
         morphs[3] = dom.createMorphAt(element0, 5, 5);
         morphs[4] = dom.createMorphAt(element0, 7, 7);
-        morphs[5] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[5] = dom.createMorphAt(element0, 9, 9);
+        morphs[6] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         dom.insertBoundary(fragment, 0);
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "project-creation", ["loc", [null, [5, 1], [5, 21]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [6, 1], [6, 48]]]], ["content", "outlet", ["loc", [null, [7, 1], [7, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [10, 0], [10, 29]]]]],
+      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "create-task", ["loc", [null, [6, 1], [6, 16]]]], ["content", "project-creation", ["loc", [null, [8, 1], [8, 21]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [9, 1], [9, 48]]]], ["content", "outlet", ["loc", [null, [10, 1], [10, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [13, 0], [13, 29]]]]],
       locals: [],
       templates: []
+    };
+  })());
+});
+define("planly/templates/components/create-task", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "revision": "Ember@1.13.12",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 31,
+              "column": 8
+            },
+            "end": {
+              "line": 33,
+              "column": 8
+            }
+          },
+          "moduleName": "planly/templates/components/create-task.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("		    			");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["content", "sub-task", ["loc", [null, [32, 9], [32, 21]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "revision": "Ember@1.13.12",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 41,
+            "column": 7
+          }
+        },
+        "moduleName": "planly/templates/components/create-task.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "id", "create-task");
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "row");
+        var el3 = dom.createTextNode("\n	    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("form");
+        dom.setAttribute(el3, "class", "col s12");
+        var el4 = dom.createTextNode("\n	    	");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "card");
+        var el5 = dom.createTextNode("\n	      		");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "row");
+        var el6 = dom.createTextNode("\n				        ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s6");
+        var el7 = dom.createTextNode("\n							");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n							");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "task-name");
+        dom.setAttribute(el7, "data-error", "Please enter the task name");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Add a new task!");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				        ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				        ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s6");
+        var el7 = dom.createTextNode("\n				        	");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons prefix");
+        var el8 = dom.createTextNode("date_range");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				          ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						  ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "task-deadline");
+        dom.setAttribute(el7, "data-error", "Please select deadline");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Deadline");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				        ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("		    		");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "card-action");
+        var el7 = dom.createTextNode("\n		    			");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "row");
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8, "class", "col s1");
+        var el9 = dom.createTextNode("\n		    					");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("a");
+        dom.setAttribute(el9, "class", "btn-floating blue");
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons");
+        var el11 = dom.createTextNode("list");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n		    				");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8, "class", "col s1");
+        var el9 = dom.createTextNode("\n		    					");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("a");
+        dom.setAttribute(el9, "class", "btn-floating yellow darken-1");
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons");
+        var el11 = dom.createTextNode("person_add");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n		    				");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8, "class", "col s1");
+        var el9 = dom.createTextNode("\n		    					");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("a");
+        dom.setAttribute(el9, "class", "btn-floating green");
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons");
+        var el11 = dom.createTextNode("attach_file");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n		    				");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    			");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n		    		");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment("end of card-action");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n\n");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment("");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("		    		");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "card-action");
+        var el7 = dom.createTextNode("\n		    			");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("a");
+        dom.setAttribute(el7, "class", "waves-effect waves-light btn right");
+        var el8 = dom.createTextNode("Create");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n		    		");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n		      	");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n		     ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("end of card");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n	     ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n	 ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment(" end of row");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [2, 1, 1, 1, 1]);
+        var element1 = dom.childAt(element0, [6, 1, 1, 1]);
+        var morphs = new Array(5);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]), 1, 1);
+        morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]), 3, 3);
+        morphs[3] = dom.createElementMorph(element1);
+        morphs[4] = dom.createMorphAt(element0, 9, 9);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [8, 21], [8, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [8, 7], [8, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [13, 40], [13, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [13, 14], [13, 127]]]], ["element", "action", ["createSubtask"], [], ["loc", [null, [20, 39], [20, 65]]]], ["block", "if", [["get", "enabled", ["loc", [null, [31, 14], [31, 21]]]]], [], 0, null, ["loc", [null, [31, 8], [33, 15]]]]],
+      locals: [],
+      templates: [child0]
     };
   })());
 });
@@ -801,7 +1079,7 @@ define("planly/templates/components/project-creation", ["exports"], function (ex
         morphs[7] = dom.createMorphAt(fragment, 2, 2, contextualElement);
         return morphs;
       },
-      statements: [["element", "action", ["createProject"], ["on", "submit"], ["loc", [null, [7, 25], [7, 63]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [11, 20], [11, 24]]]]], [], []], "id", "name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [11, 6], [11, 86]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "goal", ["loc", [null, [16, 20], [16, 24]]]]], [], []], "name", "goal", "id", "goal", "class", "validate"], ["loc", [null, [16, 6], [16, 65]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "deadline", ["loc", [null, [21, 20], [21, 28]]]]], [], []], "name", "deadline", "id", "deadline", "type", "date", "class", "datepicker validate"], ["loc", [null, [21, 6], [21, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "member", ["loc", [null, [26, 20], [26, 26]]]]], [], []], "name", "member", "id", "member"], ["loc", [null, [26, 6], [26, 54]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [37, 4], [37, 37]]]], ["element", "action", ["submit"], [], ["loc", [null, [42, 3], [42, 22]]]], ["content", "yield", ["loc", [null, [48, 0], [48, 9]]]]],
+      statements: [["element", "action", ["createProject"], ["on", "submit"], ["loc", [null, [7, 25], [7, 63]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [11, 20], [11, 24]]]]], [], []], "id", "name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [11, 6], [11, 86]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "goal", ["loc", [null, [16, 20], [16, 24]]]]], [], []], "name", "goal", "id", "goal", "class", "validate"], ["loc", [null, [16, 6], [16, 65]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "deadline", ["loc", [null, [21, 32], [21, 40]]]]], [], []], "name", "deadline", "id", "deadline", "class", "datepicker validate"], ["loc", [null, [21, 6], [21, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "member", ["loc", [null, [26, 20], [26, 26]]]]], [], []], "name", "member", "id", "member"], ["loc", [null, [26, 6], [26, 54]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [37, 4], [37, 37]]]], ["element", "action", ["submit"], [], ["loc", [null, [42, 3], [42, 22]]]], ["content", "yield", ["loc", [null, [48, 0], [48, 9]]]]],
       locals: [],
       templates: []
     };
@@ -1148,6 +1426,179 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
     };
   })());
 });
+define("planly/templates/components/sub-task", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "revision": "Ember@1.13.12",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 28,
+            "column": 6
+          }
+        },
+        "moduleName": "planly/templates/components/sub-task.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "id", "sub-task");
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "row");
+        var el3 = dom.createTextNode("\n	    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("form");
+        dom.setAttribute(el3, "class", "col s12");
+        var el4 = dom.createTextNode("\n	    	");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "card z-depth-0");
+        var el5 = dom.createTextNode("\n	      		");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "row");
+        var el6 = dom.createTextNode("\n				        ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s6");
+        var el7 = dom.createTextNode("\n							");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n							");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "task-name");
+        dom.setAttribute(el7, "data-error", "Please enter the task name");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Add a new task!");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				        ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				        ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s6");
+        var el7 = dom.createTextNode("\n				        	");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons prefix");
+        var el8 = dom.createTextNode("date_range");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				          ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						  ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "task-deadline");
+        dom.setAttribute(el7, "data-error", "Please select deadline");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Deadline");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n				        ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				        ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "card-action");
+        var el7 = dom.createTextNode("\n		    				");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s1");
+        var el8 = dom.createTextNode("\n		    					");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("a");
+        dom.setAttribute(el8, "class", "btn-floating yellow darken-1");
+        var el9 = dom.createElement("i");
+        dom.setAttribute(el9, "class", "material-icons");
+        var el10 = dom.createTextNode("person_add");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n		    				");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s1");
+        var el8 = dom.createTextNode("\n		    					");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("a");
+        dom.setAttribute(el8, "class", "btn-floating green");
+        var el9 = dom.createElement("i");
+        dom.setAttribute(el9, "class", "material-icons");
+        var el10 = dom.createTextNode("attach_file");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n		    			");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment("end of card-action");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode(" ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n			");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode(" ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n		");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n	");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode(" ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [2, 1, 1, 1, 1]);
+        var morphs = new Array(3);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]), 1, 1);
+        morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]), 3, 3);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [8, 21], [8, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [8, 7], [8, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [13, 40], [13, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [13, 14], [13, 127]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("planly/templates/partials/-footer", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -1456,7 +1907,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+d151724b"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+c514977b"});
 }
 
 /* jshint ignore:end */

@@ -2,6 +2,9 @@
 
 <main>
 	<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
+	
+	{{create-task}}
+
 	{{project-creation}}
 	{{login-modal signIn='signIn' submit='submit'}} 
 	{{outlet}}
