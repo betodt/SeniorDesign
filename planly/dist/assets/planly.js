@@ -39,7 +39,7 @@ define('planly/components/create-task', ['exports', 'ember'], function (exports,
 	exports['default'] = _ember['default'].Component.extend({
 		actions: {
 			createSubtask: function createSubtask() {
-				console.log("hello");
+				console.log("hellooooo");
 				this.toggleProperty('enabled');
 			}
 		}
@@ -70,8 +70,11 @@ define('planly/components/project-creation', ['exports', 'ember'], function (exp
 		}
 	});
 });
-define('planly/components/project-task', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Component.extend({});
+define("planly/components/project-task", ["exports", "ember"], function (exports, _ember) {
+	exports["default"] = _ember["default"].Component.extend({
+		name: "Finish slides for topic #1",
+		dueDate: "Friday"
+	});
 });
 define('planly/components/sign-up', ['exports', 'ember'], function (exports, _ember) {
 	exports['default'] = _ember['default'].Component.extend({
@@ -95,7 +98,17 @@ define('planly/components/sign-up', ['exports', 'ember'], function (exports, _em
 	});
 });
 define('planly/components/sub-task', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Component.extend({});
+  exports['default'] = _ember['default'].Component.extend({
+    actions: {
+      createSubtask: function createSubtask() {
+        this.toggleProperty('enabled');
+      },
+      closeSubtask: function closeSubtask() {
+        console.log("hai");
+        this.sendAction("createSubtask");
+      }
+    }
+  });
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -338,7 +351,7 @@ define("planly/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 13,
+            "line": 14,
             "column": 29
           }
         },
@@ -376,6 +389,10 @@ define("planly/templates/application", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         var el2 = dom.createTextNode(" \n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
@@ -392,19 +409,20 @@ define("planly/templates/application", ["exports"], function (exports) {
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [2]);
         var element1 = dom.childAt(element0, [1]);
-        var morphs = new Array(7);
+        var morphs = new Array(8);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createElementMorph(element1);
         morphs[2] = dom.createMorphAt(element0, 3, 3);
         morphs[3] = dom.createMorphAt(element0, 5, 5);
         morphs[4] = dom.createMorphAt(element0, 7, 7);
         morphs[5] = dom.createMorphAt(element0, 9, 9);
-        morphs[6] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[6] = dom.createMorphAt(element0, 11, 11);
+        morphs[7] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         dom.insertBoundary(fragment, 0);
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "create-task", ["loc", [null, [6, 1], [6, 16]]]], ["content", "project-creation", ["loc", [null, [8, 1], [8, 21]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [9, 1], [9, 48]]]], ["content", "outlet", ["loc", [null, [10, 1], [10, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [13, 0], [13, 29]]]]],
+      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "create-task", ["loc", [null, [6, 1], [6, 16]]]], ["content", "project-creation", ["loc", [null, [8, 1], [8, 21]]]], ["content", "project-task", ["loc", [null, [9, 1], [9, 17]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [10, 1], [10, 48]]]], ["content", "outlet", ["loc", [null, [11, 1], [11, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [14, 0], [14, 29]]]]],
       locals: [],
       templates: []
     };
@@ -623,6 +641,7 @@ define("planly/templates/components/create-task", ["exports"], function (exports
         dom.appendChild(el6, el7);
         var el7 = dom.createElement("a");
         dom.setAttribute(el7, "class", "waves-effect waves-light btn right");
+        dom.setAttribute(el7, "style", "margin-bottom:20px;");
         var el8 = dom.createTextNode("Create");
         dom.appendChild(el7, el8);
         dom.appendChild(el6, el7);
@@ -1097,8 +1116,8 @@ define("planly/templates/components/project-task", ["exports"], function (export
             "column": 0
           },
           "end": {
-            "line": 2,
-            "column": 0
+            "line": 48,
+            "column": 6
           }
         },
         "moduleName": "planly/templates/components/project-task.hbs"
@@ -1112,15 +1131,256 @@ define("planly/templates/components/project-task", ["exports"], function (export
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "id", "project-task");
+        var el2 = dom.createTextNode(" \n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "row");
+        var el3 = dom.createTextNode("\n	    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "col s12");
+        var el4 = dom.createTextNode("\n			");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "card");
+        var el5 = dom.createTextNode("\n					");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "card-title teal");
+        var el6 = dom.createTextNode("\n						");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("form");
+        dom.setAttribute(el6, "action", "#");
+        var el7 = dom.createTextNode("\n							");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "left-align");
+        var el8 = dom.createTextNode("\n     							");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("input");
+        dom.setAttribute(el8, "type", "checkbox");
+        dom.setAttribute(el8, "class", " checkbox");
+        dom.setAttribute(el8, "id", "task1");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n      								");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("label");
+        dom.setAttribute(el8, "for", "task1");
+        var el9 = dom.createElement("h4");
+        dom.setAttribute(el9, "class", "white-text");
+        var el10 = dom.createTextNode(" ");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createComment("");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createTextNode(" ");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n      						");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n    					");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n    				");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("	\n\n				");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "card-content");
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "row");
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s3");
+        var el8 = dom.createTextNode("\n							");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("h5");
+        var el9 = dom.createTextNode(" Due: ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createComment("");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode(" ");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n						");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s4");
+        var el8 = dom.createTextNode("\n							");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("h5");
+        var el9 = dom.createTextNode(" Assigned to: ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("img");
+        dom.setAttribute(el9, "class", "circle responsive-img");
+        dom.setAttribute(el9, "src", "assets/images/betopic.jpg");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("  ");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n							\n						");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						\n");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s5 right-align");
+        var el8 = dom.createTextNode("\n							");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8, "class", "collection");
+        var el9 = dom.createTextNode("\n								");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("div");
+        dom.setAttribute(el9, "class", "collectionItems");
+        var el10 = dom.createTextNode(" ");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons collection item collectionIcons");
+        var el11 = dom.createTextNode("list");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("span");
+        dom.setAttribute(el10, "class", "badge");
+        var el11 = dom.createTextNode("1");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n	              				");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("div");
+        dom.setAttribute(el9, "class", "collectionItems");
+        var el10 = dom.createTextNode(" ");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons collection item collectionIcons");
+        var el11 = dom.createTextNode("chat_bubble_outline");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("span");
+        dom.setAttribute(el10, "class", "badge");
+        var el11 = dom.createTextNode("1");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createTextNode("\n	              				");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n	              				");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("div");
+        dom.setAttribute(el9, "class", "collectionItems");
+        var el10 = dom.createTextNode("\n								");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("i");
+        dom.setAttribute(el10, "class", "material-icons collection item collectionIcons");
+        var el11 = dom.createTextNode("favorite_border");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("span");
+        dom.setAttribute(el10, "class", "badge");
+        var el11 = dom.createTextNode("1");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createTextNode("\n								");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n							");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n						");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n					");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode(" ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("end of card content ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n				");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "card-action");
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6, "href", "#");
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons");
+        var el8 = dom.createTextNode("list");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n              		");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6, "href", "#");
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons");
+        var el8 = dom.createTextNode("chat_bubble_outline");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n              		");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6, "href", "#");
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons");
+        var el8 = dom.createTextNode("favorite_border");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode(" ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n            	");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n           ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment(" end of card ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n         ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode(" ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment(" end of col ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n     ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(1);
+        var element0 = dom.childAt(fragment, [2, 1, 1, 1]);
+        var morphs = new Array(3);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        morphs[1] = dom.createMorphAt(dom.childAt(element0, [1, 1, 1, 3, 0]), 1, 1);
+        morphs[2] = dom.createMorphAt(dom.childAt(element0, [3, 1, 1, 1]), 1, 1);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["content", "name", ["loc", [null, [10, 57], [10, 65]]]], ["content", "dueDate", ["loc", [null, [18, 17], [18, 28]]]]],
       locals: [],
       templates: []
     };
@@ -1428,6 +1688,46 @@ define("planly/templates/components/sign-up", ["exports"], function (exports) {
 });
 define("planly/templates/components/sub-task", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "revision": "Ember@1.13.12",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 30,
+              "column": 3
+            },
+            "end": {
+              "line": 32,
+              "column": 6
+            }
+          },
+          "moduleName": "planly/templates/components/sub-task.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("		    	");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["content", "sub-task", ["loc", [null, [31, 7], [31, 19]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
     return {
       meta: {
         "revision": "Ember@1.13.12",
@@ -1438,7 +1738,7 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 28,
+            "line": 35,
             "column": 6
           }
         },
@@ -1475,6 +1775,13 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("div");
         dom.setAttribute(el6, "class", "input-field col s6");
+        var el7 = dom.createTextNode("\n				        	");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("i");
+        dom.setAttribute(el7, "class", "material-icons prefix close");
+        var el8 = dom.createTextNode("close");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
         var el7 = dom.createTextNode("\n							");
         dom.appendChild(el6, el7);
         var el7 = dom.createComment("");
@@ -1485,7 +1792,7 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.setAttribute(el7, "for", "task-name");
         dom.setAttribute(el7, "data-error", "Please enter the task name");
         dom.setAttribute(el7, "data-success", "valid");
-        var el8 = dom.createTextNode("Add a new task!");
+        var el8 = dom.createTextNode("Subtask ");
         dom.appendChild(el7, el8);
         dom.appendChild(el6, el7);
         var el7 = dom.createTextNode("\n				        ");
@@ -1522,6 +1829,23 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("div");
         dom.setAttribute(el6, "class", "card-action");
+        var el7 = dom.createTextNode("\n				        	");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7, "class", "col s1");
+        var el8 = dom.createTextNode("\n		    					");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("a");
+        dom.setAttribute(el8, "class", "btn-floating blue");
+        var el9 = dom.createElement("i");
+        dom.setAttribute(el9, "class", "material-icons");
+        var el10 = dom.createTextNode("list");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n		    				");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
         var el7 = dom.createTextNode("\n		    				");
         dom.appendChild(el6, el7);
         var el7 = dom.createElement("div");
@@ -1571,7 +1895,11 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode(" ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n		");
+        var el4 = dom.createTextNode("\n");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("		");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n	");
@@ -1585,17 +1913,24 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [2, 1, 1, 1, 1]);
-        var morphs = new Array(3);
+        var element0 = dom.childAt(fragment, [2, 1, 1]);
+        var element1 = dom.childAt(element0, [1, 1]);
+        var element2 = dom.childAt(element1, [1]);
+        var element3 = dom.childAt(element2, [1]);
+        var element4 = dom.childAt(element1, [5, 1, 1]);
+        var morphs = new Array(6);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]), 1, 1);
-        morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]), 3, 3);
+        morphs[1] = dom.createElementMorph(element3);
+        morphs[2] = dom.createMorphAt(element2, 3, 3);
+        morphs[3] = dom.createMorphAt(dom.childAt(element1, [3]), 3, 3);
+        morphs[4] = dom.createElementMorph(element4);
+        morphs[5] = dom.createMorphAt(element0, 4, 4);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [8, 21], [8, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [8, 7], [8, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [13, 40], [13, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [13, 14], [13, 127]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["closeSubtask"], [], ["loc", [null, [8, 52], [8, 77]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [9, 21], [9, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 7], [9, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [14, 40], [14, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [14, 14], [14, 127]]]], ["element", "action", ["createSubtask"], [], ["loc", [null, [19, 39], [19, 65]]]], ["block", "if", [["get", "enabled", ["loc", [null, [30, 9], [30, 16]]]]], [], 0, null, ["loc", [null, [30, 3], [32, 13]]]]],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   })());
 });
@@ -1907,7 +2242,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+c514977b"});
+  require("planly/app")["default"].create({"name":"planly","version":"0.0.0+05eb4726"});
 }
 
 /* jshint ignore:end */

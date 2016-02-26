@@ -202,4 +202,51 @@ a#googleIcon {
   width:50%;
 }
 
+#sub-task .close {
+  font-size: 1.5rem;
+}
 
+/* ==========================================================================
+  Project Task
+========================================================================== */
+
+input[type="checkbox"]+label:before{
+  width:25px;
+  height: 25px;
+  margin-top: 20px;
+  border: 2px solid white;
+}
+input[type="checkbox"]:checked + label:before{
+  border-right:2px solid white;
+  border-bottom:2px solid white;
+}
+
+#project-task div.card{
+  padding:0px;
+}
+
+#project-task div.card-title{
+  padding:10px;
+}
+
+
+
+#project-task img.responsive-img, video.responsive-video{
+width: 10%;
+border: 1px solid black;
+margin:5px;
+vertical-align: text-top;
+}
+
+#project-task .collectionIcons{
+ margin:10px;
+
+}
+
+#project-task .collection{
+  border:0;
+}
+
+#project-task .collectionItems{
+  display:inline;
+}

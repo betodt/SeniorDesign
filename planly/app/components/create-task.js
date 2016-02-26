@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	actions:{
 		createSubtask: function() {
-			console.log("hello");
+			console.log("hellooooo");
         	this.toggleProperty('enabled');
 
         }
