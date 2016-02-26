@@ -49,7 +49,9 @@ export default Ember.Route.extend({
           __this__.store.createRecord('user', {
            firstName: data.firstName,
            lastName: data.lastName,
-           email: data.email
+           email: data.email,
+           picUrl: userData.profileImageURL,
+           joined: new Date()
           });
         }
       });
