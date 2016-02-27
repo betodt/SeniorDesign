@@ -2,7 +2,12 @@
 
 <main>
 	<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
-	{{project-creation}}
+	
+	{{create-task}}
+
+	{{project-creation openTeamCreation='openTeamCreation'}}
+	{{team-creation}}
+	{{project-task}}
 	{{login-modal signIn='signIn' submit='submit'}} 
 	{{outlet}}
 </main>

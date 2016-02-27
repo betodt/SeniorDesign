@@ -133,30 +133,19 @@ body {
    }
 
    .input-field label.active {
-    -webkit-transform:translateY(-100%);
     transform:translateY(-75%);
   }
 
   .input-field label.active::after{
     position: relative;
-    -webkit-transform:translateY(-100%);
     text-align: left;
     transform:translateY(-140%);
-
+ 
   }
 
-/*=======================================================================
-    Login Modal 
-=========================================================================*/
-
-.modal-content {
-  padding: 0;
-}
 
  #login{
   width: 40%;
-  height: auto;
-  /*overflow: hidden;*/
 
  }  
 #login h5{
@@ -189,22 +178,6 @@ body {
   margin-right: 10px;
   display: inline-block;
   font-size: 12px;
-}
-
-#googleIcon {
-  margin-bottom: 10px;
-  display: block;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#facebookIcon {
-  margin-bottom: 20px;
-  display: block;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 a#googleIcon {

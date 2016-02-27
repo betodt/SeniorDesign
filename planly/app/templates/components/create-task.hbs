@@ -1,0 +1,41 @@
+{{yield}}
+<div id="create-task">
+	<div class="row">
+	    <form class="col s12">
+	    	<div class="card">
+	      		<div class="row">
+				        <div class="input-field col s6">
+							{{input value=task-name id='task-name' class="validate" required="" aria-required="true"}}
+							<label for="task-name" data-error="Please enter the task name" data-success="valid">Add a new task!</label>
+				        </div>
+				        <div class="input-field col s6">
+				        	<i class="material-icons prefix">date_range</i>
+				          {{input type="date" value=task-deadline  class="datepicker" id="task-deadline" required="" aria-required="true"}}
+						  <label for="task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
+				        </div>
+		    		{{!-- </div><!-- end of card-content--> --}}
+		    		<div class="card-action">
+		    			<div class="row">
+		    				<div class="col s1">
+		    					<a class="btn-floating blue"{{action "createSubtask"}}><i class="material-icons">list</i></a>
+		    				</div>
+		    				<div class="col s1">
+		    					<a class="btn-floating yellow darken-1"><i class="material-icons">person_add</i></a>
+		    				</div>
+		    				<div class="col s1">
+		    					<a class="btn-floating green"><i class="material-icons">attach_file</i></a>
+		    				</div>
+		    			</div>
+		    		</div><!--end of card-action-->
+
+		    		{{#if enabled}}
+		    			{{sub-task}}
+		    		{{/if}}
+		    		<div class="card-action">
+		    			<a class="waves-effect waves-light btn right" style="margin-bottom:20px;">Create</a>
+		    		</div>
+		      	</div>
+		     </div><!--end of card-->
+	     </form>
+	 </div><!-- end of row-->
+ </div>
