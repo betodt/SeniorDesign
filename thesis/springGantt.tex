@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{gantt}
+
+\begin{document}
+  \begin{gantt}{17}{10}
+    \begin{ganttitle}
+    \titleelement{Spring (Week 1 - 10)}{10}
+    \end{ganttitle}
+    \begin{ganttitle}
+    \numtitle{1}{1}{10}{1}
+    \end{ganttitle}
+
+    \ganttgroup{Senior Thesis}{0}{10}
+		\ganttbar[color=cyan]{User Manual}{1}{1}
+		\ganttbar[color=red]{API Documentation}{2}{1}
+		\ganttbar[color=red]{Maintenance Guide}{3}{1}
+		\ganttbar[color=cyan]{Suggested Changes}{8}{1}
+		\ganttbar[color=cyan]{Lessons Learned}{5}{1}
+    \ganttgroup{Operational System}{0}{9}
+	   \ganttbar{Front-End and Design}{0}{9}
+	   \ganttbar[color=red]{Calendar Integration}{1}{1}
+    \ganttgroup{Testing}{2}{4}
+        \ganttbar{Acceptance Testing}{2}{1}
+        \ganttbar{Testing Results}{3}{1}
+        \ganttbar{Final Changes}{4}{2}
+    \ganttgroup{Design Conference}{7}{1}
+    \ganttbar{Final Changes}{8}{1}
+
+    
+
+		
+
+
+  \end{gantt}
+\end{document}

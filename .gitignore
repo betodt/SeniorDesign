@@ -1,0 +1,17 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/planly/dist
+/planly/tmp
+
+# dependencies
+/planly/node_modules
+/planly/bower_components
+
+# misc
+/planly/.sass-cache
+/planly/connect.lock
+/planly/coverage/*
+/planly/libpeerconnection.log
+npm-debug.log
+testem.log

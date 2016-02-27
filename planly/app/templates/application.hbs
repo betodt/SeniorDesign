@@ -1,0 +1,10 @@
+{{partial "partials/nav"}}
+
+<main>
+	{{project-creation openTeamCreation='openTeamCreation'}}
+	{{team-creation}}
+	{{login-modal signIn='signIn' submit='submit'}} 
+	{{outlet}}
+</main>
+
+{{partial "partials/footer"}}

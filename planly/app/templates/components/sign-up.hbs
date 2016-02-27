@@ -1,0 +1,49 @@
+{{yield}}
+<div id="login-content">
+	<div class="row">
+		<form class="col s12 m12 l12" {{action "updateUser" on="submit"}}>
+			<div class="row">
+				<!-- first name -->
+				<div class="input-field col s12 m12 l12">
+					<i class="material-icons prefix">perm_identity</i>
+					{{input value=first name='first' id='first' required="true" aria-required="true"}}
+					<label for="first">First Name</label>
+				</div>
+				<!-- last name -->
+				<div class="input-field col s12 m12 l12">
+					<i class="material-icons prefix">perm_identity</i>
+					{{input value=last name='id' id='last' required="true" aria-required="true"}}
+					<label for="last">Last Name</label>
+				</div>
+				<!-- email -->
+				<div class="input-field col s12 m12 l12">
+					<i class="material-icons prefix">mail_outline</i>
+					{{input value=email name='email' id='email' type="email" class="validate" required="true" aria-required="true"}}
+					<label for="email" data-error="Please enter a valid email" data-success="valid">Email</label>
+					
+				</div>
+				<!-- password -->
+				<div class="input-field col s12 m12 l12">
+					<i class="material-icons prefix">lock_outline</i>
+					{{input value=password name='password' id='password' type='password' class="validate" required="true" aria-required="true"}}
+					<label for="password" data-error="Please enter a valid password" data-success="Valid">Password</label>
+				</div>
+				<!-- confirm password -->
+				<div class="input-field col s12 m12 l12">
+					<i class="material-icons prefix">lock_outline</i>
+					{{input value=passwordConfirm id='passwordConfirm' type='password' class="validate" required="true" aria-required="true"}}
+					<label for="passwordConfirm" data-error="Please enter a valid password" data-success="Valid">Confirm Password</label>
+				</div>
+				<div class="center-align">
+					<button class="btn waves-effect waves-light deep-purple darken-3" 
+					{{action "submit"}}> Submit <i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{{#if loginFailed}}
+  <div class="alert alert-danger">Invalid username or password.</div>
+{{/if}}
