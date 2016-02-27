@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 		return false; 
 	}.observes('first', 'last', 'email', 'password', 'passwordConfirm').on('init'),
 	validationObserver: function(){
-		if(this.get('password') != this.get('passwordConfirm')) {
+		if(this.get('password') !== this.get('passwordConfirm')) {
 			// alert("passwords dont match!");
 			$('#passwordConfirm').addClass('invalid');
 			return false;

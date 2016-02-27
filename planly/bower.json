@@ -16,5 +16,8 @@
   },
   "resolutions": {
     "jquery": "1.11.3"
+  },
+  "devDependencies": {
+    "Materialize": "materialize#~0.97.5"
   }
 }
