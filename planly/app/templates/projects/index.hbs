@@ -1,18 +1,5 @@
- <div class="row mainContain">
-	<div class="sideBar col s12 m2 l2 blue-grey lighten-4">
-		<img src="photo.jpg" alt="Contact Person" id="profilePic" class="circle responsive-img materialboxed">
-		<h5 class="center-align"> Amy </h5>
-		<nav class="transparent z-depth-0">
-		  <ul class="left">
-		    <li>{{#link-to "project.team" class="black-text"}}<i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span>{{/link-to}}</li>
-		    <li>{{#link-to "project.tasks" class="black-text"}}<i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span>{{/link-to}}</li>
-		    <li>{{#link-to "project.calendar" class="black-text"}}<i class="material-icons left">today</i><span class="hide-on-med-only">Calendar</span>{{/link-to}}</li>
-		    <li>{{#link-to "project" class="black-text"}}<i class="material-icons left">perm_media</i><span class="hide-on-med-only">Projects</span>{{/link-to}}</li>
-		  </ul>
-		</nav>
-	</div>
-	<div class="col s12 m10 l10 grey lighten-3">
-		<h1>YOUR PROJECT</h1>
-		{{outlet}}
-	</div>
-</div>
+<h1>YOUR PROJECT</h1>
+{{outlet}}
+{{#each model as |user|}}
+	<h5>{{link-to user.firstName "projects.tasks" user}}</h5>
+{{/each}}

@@ -15,6 +15,7 @@ export default Ember.Component.extend({
         },
         submit: function(data) {
         	console.log("modal submitting");
+            
         	this.sendAction('submit', data);
             this.sendAction('signIn', {
                 provider: "password",

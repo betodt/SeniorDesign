@@ -6,7 +6,6 @@
 		{{#if session.isAuthenticated}}
 		  Logged in as {{session.currentUser.displayName}}
 		  <button class="btn-flat" {{action "signOut"}}>Sign out</button>
-		  {{outlet}}
 		{{else}}
 		  <button class="btn-flat" {{action "openModal"}}>Sign in</button>
 		{{/if}}

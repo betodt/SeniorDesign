@@ -30,6 +30,7 @@ export default Ember.Route.extend({
     submit: function(data) {
       var __this__ = this;
       var ref = new Firebase("https://planly.firebaseio.com");
+      var profPic;
       
       ref.createUser({
         email    : data.email,
@@ -43,15 +44,17 @@ export default Ember.Route.extend({
             provider: "password",
             email: data.email,
             password: data.password
-          }).then(function(data) {
-            console.log(data.currentUser);
-          });
-          __this__.store.createRecord('user', {
-           firstName: data.firstName,
-           lastName: data.lastName,
-           email: data.email,
-           picUrl: userData.profileImageURL,
-           joined: new Date()
+          }).then(function(data2) {
+            console.log(data2.currentUser);
+          
+            __this__.store.createRecord('user', {
+             firstName: data.firstName,
+             lastName: data.lastName,
+             email: data.email,
+             picUrl: data2.currentUser.profileImageURL,
+             joined: new Date()
+           }).save();
+            
           });
         }
       });
