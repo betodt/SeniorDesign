@@ -1,10 +1,8 @@
 <div id="projectCreation" class="modal modal-fixed-footer">
-	<nav>
-		<div class="nav-wrapper teal"><h4 class="center-align">Create a Project</h4></div>
-	</nav>
+	<div class="header teal"><h4 class="center-align white-text">Create a Project</h4></div>
 	<div class="modal-content">
 		<div class="row">
-			<form class="col s12" {{action "createProject" on="submit"}}>
+			<form class="col s12" {{action "createProject"}}>
 				<div class="center-align">
 					<!-- Project name -->
 					<div class="input-field col s12">
@@ -39,7 +37,7 @@
 		</div>
 		<div class="input-field col s6 center-align">
 			<button class="btn waves-effect waves-light deep-purple darken-3" 
-			{{action "submit"}}> Create
+			{{action "openTeamCreation"}}> Create
 		</button>
 	</div>
 </div>

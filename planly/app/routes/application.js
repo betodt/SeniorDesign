@@ -24,6 +24,9 @@ export default Ember.Route.extend({
         console.log(data.currentUser);
       });
     },
+    openTeamCreation: function(){
+      $('#teamCreation').openModal()
+    },
 
     signOut: function() {   
       this.get("session").close();

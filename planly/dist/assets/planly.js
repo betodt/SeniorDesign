@@ -66,8 +66,13 @@ define('planly/components/project-creation', ['exports', 'ember'], function (exp
 		actions: {
 			closeProjectCreation: function closeProjectCreation() {
 				$('#projectCreation').closeModal();
+			},
+			openTeamCreation: function openTeamCreation() {
+				$('#projectCreation').closeModal();
+				this.sendAction("openTeamCreation");
 			}
 		}
+
 	});
 });
 define("planly/components/project-task", ["exports", "ember"], function (exports, _ember) {
@@ -109,6 +114,9 @@ define('planly/components/sub-task', ['exports', 'ember'], function (exports, _e
       }
     }
   });
+});
+define('planly/components/team-creation', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
 });
 define('planly/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -310,6 +318,9 @@ define('planly/routes/application', ['exports', 'ember'], function (exports, _em
           console.log(data.currentUser);
         });
       },
+      openTeamCreation: function openTeamCreation() {
+        $('#teamCreation').openModal();
+      },
 
       signOut: function signOut() {
         this.get("session").close();
@@ -351,7 +362,7 @@ define("planly/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 14,
+            "line": 15,
             "column": 29
           }
         },
@@ -393,6 +404,10 @@ define("planly/templates/application", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         var el2 = dom.createTextNode(" \n	");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
@@ -409,7 +424,7 @@ define("planly/templates/application", ["exports"], function (exports) {
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [2]);
         var element1 = dom.childAt(element0, [1]);
-        var morphs = new Array(8);
+        var morphs = new Array(9);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createElementMorph(element1);
         morphs[2] = dom.createMorphAt(element0, 3, 3);
@@ -417,12 +432,13 @@ define("planly/templates/application", ["exports"], function (exports) {
         morphs[4] = dom.createMorphAt(element0, 7, 7);
         morphs[5] = dom.createMorphAt(element0, 9, 9);
         morphs[6] = dom.createMorphAt(element0, 11, 11);
-        morphs[7] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[7] = dom.createMorphAt(element0, 13, 13);
+        morphs[8] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         dom.insertBoundary(fragment, 0);
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "create-task", ["loc", [null, [6, 1], [6, 16]]]], ["content", "project-creation", ["loc", [null, [8, 1], [8, 21]]]], ["content", "project-task", ["loc", [null, [9, 1], [9, 17]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [10, 1], [10, 48]]]], ["content", "outlet", ["loc", [null, [11, 1], [11, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [14, 0], [14, 29]]]]],
+      statements: [["inline", "partial", ["partials/nav"], [], ["loc", [null, [1, 0], [1, 26]]]], ["element", "action", ["openProjectModel"], [], ["loc", [null, [4, 65], [4, 94]]]], ["content", "create-task", ["loc", [null, [6, 1], [6, 16]]]], ["inline", "project-creation", [], ["openTeamCreation", "openTeamCreation"], ["loc", [null, [8, 1], [8, 57]]]], ["content", "team-creation", ["loc", [null, [9, 1], [9, 18]]]], ["content", "project-task", ["loc", [null, [10, 1], [10, 17]]]], ["inline", "login-modal", [], ["signIn", "signIn", "submit", "submit"], ["loc", [null, [11, 1], [11, 48]]]], ["content", "outlet", ["loc", [null, [12, 1], [12, 11]]]], ["inline", "partial", ["partials/footer"], [], ["loc", [null, [15, 0], [15, 29]]]]],
       locals: [],
       templates: []
     };
@@ -873,7 +889,7 @@ define("planly/templates/components/project-creation", ["exports"], function (ex
             "column": 0
           },
           "end": {
-            "line": 49,
+            "line": 47,
             "column": 0
           }
         },
@@ -889,18 +905,12 @@ define("planly/templates/components/project-creation", ["exports"], function (ex
         dom.setAttribute(el1, "class", "modal modal-fixed-footer");
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("nav");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("div");
-        dom.setAttribute(el3, "class", "nav-wrapper teal");
-        var el4 = dom.createElement("h4");
-        dom.setAttribute(el4, "class", "center-align");
-        var el5 = dom.createTextNode("Create a Project");
-        dom.appendChild(el4, el5);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "header teal");
+        var el3 = dom.createElement("h4");
+        dom.setAttribute(el3, "class", "center-align white-text");
+        var el4 = dom.createTextNode("Create a Project");
         dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
@@ -1098,7 +1108,7 @@ define("planly/templates/components/project-creation", ["exports"], function (ex
         morphs[7] = dom.createMorphAt(fragment, 2, 2, contextualElement);
         return morphs;
       },
-      statements: [["element", "action", ["createProject"], ["on", "submit"], ["loc", [null, [7, 25], [7, 63]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [11, 20], [11, 24]]]]], [], []], "id", "name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [11, 6], [11, 86]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "goal", ["loc", [null, [16, 20], [16, 24]]]]], [], []], "name", "goal", "id", "goal", "class", "validate"], ["loc", [null, [16, 6], [16, 65]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "deadline", ["loc", [null, [21, 32], [21, 40]]]]], [], []], "name", "deadline", "id", "deadline", "class", "datepicker validate"], ["loc", [null, [21, 6], [21, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "member", ["loc", [null, [26, 20], [26, 26]]]]], [], []], "name", "member", "id", "member"], ["loc", [null, [26, 6], [26, 54]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [37, 4], [37, 37]]]], ["element", "action", ["submit"], [], ["loc", [null, [42, 3], [42, 22]]]], ["content", "yield", ["loc", [null, [48, 0], [48, 9]]]]],
+      statements: [["element", "action", ["createProject"], [], ["loc", [null, [5, 25], [5, 51]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [9, 20], [9, 24]]]]], [], []], "id", "name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 6], [9, 86]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "goal", ["loc", [null, [14, 20], [14, 24]]]]], [], []], "name", "goal", "id", "goal", "class", "validate"], ["loc", [null, [14, 6], [14, 65]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "deadline", ["loc", [null, [19, 32], [19, 40]]]]], [], []], "name", "deadline", "id", "deadline", "class", "datepicker validate"], ["loc", [null, [19, 6], [19, 100]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "member", ["loc", [null, [24, 20], [24, 26]]]]], [], []], "name", "member", "id", "member"], ["loc", [null, [24, 6], [24, 54]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [35, 4], [35, 37]]]], ["element", "action", ["openTeamCreation"], [], ["loc", [null, [40, 3], [40, 32]]]], ["content", "yield", ["loc", [null, [46, 0], [46, 9]]]]],
       locals: [],
       templates: []
     };
@@ -1270,7 +1280,7 @@ define("planly/templates/components/project-task", ["exports"], function (export
         dom.appendChild(el10, el11);
         dom.appendChild(el9, el10);
         var el10 = dom.createElement("span");
-        dom.setAttribute(el10, "class", "badge");
+        dom.setAttribute(el10, "class", "notiBubble");
         var el11 = dom.createTextNode("1");
         dom.appendChild(el10, el11);
         dom.appendChild(el9, el10);
@@ -1695,11 +1705,11 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
           "loc": {
             "source": null,
             "start": {
-              "line": 30,
+              "line": 35,
               "column": 3
             },
             "end": {
-              "line": 32,
+              "line": 37,
               "column": 6
             }
           },
@@ -1723,7 +1733,7 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
           morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
           return morphs;
         },
-        statements: [["content", "sub-task", ["loc", [null, [31, 7], [31, 19]]]]],
+        statements: [["content", "sub-task", ["loc", [null, [36, 7], [36, 19]]]]],
         locals: [],
         templates: []
       };
@@ -1738,7 +1748,7 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 35,
+            "line": 40,
             "column": 6
           }
         },
@@ -1869,12 +1879,31 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.setAttribute(el7, "class", "col s1");
         var el8 = dom.createTextNode("\n		    					");
         dom.appendChild(el7, el8);
-        var el8 = dom.createElement("a");
-        dom.setAttribute(el8, "class", "btn-floating green");
-        var el9 = dom.createElement("i");
-        dom.setAttribute(el9, "class", "material-icons");
-        var el10 = dom.createTextNode("attach_file");
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8, "class", "file-field");
+        var el9 = dom.createTextNode("\n		    					     ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("div");
+        dom.setAttribute(el9, "class", "btn-floating green");
+        var el10 = dom.createTextNode("\n		    					       ");
         dom.appendChild(el9, el10);
+        var el10 = dom.createElement("span");
+        var el11 = dom.createElement("i");
+        dom.setAttribute(el11, "class", "material-icons");
+        var el12 = dom.createTextNode("attach_file");
+        dom.appendChild(el11, el12);
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createTextNode("\n		    					       ");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("input");
+        dom.setAttribute(el10, "type", "file");
+        dom.setAttribute(el10, "multiple", "");
+        dom.appendChild(el9, el10);
+        var el10 = dom.createTextNode("\n		    					     ");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n		    					");
         dom.appendChild(el8, el9);
         dom.appendChild(el7, el8);
         var el8 = dom.createTextNode("\n		    				");
@@ -1928,9 +1957,230 @@ define("planly/templates/components/sub-task", ["exports"], function (exports) {
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["closeSubtask"], [], ["loc", [null, [8, 52], [8, 77]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [9, 21], [9, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 7], [9, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [14, 40], [14, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [14, 14], [14, 127]]]], ["element", "action", ["createSubtask"], [], ["loc", [null, [19, 39], [19, 65]]]], ["block", "if", [["get", "enabled", ["loc", [null, [30, 9], [30, 16]]]]], [], 0, null, ["loc", [null, [30, 3], [32, 13]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["element", "action", ["closeSubtask"], [], ["loc", [null, [8, 52], [8, 77]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "task-name", ["loc", [null, [9, 21], [9, 30]]]]], [], []], "id", "task-name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [9, 7], [9, 97]]]], ["inline", "input", [], ["type", "date", "value", ["subexpr", "@mut", [["get", "task-deadline", ["loc", [null, [14, 40], [14, 53]]]]], [], []], "class", "datepicker", "id", "task-deadline", "required", "", "aria-required", "true"], ["loc", [null, [14, 14], [14, 127]]]], ["element", "action", ["createSubtask"], [], ["loc", [null, [19, 39], [19, 65]]]], ["block", "if", [["get", "enabled", ["loc", [null, [35, 9], [35, 16]]]]], [], 0, null, ["loc", [null, [35, 3], [37, 13]]]]],
       locals: [],
       templates: [child0]
+    };
+  })());
+});
+define("planly/templates/components/team-creation", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "revision": "Ember@1.13.12",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 43,
+            "column": 9
+          }
+        },
+        "moduleName": "planly/templates/components/team-creation.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "id", "teamCreation");
+        dom.setAttribute(el1, "class", "modal modal-fixed-footer");
+        var el2 = dom.createTextNode("\n		");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "header teal");
+        var el3 = dom.createElement("h4");
+        dom.setAttribute(el3, "class", "white-text center-align");
+        var el4 = dom.createTextNode("Create a Team");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "modal-content");
+        var el3 = dom.createTextNode("\n		");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "row");
+        var el4 = dom.createTextNode("\n			");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("form");
+        dom.setAttribute(el4, "class", "col s12");
+        var el5 = dom.createTextNode("\n				");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("button");
+        dom.setAttribute(el5, "id", "skip");
+        dom.setAttribute(el5, "class", "btn waves-effect waves-light blue-grey lighten-3");
+        var el6 = dom.createTextNode(" Skip ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n				");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5, "class", "center-align");
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment(" Team name ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s12");
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "name");
+        dom.setAttribute(el7, "data-error", "Please enter a team name");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Team Name");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n					");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment(" Team Description");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s12");
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "description");
+        dom.setAttribute(el7, "data-error", "Please enter a Team Description");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Team Description");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n					");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createComment(" team members ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n					");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6, "class", "input-field col s12");
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n						");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("label");
+        dom.setAttribute(el7, "for", "password");
+        dom.setAttribute(el7, "data-error", "Please enter a valid email");
+        dom.setAttribute(el7, "data-success", "valid");
+        var el8 = dom.createTextNode("Add Members To The Team");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n					");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n				");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n			");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n		");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n	");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "modal-footer");
+        var el3 = dom.createTextNode("\n		");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "row");
+        var el4 = dom.createTextNode("\n			");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "input-field col s6");
+        var el5 = dom.createTextNode("\n				");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("button");
+        dom.setAttribute(el5, "class", "btn waves-effect waves-light red darken-1 center-align");
+        var el6 = dom.createTextNode(" Previous\n			");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n		");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n		");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "input-field col s6 center-align");
+        var el5 = dom.createTextNode("\n			");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("button");
+        dom.setAttribute(el5, "class", "btn waves-effect waves-light deep-purple darken-3");
+        var el6 = dom.createTextNode(" Create\n		");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n	");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(element0, [3, 1, 1]);
+        var element2 = dom.childAt(element1, [1]);
+        var element3 = dom.childAt(element1, [3]);
+        var element4 = dom.childAt(element0, [5, 1]);
+        var element5 = dom.childAt(element4, [1, 1]);
+        var element6 = dom.childAt(element4, [3, 1]);
+        var morphs = new Array(8);
+        morphs[0] = dom.createElementMorph(element1);
+        morphs[1] = dom.createElementMorph(element2);
+        morphs[2] = dom.createMorphAt(dom.childAt(element3, [3]), 1, 1);
+        morphs[3] = dom.createMorphAt(dom.childAt(element3, [7]), 1, 1);
+        morphs[4] = dom.createMorphAt(dom.childAt(element3, [11]), 1, 1);
+        morphs[5] = dom.createElementMorph(element5);
+        morphs[6] = dom.createElementMorph(element6);
+        morphs[7] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        dom.insertBoundary(fragment, null);
+        return morphs;
+      },
+      statements: [["element", "action", ["createProject"], ["on", "submit"], ["loc", [null, [5, 25], [5, 63]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [7, 4], [7, 37]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [11, 20], [11, 24]]]]], [], []], "id", "name", "class", "validate", "required", "", "aria-required", "true"], ["loc", [null, [11, 6], [11, 86]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "goal", ["loc", [null, [16, 20], [16, 24]]]]], [], []], "name", "description", "id", "description", "class", "validate"], ["loc", [null, [16, 6], [16, 79]]]], ["inline", "input", [], ["value", ["subexpr", "@mut", [["get", "member", ["loc", [null, [21, 20], [21, 26]]]]], [], []], "name", "member", "id", "member"], ["loc", [null, [21, 6], [21, 54]]]], ["element", "action", ["closeProjectCreation"], [], ["loc", [null, [32, 4], [32, 37]]]], ["element", "action", ["openTeamCreation"], [], ["loc", [null, [37, 3], [37, 32]]]], ["content", "yield", ["loc", [null, [43, 0], [43, 9]]]]],
+      locals: [],
+      templates: []
     };
   })());
 });

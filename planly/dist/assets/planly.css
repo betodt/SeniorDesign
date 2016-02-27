@@ -198,13 +198,31 @@ a#googleIcon {
   Project Creation
 ========================================================================== */
 #projectCreation{
-  overflow: hidden;
   width:50%;
+}
+#projectCreation .header{
+  height:10%;
 }
 
 #sub-task .close {
   font-size: 1.5rem;
 }
+
+/* ==========================================================================
+ Team Creation
+========================================================================== */
+#teamCreation{
+  width:50%;
+}
+
+#teamCreation .header{
+  height:10%;
+}
+
+#teamCreation #skip{
+  float:right;
+}
+
 
 /* ==========================================================================
   Project Task
@@ -249,4 +267,15 @@ vertical-align: text-top;
 
 #project-task .collectionItems{
   display:inline;
+}
+
+#project-task .notiBubble{
+    position:absolute;    /* This breaks the div from the normal HTML document. */
+    top: 0px;
+    right:1px;
+    padding:1px 2px 1px 2px;
+    background-color:#9e9e9e; /* you could use a background image if you'd like as well */
+    color:white;
+    font-weight:bold;
+    font-size:0.65em;
 }
