@@ -1,0 +1,43 @@
+<div id="teamCreation" class="modal modal-fixed-footer">
+		<div class="header teal"><h4 class="white-text center-align">Create a Team</h4></div>
+	<div class="modal-content">
+		<div class="row">
+			<form class="col s12" {{action "createProject" on="submit"}}>
+				<button id="skip" class="btn waves-effect waves-light blue-grey lighten-3" 
+				{{action "closeProjectCreation"}}> Skip </button>
+				<div class="center-align">
+					<!-- Team name -->
+					<div class="input-field col s12">
+						{{input value=name id='name' class="validate" required="" aria-required="true"}}
+						<label for="name" data-error="Please enter a team name" data-success="valid">Team Name</label>
+					</div>
+					<!-- Team Description-->
+					<div class="input-field col s12">
+						{{input value=goal name='description' id='description' class="validate"}}
+						<label for="description" data-error="Please enter a Team Description" data-success="valid">Team Description</label>
+					</div>
+					<!-- team members -->
+					<div class="input-field col s12">
+						{{input value=member name='member' id='member'}}
+						<label for="password" data-error="Please enter a valid email" data-success="valid">Add Members To The Team</label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="input-field col s6">
+				<button class="btn waves-effect waves-light red darken-1 center-align" 
+				{{action "closeProjectCreation"}}> Previous
+			</button>
+		</div>
+		<div class="input-field col s6 center-align">
+			<button class="btn waves-effect waves-light deep-purple darken-3" 
+			{{action "openTeamCreation"}}> Create
+		</button>
+	</div>
+</div>
+</div>
+</div>
+{{yield}}
