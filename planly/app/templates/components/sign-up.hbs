@@ -12,7 +12,7 @@
 				<!-- last name -->
 				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">perm_identity</i>
-					{{input value=last name='id' id='last' required="true" aria-required="true"}}
+					{{input value=last name='last' id='last' required="true" aria-required="true"}}
 					<label for="last">Last Name</label>
 				</div>
 				<!-- email -->
@@ -31,7 +31,7 @@
 				<!-- confirm password -->
 				<div class="input-field col s12 m12 l12">
 					<i class="material-icons prefix">lock_outline</i>
-					{{input value=passwordConfirm id='passwordConfirm' type='password' class="validate" required="true" aria-required="true"}}
+					{{input value=passwordConfirm name='passwordConfirm' id='passwordConfirm' type='password' class="validate" required="true" aria-required="true"}}
 					<label for="passwordConfirm" data-error="Please enter a valid password" data-success="Valid">Confirm Password</label>
 				</div>
 				<div class="center-align">

@@ -1,7 +1,7 @@
 {{partial "partials/nav"}}
 
 <main>
-	{{project-creation openTeamCreation='openTeamCreation'}}
+	{{project-creation openTeamCreation='openTeamCreation' users=model}}
 	{{team-creation}}
 	{{login-modal signIn='signIn' submit='submit'}} 
 	{{outlet}}

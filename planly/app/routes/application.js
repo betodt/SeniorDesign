@@ -4,8 +4,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   beforeModel: function() { 
-
     return this.get("session").fetch().catch(function() {});
+  },
+
+  model: function() {
+    return this.store.findAll('user');
   },
 
   actions: {
@@ -20,12 +23,19 @@ export default Ember.Route.extend({
         $('#projectCreation').openModal();
       },
     signIn: function(provider) {
+      console.log(provider);
       this.get("session").open("firebase", provider).then(function(data) {
         console.log(data.currentUser);
       });
     },
-    openTeamCreation: function(){
+    openTeamCreation: function(data){
       $('#teamCreation').openModal();
+      this.store.createRecord('project', {
+        name: data.name,
+        goal: data.goal,
+        created: data.created,
+        deadline: data.deadline
+      }).save();
     },
 
     signOut: function() {   
@@ -50,19 +60,19 @@ export default Ember.Route.extend({
             email: data.email,
             password: data.password
           }).then(function(data2) {
-            console.log(data2.currentUser);
+            console.log(data2.uid);
           
             __this__.store.createRecord('user', {
-             firstName: data.firstName,
-             lastName: data.lastName,
-             email: data.email,
-             picUrl: data2.currentUser.profileImageURL,
-             joined: new Date()
+              firstName: data.firstName,
+              lastName: data.lastName,
+              email: data.email,
+              picUrl: data2.currentUser.profileImageURL,
+              joined: new Date()
            }).save();
             
           });
         }
       });
     }
-  }
+  }   
 });

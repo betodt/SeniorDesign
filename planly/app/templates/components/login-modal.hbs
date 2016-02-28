@@ -20,7 +20,7 @@
           {{input value=password name='password' id='password' type='password'}}
           <label for="password">Password</label>
         </div>
-        <a class="waves-effect waves-light btn deep-purple darken-3" id="signInButton"{{action "signIn" "password" email password}}><i class="material-icons left">mail_outline</i>Sign In</a>
+        <a class="waves-effect waves-light btn deep-purple darken-3" id="signInButton"{{action "signIn" "password"}}><i class="material-icons left">mail_outline</i>Sign In</a>
         {{/unless}}
         <a class="waves-effect waves-light btn-flat deep-purple lighten-3" id="signupButton"{{action "toggleForm"}}><i class="material-icons left">mail_outline</i>Sign Up</a>
       </div>
