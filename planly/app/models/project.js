@@ -6,5 +6,6 @@ export default DS.Model.extend({
   created: DS.attr('date'),
   deadline: DS.attr('date'),
   tasks: DS.hasMany('task'),
-  teams: DS.hasMany('team')
+  teams: DS.hasMany('team'),
+  users: DS.hasMany('user')
 });
