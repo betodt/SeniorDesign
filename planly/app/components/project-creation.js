@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 			if(input.length > 0) {
 				var newUsers = this.get('users').filter(function(item, index, self){
 					console.log(item);
-					if(item.get('firstName').indexOf(input) > -1) {
+					if(item.get('fullName').toLowerCase().indexOf(input.toLowerCase()) > -1 ) {
 						return true;
 					}
 					else 

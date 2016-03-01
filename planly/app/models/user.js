@@ -8,5 +8,8 @@ export default DS.Model.extend({
   joined: DS.attr('date'),
   projects: DS.hasMany('project'),
   teams: DS.hasMany('team'),
-  tasks: DS.hasMany('task')
+  tasks: DS.hasMany('task'),
+  fullName: Ember.computed('firstName', 'lastName', function() {
+    return this.get('firstName') + ' ' + this.get('lastName');
+  })
 });

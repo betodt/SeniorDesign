@@ -22,19 +22,27 @@
 					<!-- team members -->
 					<div class="input-field col s12">
 						{{input value=project-member name='project-member' id='project-member'}}
-						<ul>
+						<ul id="teamMembers" class="left-align">
+							<h6 class="grey-text"> Selected Members </h6>
+						</ul>
+						
 							{{#if enabled}}
+								<ul class="collection">
 								{{#each user in filteredUsers}}
-									<li>
-										<div class="chip">
+							
+						
+										{{user-chip user=user}}
+								
+										{{!-- <div class="chip">
 									    <img src="{{user.picUrl}}" alt="Contact Person">
 									    {{user.firstName}} {{user.lastName}}
-									  </div>
-									</li>
+									  </div> --}}
+									
 								{{/each}}
+								</ul>
 							{{/if}}
-						</ul>
-						<label for="project-member" data-error="Please enter a valid email" data-success="valid">Team Members</label>
+						
+						<label for="project-member" data-error="Please enter a valid email" data-success="valid">Search for Team Members</label>
 					</div>
 				</div>
 			</form>

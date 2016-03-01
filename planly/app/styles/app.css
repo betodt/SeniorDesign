@@ -271,6 +271,36 @@ a#googleIcon {
 }
 
 /* ==========================================================================
+  Project View
+========================================================================== */
+  #projectView .project{
+    border: 1px solid black;
+    margin:10px;
+    width:40%;
+    height:250px;
+  }
+/* ==========================================================================
+  Select Team Members 
+========================================================================== */
+#projectCreation #teamMembers{
+  visibility: hidden;
+}
+
+#projectCreation #teamMembers h6{
+  font-size: .8rem;
+}
+
+#projectCreation .collection .collection-item.avatar{
+  min-height: 60px;
+  text-align: center;
+}
+
+#projectCreation li:hover{
+  background-color:#b0bec5
+}
+
+
+/* ==========================================================================
  Team Creation
 ========================================================================== */
 #teamCreation{
