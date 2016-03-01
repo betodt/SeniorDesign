@@ -17,29 +17,56 @@ export default Ember.Route.extend({
     },
     openProjectModel: function(){
       $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-        $('#projectCreation').openModal();
-      },
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+      $('#projectCreation').openModal();
+    },
     signIn: function(provider) {
-      console.log(provider);
+      var __this__ = this;
+      
       this.get("session").open("firebase", provider).then(function(data) {
-        console.log(data.currentUser);
+        if(provider.provider == "google" || provider.provider == "facebook") {
+          __this__.store.query('user', {
+            orderBy: 'email', 
+            equalTo: data.currentUser.cachedUserProfile.link
+          }).then(function(success){
+            console.log(success);
+            if(success.get('content').get('length') > 0) {
+              console.log("found in here");
+            } else {
+              console.log("not in here");
+              var user = __this__.store.createRecord('user', {
+                firstName: data.currentUser.cachedUserProfile.given_name,
+                lastName: data.currentUser.cachedUserProfile.family_name,
+                email: data.currentUser.cachedUserProfile.link,
+                picUrl: data.currentUser.profileImageURL,
+                joined: new Date()  
+              });
+              if(provider.provider == "facebook") {
+                user.set('firstName', data.currentUser.cachedUserProfile.first_name);
+                user.set('lastName', data.currentUser.cachedUserProfile.last_name);
+              }
+              user.save();
+            }
+          }, function(error){
+            console.log(error);
+          });
+        } else {
+            console.log("User exists");
+        }
+        __this__.transitionTo('/projects');
+      }, function(error) {
+        console.log("Could not log in: " + error);
       });
     },
     openTeamCreation: function(data){
       $('#teamCreation').openModal();
-      this.store.createRecord('project', {
-        name: data.name,
-        goal: data.goal,
-        created: data.created,
-        deadline: data.deadline
-      }).save();
     },
 
     signOut: function() {   
       this.get("session").close();
+      this.transitionTo('/');
     },
 
     submit: function(data) {
@@ -68,8 +95,7 @@ export default Ember.Route.extend({
               email: data.email,
               picUrl: data2.currentUser.profileImageURL,
               joined: new Date()
-           }).save();
-            
+           }).save(); 
           });
         }
       });

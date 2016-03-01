@@ -1,6 +1,6 @@
 <h1>YOUR PROJECT</h1>
 {{outlet}}
-{{#each model as |user|}}
-	<h5>{{link-to user.firstName "projects.tasks" user}}</h5>
+{{#each model as |project|}}
+	<h5>{{link-to project.name "projects.tasks" project}}</h5>
 {{/each}}
 <a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
