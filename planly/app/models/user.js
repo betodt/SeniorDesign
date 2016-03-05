@@ -6,7 +6,7 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   picUrl: DS.attr('string'),
   joined: DS.attr('date'),
-  projects: DS.hasMany('project'),
+  projects: DS.hasMany('project', { inverse: 'users', async: true }),
   teams: DS.hasMany('team'),
   tasks: DS.hasMany('task'),
   fullName: Ember.computed('firstName', 'lastName', function() {

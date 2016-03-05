@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	filteredUsers: null, //set by userQuery
 	userQuery: function() {
 		var input = this.get('project-member');
 		if(input != undefined) {
 			if(input.length > 0) {
 				var newUsers = this.get('users').filter(function(item, index, self){
-					console.log(item);
-					if(item.get('fullName').toLowerCase().indexOf(input.toLowerCase()) > -1 ) {
+					if(item.get('firstName').toLowerCase().substr(0, input.length) ===  input.toLowerCase() || item.get('lastName').toLowerCase().substr(0, input.length) ===  input.toLowerCase()) {
 						return true;
 					}
 					else 
@@ -36,7 +36,8 @@ export default Ember.Component.extend({
             	name: this.get('project-name'),
             	goal: this.get('project-goal'),
             	created: new Date(),
-            	deadline: this.get('project-deadline')
+            	deadline: this.get('project-deadline'),
+            	users: this.get('filteredUsers')
             });
 		}
 	 }

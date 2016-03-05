@@ -29,15 +29,7 @@
 							{{#if enabled}}
 								<ul class="collection">
 								{{#each user in filteredUsers}}
-							
-						
-										{{user-chip user=user}}
-								
-										{{!-- <div class="chip">
-									    <img src="{{user.picUrl}}" alt="Contact Person">
-									    {{user.firstName}} {{user.lastName}}
-									  </div> --}}
-									
+									{{user-chip user=user}}
 								{{/each}}
 								</ul>
 							{{/if}}
