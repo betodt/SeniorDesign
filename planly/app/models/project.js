@@ -5,7 +5,7 @@ export default DS.Model.extend({
   goal: DS.attr('string'),
   created: DS.attr('date'),
   deadline: DS.attr('date'),
-  tasks: DS.hasMany('task'),
-  teams: DS.hasMany('team'),
-  users: DS.hasMany('user')
+  tasks: DS.hasMany('task',{async: true}),
+  teams: DS.hasMany('team',{async: true}),
+  users: DS.hasMany('user', { inverse: 'projects', async: true })
 });

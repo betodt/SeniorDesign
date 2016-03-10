@@ -2,23 +2,37 @@
 		<div class="header teal"><h4 class="white-text center-align">Create a Team</h4></div>
 	<div class="modal-content">
 		<div class="row">
-			<form class="col s12" {{action "createProject" on="submit"}}>
+			<form class="col s12">
 				<button id="skip" class="btn waves-effect waves-light blue-grey lighten-3" 
-				{{action "closeProjectCreation"}}> Skip </button>
+				{{action "exitTeamCreation"}}> Skip </button>
 				<div class="center-align">
 					<!-- Team name -->
 					<div class="input-field col s12">
-						{{input value=name id='team-name' class="validate" required="" aria-required="true"}}
+						{{input value=team-name id='team-name' class="validate" required="" aria-required="true"}}
 						<label for="name" data-error="Please enter a team name" data-success="valid">Team Name</label>
 					</div>
 					<!-- Team Description-->
 					<div class="input-field col s12">
-						{{input value=goal name='team-description' id='team-description' class="validate"}}
+						{{input value=team-description name='team-description' id='team-description' class="validate"}}
 						<label for="description" data-error="Please enter a Team Description" data-success="valid">Team Description</label>
 					</div>
 					<!-- team members -->
 					<div class="input-field col s12">
-						{{input value=member name='team-member' id='team-member'}}
+						{{input value=team-member name='team-member' id='team-member'}}
+						<ul id="teamMembers" class="left-align">
+							<h6 class="grey-text"> Selected Members </h6>
+							{{#each user in selectedUsers}}
+								{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+							{{/each}}
+						</ul>
+						
+						{{#if enabled}}
+							<ul class="collection">
+							{{#each user in filteredUsers}}
+								{{user-chip user=user addSelected="addSelected" isChip=false}}
+							{{/each}}
+							</ul>
+						{{/if}}
 						<label for="password" data-error="Please enter a valid email" data-success="valid">Add Members To The Team</label>
 					</div>
 				</div>
@@ -34,7 +48,7 @@
 		</div>
 		<div class="input-field col s6 center-align">
 			<button class="btn waves-effect waves-light deep-purple darken-3" 
-			{{action "openTeamCreation"}}> Create
+			{{action "closeTeamCreation"}}> Create
 		</button>
 	</div>
 </div>

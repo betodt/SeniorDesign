@@ -6,12 +6,12 @@
 	      		<div class="row">
 				        <div class="input-field col s6">
 				        	<i class="material-icons prefix close" {{action "closeSubtask"}}>close</i>
-							{{input value=task-name id='task-name' class="validate" required="" aria-required="true"}}
+							{{input value=sub-task-name id='sub-task-name' class="validate" required="" aria-required="true"}}
 							<label for="task-name" data-error="Please enter the task name" data-success="valid">Subtask </label>
 				        </div>
 				        <div class="input-field col s6">
 				        	<i class="material-icons prefix">date_range</i>
-				          {{input type="date" value=task-deadline  class="datepicker" id="task-deadline" required="" aria-required="true"}}
+				          {{input type="date" value=sub-task-deadline  class="datepicker" id="sub-task-deadline" required="" aria-required="true"}}
 						  <label for="task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
 				        </div>
 				        <div class="card-action">

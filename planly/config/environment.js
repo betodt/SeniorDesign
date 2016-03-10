@@ -9,7 +9,7 @@ module.exports = function(environment) {
       //'default-src': "'none'",
 
       // Allow scripts from https://cdn.mxpnl.com
-      'script-src': ["'self'", "https://apis.google.com"],
+      'script-src': ["'self'", "https://apis.google.com", "https://*.firebaseio.com"],
 
       // Allow fonts to be loaded from http://fonts.gstatic.com
       'font-src': ["'self'", "http://fonts.gstatic.com"],
@@ -18,7 +18,7 @@ module.exports = function(environment) {
       'connect-src': ["'self'", "https://auth.firebase.com", "wss://*.firebaseio.com", "https://*.firebaseio.com"],
 
       // Allow images from the origin itself (i.e. current domain)
-      'img-src': "'self'",
+      'img-src': ["'self'", "*.googleusercontent.com", "facebook.com", "scontent.xx.fbcdn.net", "secure.gravatar.com"],
 
       // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'style-src': ["'self'", "'unsafe-inline'", "http://fonts.googleapis.com"],

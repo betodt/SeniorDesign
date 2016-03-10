@@ -1,1 +1,12 @@
+<h1 class="center-align">{{model.name}}</h1>
+{{#each model.teams as |team|}}
+	<div class="col s3 project">
+		<h5 class="center-align">{{team.name}}</h5>
+		<ul>
+		{{#each team.members as |user|}}
+			<li>{{user.fullName}}</li>
+		{{/each}}
+		</ul>
+	</div>	
+{{/each}}
 {{outlet}}

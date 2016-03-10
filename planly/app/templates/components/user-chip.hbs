@@ -1,8 +1,9 @@
 {{yield}}
 
-{{!-- <div class="chip"> --}}
-
+<div {{action "addSelected"}}>
     <img src="{{user.picUrl}}" alt="Contact Person" class="circle">
     <span class= "title"> {{user.fullName}} </span>
-
-{{!-- </div> --}}
+    {{#if isChip}}
+    	<i class='material-icons' {{action "removeSelected"}}>close</i>
+	{{/if}}
+</div>
