@@ -6,8 +6,8 @@ export default DS.Model.extend({
   deadline: DS.attr('date'),
   likes: DS.attr('number'),
   attachments: DS.attr('array'),
-  task: DS.belongsTo('task'),
-  teams: DS.attr('has-may'),
-  members: DS.hasMany('user'),
-  project: DS.belongsTo('project')
+  task: DS.belongsTo('task',{async: true}),
+  teams: DS.attr('has-many',{async: true}),
+  members: DS.hasMany('user',{async: true}),
+  project: DS.belongsTo('project',{async: true})
 });

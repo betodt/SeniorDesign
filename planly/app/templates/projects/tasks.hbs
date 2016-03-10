@@ -1,3 +1,8 @@
-{{create-task}}
-{{project-task}}
+<h1 class="center-align">{{model.name}}</h1>
+{{create-task createTask='createTask'}}
+
+{{#each model.tasks as |task|}}
+	{{project-task model=task removeTask='removeTask'}}
+{{/each}}
+
 {{outlet}}

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   beforeModel: function() { 
     return this.get("session").fetch().then(function(success) {
       console.log("fetched");
-      this.transitionTo('projects');
+      // this.transitionTo('projects');
     }.bind(this), function(error) {
       console.log("not fetched" + error);
     });
@@ -63,10 +63,29 @@ export default Ember.Route.extend({
         console.log("Could not log in: " + error);
       });
     },
-    openTeamCreation: function(data){
+    closeTeamCreation: function() {
+      console.log('why am i here');
+    },
+    openTeamCreation: function(project){
+      //create the project record
+      var newProject = this.store.createRecord('project', {
+        name: project.name,
+        goal: project.goal,
+        created: project.created,
+        deadline: project.deadline,
+        users: project.users
+      });
+
+      //add the project to each of the users in the project
+      newProject.get('users').forEach(function(user){
+        user.get('projects').pushObject(newProject);
+        user.save();
+      });
+
+      newProject.save();
+      $('#teamCreation').prop('currentProject', newProject);
       $('#teamCreation').openModal();
     },
-
     signOut: function() {   
       this.get("session").close();
       this.transitionTo('/');

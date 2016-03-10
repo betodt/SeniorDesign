@@ -33,33 +33,38 @@ export default Ember.Route.extend({
 	actions: {
 		openTeamCreation: function(project){
             // this.sendAction("createProject", );
-            //console.log('opening team creation in projects');
+            console.log('opening team creation in projects');
 
             //get the current user
             var user = this.modelFor(this.routeName);
 
-            //create the project record
-            var project = this.store.createRecord('project', {
-            	name: project.name,
-            	goal: project.goal,
-            	created: project.created,
-            	deadline: project.deadline,
-            	users: project.users
-        	});
-
-        	//push the user
-            project.get('users').pushObject(user);
-
-            //add the project to each of the users in the project
-            project.get('users').forEach(function(user){
-            	user.get('projects').pushObject(project);
-            	user.save();
-            });
-
-            project.save();
+            //push the user
+            project.users.push(user);
 
             //bubble up to application router to open up the next modal
         	return true;
+		},
+		closeTeamCreation: function(team) {
+			console.log('creating team in projects');
+		    //create the project record
+		    var newTeam = this.store.createRecord('team', {
+		    	name: team.name,
+		    	description: team.description,
+		    	created: team.created,
+		    	members: team.members,
+		    	project: team.project
+			});
+
+			//add to the project
+			newTeam.get('project').get('teams').pushObject(team);
+
+		    //add the project to each of the users in the project
+		    newTeam.get('members').forEach(function(user){
+		    	user.get('teams').pushObject(newTeam);
+		    	user.save();
+		    });
+
+		    newTeam.save();
 		}
 	}
 });

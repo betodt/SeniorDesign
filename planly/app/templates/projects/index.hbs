@@ -4,7 +4,14 @@
 	<div class="container center-align">
 		<div class="row">
 			{{#each model.projects as |project|}}
-				<div class="col s3 project"><h5 class="center-align">{{link-to project.name "projects.tasks"}}</h5></div>
+				<div class="col s3 project">
+					<h5 class="center-align">{{link-to project.name "projects.tasks" project}}</h5>
+					<ul>
+					{{#each project.users as |user|}}
+						<li>{{user.fullName}}</li>
+					{{/each}}
+					</ul>
+				</div>	
 			{{/each}}
 		</div>
 	</div>

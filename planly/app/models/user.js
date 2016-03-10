@@ -7,8 +7,8 @@ export default DS.Model.extend({
   picUrl: DS.attr('string'),
   joined: DS.attr('date'),
   projects: DS.hasMany('project', { inverse: 'users', async: true }),
-  teams: DS.hasMany('team'),
-  tasks: DS.hasMany('task'),
+  teams: DS.hasMany('team',{async: true}),
+  tasks: DS.hasMany('task',{async: true}),
   fullName: Ember.computed('firstName', 'lastName', function() {
     return this.get('firstName') + ' ' + this.get('lastName');
   })

@@ -5,9 +5,9 @@ export default DS.Model.extend({
   created: DS.attr('date'),
   deadline: DS.attr('date'),
   likes: DS.attr('number'),
-  attachments: DS.attr('array'),
+  attachments: DS.attr('string'),
   subtasks: DS.hasMany('subtask'),
-  teams: DS.hasMany('team'),
-  members: DS.hasMany('user'),
-  project: DS.belongsTo('project')
+  teams: DS.hasMany('team',{async: true}),
+  members: DS.hasMany('user',{async: true}),
+  project: DS.belongsTo('project',{async: true})
 });

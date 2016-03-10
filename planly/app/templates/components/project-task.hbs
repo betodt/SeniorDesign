@@ -6,8 +6,8 @@
 					<div class="card-title teal">
 						<form action="#">
 							<div class="left-align">
-     							<input type="checkbox" class=" checkbox" id="task1"/>
-      								<label for="task1"><h4 class="white-text">  </h4></label>
+     							<input type="checkbox" class=" checkbox" id="task{{model.id}}"/>
+      								<label for="task{{model.id}}" {{action "removeTask" model.id}}><h4 class="white-text">{{model.description}}</h4></label>
       						</div>
     					</form>
     				</div>	
@@ -15,11 +15,14 @@
 				<div class= "card-content">
 					<div class="row">
 						<div class="col s3">
-							<h5> Due:  </h5>
+							<h5>Due: {{model.deadline}}</h5>
 						</div>
 						<div class="col s4">
-							<h5> Assigned to: <img class= "circle responsive-img" src="assets/images/betopic.jpg">  </h5>
-							
+							<h5> Assigned to: 
+								{{#each model.members as |member|}}
+									<img class= "circle responsive-img" src="{{member.picUrl}}">  
+								{{/each}}
+							</h5>
 						</div>
 						
 						{{!-- <div class="col s2">
