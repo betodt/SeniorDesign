@@ -1,10 +1,9 @@
 <div id= "projectView">
-	<h2 class="center-align">YOUR PROJECTS</h2>
+	<h2 class="center-align">Your Projects</h2>
 	{{outlet}}
-	<div class="container center-align">
-		<div class="row">
+	<div class="row">
 			{{#each model.projects as |project|}}
-				<div class="col s3 project">
+				<div class="col s12 m4 l4 project">
 					<h5 class="center-align">{{link-to project.name "projects.tasks" project}}</h5>
 					<ul>
 					{{#each project.users as |user|}}
@@ -13,7 +12,6 @@
 					</ul>
 				</div>	
 			{{/each}}
-		</div>
 	</div>
 		<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
 </div>

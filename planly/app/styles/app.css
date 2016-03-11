@@ -229,29 +229,30 @@ a#googleIcon {
   padding: 0;
  }
 
- .sideBar nav ul li {
+ .sideBar ul li {
   float: none;
+  width: 100%;
  }
 
- .sideBar nav ul li i {
+ .sideBar ul li i {
   clear: right;
  }
 
- .sideBar nav {
+ .sideBar {
   width: 100%;
   padding: 0;
   margin: 0;
  }
 
- .sideBar nav ul {
+ .sideBar ul {
   margin: 0 auto;
-  width: 100%;
+
  }
- .sideBar nav ul a:hover {
-  background-color: #ffffff;
+ .sideBar ul a:hover {
+  background-color: gray;
  }
 
- .sideBar nav ul a:active {
+ .sideBar ul a:active {
   background-color: #ffffff;
  }
 
@@ -275,8 +276,6 @@ a#googleIcon {
 ========================================================================== */
   #projectView .project{
     border: 1px solid black;
-    margin:10px;
-    width:40%;
     height:250px;
   }
 /* ==========================================================================
@@ -371,3 +370,19 @@ vertical-align: text-top;
     font-weight:bold;
     font-size:0.65em;
 }
+
+@media screen and (max-width:480px){
+
+};
+
+
+
+
+
+
+
+
+
+
+
+

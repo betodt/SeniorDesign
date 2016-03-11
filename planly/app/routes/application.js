@@ -21,10 +21,6 @@ export default Ember.Route.extend({
       $('#login').openModal();
     },
     openProjectModel: function(){
-      $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-      });
       $('#projectCreation').openModal();
     },
     signIn: function(provider) {      

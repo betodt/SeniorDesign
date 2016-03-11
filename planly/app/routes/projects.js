@@ -57,6 +57,7 @@ export default Ember.Route.extend({
 
 			//add to the project
 			newTeam.get('project').get('teams').pushObject(team);
+			newTeam.get('project').save();
 
 		    //add the project to each of the users in the project
 		    newTeam.get('members').forEach(function(user){
