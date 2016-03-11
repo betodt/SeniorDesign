@@ -103,11 +103,6 @@ body {
   text-align:center;
 }
 
-#loginContent{
-  width: 50%;
-  margin: 0 auto;
-}
-
    /* label focus color */
    .input-field input[type=text]:focus + label {
      color: #4527a0;
@@ -153,12 +148,12 @@ body {
   padding: 0;
 }
 
- #login{
+/* #login{
   width: 40%;
   height: auto;
-  /*overflow: hidden;*/
+  /*overflow: hidden;
 
- }  
+ }  */
 #login h5{
   width:100%;
   text-align: center;
@@ -259,9 +254,7 @@ a#googleIcon {
 /* ==========================================================================
   Project Creation
 ========================================================================== */
-#projectCreation{
-  width:50%;
-}
+
 
 #projectCreation .header{
   height:10%;
@@ -302,9 +295,6 @@ a#googleIcon {
 /* ==========================================================================
  Team Creation
 ========================================================================== */
-#teamCreation{
-  width:50%;
-}
 
 #teamCreation .header{
   height:10%;
@@ -371,10 +361,21 @@ vertical-align: text-top;
     font-size:0.65em;
 }
 
-@media screen and (max-width:480px){
+@media only screen and (min-width: 992px) {
+  #loginContent{
+    width: 50%;
+    margin: 0 auto;
+  }
 
-};
+  #teamCreation{
+    width:50%;
+  }
 
+  #projectCreation{
+    width:50%;
+  }
+
+} 
 
 
 

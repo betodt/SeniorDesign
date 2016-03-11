@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	currentProject: null, //updates when a new project is selected
 	beforeModel: function() {
 		if (this.get('session').get('isAuthenticated')) {
 		  return; // Already authenticated
@@ -31,6 +32,9 @@ export default Ember.Route.extend({
         });
 	},
 	actions: {
+		sideBarLink: function(route) {
+			this.transitionTo(route, currentProject);
+		},
 		openTeamCreation: function(project){
             // this.sendAction("createProject", );
             console.log('opening team creation in projects');

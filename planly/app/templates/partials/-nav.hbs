@@ -1,7 +1,8 @@
 <nav>
    <div class="nav-wrapper indigo">
      <a href="#" class="brand-logo">Planly</a>
-     <ul id="nav-mobile" class="right hide-on-med-and-down">
+     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+     <ul class="right hide-on-med-and-down">
       	 <li>
 		{{#if session.isAuthenticated}}
 		  Logged in as {{session.currentUser.displayName}}
@@ -11,5 +12,15 @@
 		{{/if}}
 		</li>
      </ul>
+      <ul id="nav-mobile" class="side-nav">
+       	 <li>
+ 		{{#if session.isAuthenticated}}
+ 		  Logged in as {{session.currentUser.displayName}}
+ 		  <button class="btn-flat" {{action "signOut"}}>Sign out</button>
+ 		{{else}}
+ 		  <button class="btn-flat" {{action "openModal"}}>Sign in</button>
+ 		{{/if}}
+ 		</li>
+      </ul>
    </div>
  </nav>

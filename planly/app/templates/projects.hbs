@@ -1,30 +1,30 @@
 <div class="row">
-	<nav class="col s12 m4 l2">
+	<nav class="col s12 l2">
 		<div class="sideBar nav-wrapper">
 			<a href="#" data-activates="mobile-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
 		{{!-- <nav class="transparent z-depth-0"> --}}
-		  <ul class="left hide-on-med-and-down">
+		  <ul class="hide-on-med-and-down">
 		  	<img src="{{model.picUrl}}" alt="Contact Person" id="profilePic" class="circle responsive-img materialboxed">
 		  	<h5 class="center-align black-text">{{model.firstName}}</h5>
-		    <li>{{#link-to "projects.teams" class="black-text"}}<i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects.tasks" class="black-text"}}<i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects.calendars" class="black-text"}}<i class="material-icons left">today</i><span class="hide-on-med-only">Calendar</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects" class="black-text"}}<i class="material-icons left">perm_media</i><span class="hide-on-med-only">Projects</span>{{/link-to}}</li>
+		    <li><a  {{action "sideBarLink" "projects.teams" }} class="black-text"><i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects.tasks" }} class="black-text"><i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects.calendars"}} class="black-text"><i class="material-icons left">today</i><span class="hide-on-med-only">Calendar</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects"}} class="black-text"><i class="material-icons left">perm_media</i><span class="hide-on-med-only">Projects</span></a></li>
 		  </ul>
 		{{!-- </nav> --}}
 		{{!-- <nav class="transparent z-depth-0"> --}}
-		  <ul id="mobile-sidebar" class="left side-nav">
+		  <ul id="mobile-sidebar" class="side-nav">
 		  	<img src="{{model.picUrl}}" alt="Contact Person" id="profilePic" class="circle responsive-img materialboxed">
 		  	<h5 class="center-align black-text">{{model.firstName}}</h5>
-		    <li>{{#link-to "projects.teams" class="black-text"}}<i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects.tasks" class="black-text"}}<i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects.calendars" class="black-text"}}<i class="material-icons left">today</i><span class="hide-on-med-only">Calendar</span>{{/link-to}}</li>
-		    <li>{{#link-to "projects" class="black-text"}}<i class="material-icons left">perm_media</i><span class="hide-on-med-only">Projects</span>{{/link-to}}</li>
+		    <li><a  {{action "sideBarLink" "projects.teams" }} class="black-text"><i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects.tasks" }} class="black-text"><i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects.calendars"}} class="black-text"><i class="material-icons left">today</i><span class="hide-on-med-only">Calendar</span></a></li>
+		    <li><a  {{action "sideBarLink" "projects"}} class="black-text"><i class="material-icons left">perm_media</i><span class="hide-on-med-only">Projects</span></a></li>
 		  </ul>
 		{{!-- </nav> --}}
 		</div>
 	</nav>
-	<div class="col s12 m8 l10 grey lighten-3">
+	<div class="col s12 l10">
 		{{outlet}}
 	</div>
 </div>
