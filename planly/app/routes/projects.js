@@ -45,26 +45,31 @@ export default Ember.Route.extend({
         	return true;
 		},
 		closeTeamCreation: function(team) {
-			console.log('creating team in projects');
+			
 		    //create the project record
 		    var newTeam = this.store.createRecord('team', {
 		    	name: team.name,
 		    	description: team.description,
 		    	created: team.created,
-		    	members: team.members,
-		    	project: team.project
+		    	members: team.members
 			});
 
-			//add to the project
-			newTeam.get('project').get('teams').pushObject(team);
+			this.store.findRecord('project', team.project).then(function(project) {
+			    console.log(project);
 
-		    //add the project to each of the users in the project
-		    newTeam.get('members').forEach(function(user){
-		    	user.get('teams').pushObject(newTeam);
-		    	user.save();
-		    });
+			    newTeam.setProperties({ 'project': project });
+				//add to the project
+				project.get('teams').pushObject(newTeam);
+				project.save();
 
-		    newTeam.save();
+			    //add the project to each of the users in the project
+			    newTeam.get('members').forEach(function(user){
+			    	user.get('teams').pushObject(newTeam);
+			    	user.save();
+			    });
+
+			    newTeam.save();
+			});
 		}
 	}
 });

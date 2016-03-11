@@ -31,15 +31,17 @@ export default Ember.Component.extend({
 			this.get('filteredUsers').pushObject(user);
 		},
 		closeTeamCreation: function() {
-            console.log('closing team creation');
-			$('#teamCreation').closeModal();
+            console.log($('#teamCreation').prop('currentProject'));
+			
 			this.sendAction("closeTeamCreation", {
             	name: this.get('team-name'),
             	description: this.get('team-description'),
             	created: new Date(),
             	members: this.get('selectedUsers'),
-            	project: $('#teamCreation').prop('currentProject')
+            	project: $('#teamCreation').prop('currentProject').get('id')
             });
+
+            $('#teamCreation').closeModal();
 		}
 	}
 });
