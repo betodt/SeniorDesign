@@ -32,8 +32,21 @@ export default Ember.Route.extend({
         });
 	},
 	actions: {
-		sideBarLink: function(route) {
-			this.transitionTo(route, currentProject);
+		projectLink: function(route, project) {
+
+			var currentUser = this.modelFor(this.routeName);
+
+			console.log(currentUser);
+			currentUser.set('lastProjectOpen', project);
+			currentUser.save();
+
+			this.transitionTo(route, project);
+		},
+		sideBarLink: function(route, model) {
+			if(model)
+				this.transitionTo(route, model);
+			else
+				this.transitionTo(route);
 		},
 		openTeamCreation: function(project){
             // this.sendAction("createProject", );
@@ -44,6 +57,7 @@ export default Ember.Route.extend({
 
             //push the user
             project.users.push(user);
+            project.currentUser = user;
 
             //bubble up to application router to open up the next modal
         	return true;
@@ -59,7 +73,6 @@ export default Ember.Route.extend({
 			});
 
 			this.store.findRecord('project', team.project).then(function(project) {
-			    console.log(project);
 
 			    newTeam.setProperties({ 'project': project });
 				//add to the project

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   beforeModel: function() { 
     return this.get("session").fetch().then(function(success) {
       console.log("fetched");
-      // this.transitionTo('projects');
+      this.transitionTo('projects');
     }.bind(this), function(error) {
       console.log("not fetched" + error);
     });
@@ -77,6 +77,10 @@ export default Ember.Route.extend({
         user.get('projects').pushObject(newProject);
         user.save();
       });
+
+      console.log(project.currentUser);
+      project.currentUser.set('lastProjectOpen', newProject);
+      project.currentUser.save();
 
       newProject.save();
       $('#teamCreation').prop('currentProject', newProject);

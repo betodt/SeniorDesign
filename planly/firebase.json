@@ -1,0 +1,8 @@
+{
+  "firebase": "planly",
+  "public": "dist",
+  "rewrites": [{
+    "source": "**",
+    "destination": "/index.html"
+  }]
+}

@@ -1,5 +1,6 @@
 <div id="projectView">
 	<h1 class="center-align">{{model.name}}</h1>
+	<h2 class="center-align">Teams</h2>
 	<div class="row">
 			{{#each model.teams as |team|}}
 				<div class="col s12 m4 l4 project">
@@ -12,5 +13,5 @@
 				</div>	
 			{{/each}}
 	</div>
-		<a class="btn-floating btn-small waves-effect waves-light grey" {{action ""}}><i class="material-icons">add</i></a>
+		<a class="btn-floating btn-small waves-effect waves-light grey" {{action "addTeams"}}><i class="material-icons">add</i></a>
 </div>

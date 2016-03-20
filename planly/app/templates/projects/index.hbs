@@ -4,7 +4,7 @@
 	<div class="row">
 			{{#each model.projects as |project|}}
 				<div class="col s12 m4 l4 project">
-					<h5 class="center-align">{{link-to project.name "projects.tasks" project}}</h5>
+					<h5 class="center-align"><a {{action "projectLink" "projects.tasks" project}}>{{project.name}}</a></h5>
 					<ul>
 					{{#each project.users as |user|}}
 						<li>{{user.fullName}}</li>

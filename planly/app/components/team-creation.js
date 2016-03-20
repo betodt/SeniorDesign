@@ -31,7 +31,6 @@ export default Ember.Component.extend({
 			this.get('filteredUsers').pushObject(user);
 		},
 		closeTeamCreation: function() {
-            console.log($('#teamCreation').prop('currentProject'));
 			
 			this.sendAction("closeTeamCreation", {
             	name: this.get('team-name'),
