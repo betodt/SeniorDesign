@@ -1,25 +1,68 @@
 @font-face {
     font-family: 'Roboto-Medium';
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Medium.eot');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Medium.eot?#iefix') format('embedded-opentype');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Medium.woff2') format('woff2');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Medium.woff') format('woff');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Medium.ttf') format('truetype');
+    src: url('/font/roboto/Roboto-Medium.eot');
+    src: url('/font/roboto/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+    url('/font/roboto/Roboto-Medium.woff2') format('woff2'),
+    url('/font/roboto/Roboto-Medium.woff') format('woff'),
+    url('/font/roboto/Roboto-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
 }
 @font-face {
     font-family: 'Roboto-Bold';
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Bold.eot');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Bold.woff2') format('woff2');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Bold.woff') format('woff');
-    src: url('/planly/dist/Materialize/dist/font/roboto/Roboto-Bold.ttf') format('truetype');
+    src: url('/font/roboto/Roboto-Bold.eot');
+    src: url('/font/roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/font/roboto/Roboto-Bold.woff2') format('woff2'),
+    url('/font/roboto/Roboto-Bold.woff') format('woff'),
+    url('/font/roboto/Roboto-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('/font/roboto/Roboto-Light.eot');
+    src: url('/font/roboto/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+    url('/font/roboto/Roboto-Light.woff2') format('woff2'),
+    url('/font/roboto/Roboto-Light.woff') format('woff'),
+    url('/font/roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('/font/roboto/Roboto-Regular.eot');
+    src: url('/font/roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/font/roboto/Roboto-Regular.woff2') format('woff2'),
+    url('/font/roboto/Roboto-Regular.woff') format('woff'),
+    url('/font/roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('/font/roboto/Roboto-Thin.eot');
+    src: url('/font/roboto/Roboto-Thin.eot?#iefix') format('embedded-opentype'),
+    url('/font/roboto/Roboto-Thin.woff2') format('woff2'),
+    url('/font/roboto/Roboto-Thin.woff') format('woff'),
+    url('/font/roboto/Roboto-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+  
+  font-family: "Roboto-Light", Calibri, Trebuchet, sans-serif;
+
+}
+
 /* body */
 body {
     display: flex;
@@ -258,10 +301,9 @@ a#googleIcon {
 /* ==========================================================================
   Project View
 ========================================================================== */
-  #projectView .project{
-    border: 1px solid black;
-    height:250px;
-  }
+#projectView .project img {
+  height: 3em;
+}
 /* ==========================================================================
   Select Team Members 
 ========================================================================== */
@@ -295,6 +337,13 @@ a#googleIcon {
   float:right;
 }
 
+/* ==========================================================================
+  Team View
+========================================================================== */
+
+#teamView .team img {
+  height: 3em;
+}
 
 /* ==========================================================================
   Project Task
@@ -322,7 +371,7 @@ input[type="checkbox"]:checked + label:before{
 
 
 #project-task img.responsive-img, video.responsive-video{
-width: 10%;
+height:2em;
 border: 1px solid black;
 margin:5px;
 vertical-align: text-top;

@@ -1,15 +1,17 @@
-<div id="projectView">
+<div id="teamView">
 	<h1 class="center-align">{{model.name}}</h1>
 	<h2 class="center-align">Teams</h2>
 	<div class="row">
 			{{#each model.teams as |team|}}
-				<div class="col s12 m4 l4 project">
-					<h5 class="center-align">{{team.name}}</h5>
-					<ul>
-					{{#each team.members as |user|}}
-						<li>{{user.fullName}}</li>
-					{{/each}}
+				<div class="col s12 m4 l4 team">
+					<div class="card hoverable">
+						<h5 class="center-align">{{team.name}}</h5>
+						<ul>
+						{{#each team.members as |user|}} 
+							<img class="thumbnail hoverable circle tooltipped" data-position="top" data-delay="50" data-tooltip="{{user.fullName}}" src="{{user.picUrl}}">
+						{{/each}}
 					</ul>
+					</div>
 				</div>	
 			{{/each}}
 	</div>

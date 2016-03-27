@@ -11,3 +11,5 @@ export default DS.Model.extend({
   members: DS.hasMany('user',{async: true}),
   project: DS.belongsTo('project',{async: true})
 });
+
+
