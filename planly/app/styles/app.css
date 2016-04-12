@@ -105,9 +105,8 @@ body {
   #profilePic{ 
     width:50%;
     margin: auto;
-
-    
-  }
+    margin-top:20px;
+}
 
   /* team tab */ 
   .teamPics{
@@ -373,11 +372,18 @@ input[type="checkbox"]:checked + label:before{
   padding:10px;
 }
 
+#project-task div.card{
+  padding:0px;
+}
+
+#project-task .material-icons.more-horiz{
+  position:absolute;
+  right:0.5em;
+}
 
 
 #project-task img.responsive-img, video.responsive-video{
 height:2em;
-border: 1px solid black;
 margin:5px;
 vertical-align: text-top;
 }
@@ -429,12 +435,34 @@ vertical-align: text-top;
 
 } 
 
+/* ==========================================================================
+ Create Task
+========================================================================== */
 
 
+#createTask #membersAssigned h6{
+  font-size: .8rem;
+}
 
+#createTask .collection .collection-item.avatar{
+  min-height: 60px;
+  text-align: center;
+}
 
+#createTask li:hover{
+  background-color:#b0bec5
+}
 
+#createTask ul.collection {
+  position: absolute;
+  width: 100%;
+  z-index: 1001;
+  margin-top: 0;
+}
 
+#createTask input#members-assigned {
+  margin-bottom: 0;
+}
 
 
 

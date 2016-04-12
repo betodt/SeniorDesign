@@ -1,0 +1,17 @@
+<div id="skipTeamModal" class="modal modal-fixed-footer">
+	<div class="header teal"><h4 class="white-text center-align">No Teams? Thats okay! </h4>
+	</div>
+	<div class="modal-content">
+		<h5 class="center-align">For now, all members will be assigned to the same team.</h5>
+		<h5 class="center-align">You can edit this at any time by selecting "Teams" on left navigation </h5>
+		
+	</div>
+	<div class="modal-footer">
+		<div class="input-field col s6 right-align">
+			<button class="btn waves-effect waves-light blue-grey lighten-3" 
+			{{action "closeSkipTeamModal"}}> Got it </button>
+		</div>
+	</div>
+</div>
+
+{{yield}}

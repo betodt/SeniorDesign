@@ -1,36 +1,46 @@
 {{yield}}
-<div id="create-task">
+<div id="createTask">
 	<div class="row">
 	    <form class="col s12">
 	    	<div class="card">
 	      		<div class="row">
-				        <div class="input-field col s12 m6">
+				        <div class="input-field col s12 l4">
 							{{input value=task-name id='task-name' class="validate" required="" aria-required="true"}}
 							<label for="task-name" data-error="Please enter the task name" data-success="valid">Add a new task!</label>
 				        </div>
-				        <div class="input-field col s12 m6">
-				        	<i class="material-icons prefix">date_range</i>
+
+				        <div class="input-field col s12 l2">
 				          {{input type="date" value=task-deadline  class="datepicker" id="task-deadline" required="" aria-required="true"}}
 						  <label for="task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
 				        </div>
-		    		{{!-- </div><!-- end of card-content--> --}}
-		    		<div class="card-action">
-		    			<div class="row">
-		    				<div class="col s4">
-		    					<a class="btn-floating blue"{{action "createSubtask"}}><i class="material-icons">list</i></a>
-		    				</div>
-		    				<div class="col s4">
-		    					<a class="btn-floating yellow darken-1"><i class="material-icons">person_add</i></a>
-		    				</div>
-		    				<div class="col s4">
-		    					<a class="btn-floating green"><i class="material-icons">attach_file</i></a>
-		    				</div>
-		    			</div>
-		    		</div><!--end of card-action-->
+				        <div class="col s12 l6 input-field">
+		    					{{input value=members-assigned name='members-assigned' id='members-assigned'}}
+		    					{{#if enabled}}
+		    						<ul class="collection z-depth-3">
+		    						{{#each user in filteredUsers}}
+		    							{{user-chip user=user addSelected="addSelected" isChip=false}}
+		    						{{/each}}
+		    						</ul>
+		    					{{/if}}
+		    					<label for="task-name" data-error="Please enter the task name" data-success="valid">Assigned to:</label>
+		
+							<ul id="membersAssigned" class="left-align">
+								<h6 class="grey-text"> Selected Members </h6>
+								{{#each user in selectedUsers}}
+									{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+								{{/each}}
+							</ul>
+						</div>
 
-		    		{{#if enabled}}
+		    		{{#each subtasks as |subtask|}}
 		    			{{sub-task}}
-		    		{{/if}}
+		    		{{/each}}
+
+		    		{{!-- </div><!-- end of card-content--> --}}
+		    	
+		    					<a class="btn-flat"{{action "createSubtask"}}> + Add Subtask </a>
+		    		
+
 		    		<div class="card-action">
 		    			<button class="waves-effect waves-light btn right" style="margin-bottom:20px;"{{action "createTask"}} onclick="Materialize.fadeInImage()">Create</button>
 		    		</div>
