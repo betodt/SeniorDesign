@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	subtasks: [],
 	beforeModel: function() {
 		if (this.get('session').get('isAuthenticated')) {
 		  return; // Already authenticated
@@ -42,6 +43,11 @@ export default Ember.Route.extend({
 			});
 
 			newTask.save();
+		},
+		createSubtask: function() {
+		},
+		initCreateTask: function() {
+			$('#createTask').prop('selectedProject', this.modelFor(this.routeName));
 		}
 	}
 });

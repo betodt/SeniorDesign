@@ -5,22 +5,24 @@
 			<div class= "card">
 					<div class="card-title teal">
 						<form action="#">
+
 							<div class="left-align">
      							<input type="checkbox" class=" checkbox" id="task{{model.id}}"/>
       								<label for="task{{model.id}}" {{action "removeTask" model.id}}><h4 class="white-text">{{model.description}}</h4></label>
       						</div>
+
     					</form>
     				</div>	
 
 				<div class= "card-content">
 					<div class="row">
 						<div class="col s12 m12">
-							<h5>Due: {{model.deadline}}</h5>
+							<h5>Due: {{formatted-date model.deadline 'LL'}}</h5>
 						</div>
 						<div class="col s12 m12">
 							<h5> Assigned to: 
 								{{#each model.members as |member|}}
-									<img class= "circle responsive-img" src="{{member.picUrl}}">  
+									<img class= "hoverable circle responsive-img tooltipped" data-position="top" data-delay="50" data-tooltip="{{member.fullName}}" src="{{member.picUrl}}">  
 								{{/each}}
 							</h5>
 						</div>
@@ -44,6 +46,12 @@
 					<a href="#"><i class="material-icons">list</i></a>
               		<a href="#"><i class="material-icons">chat_bubble_outline</i></a>
               		<a href="#"><i class="material-icons">favorite_border</i> </a>
+					<a href="#!"><i class="dropdown-button material-icons more-horiz" data-activates="dropdown{{model.id}}" {{action "doNothin" bubbles=false}}>more_horiz</i></a>
+					<ul id="dropdown{{model.id}}" class="dropdown-content">
+						<li> <a href="#!" {{action "openEditTaskModal"}} >Edit </a> </li>
+						<li class="divider"> </li>
+						<li> <a href="#!">Delete </a> </li>
+					</ul>
             	</div>
            </div><!-- end of card -->
          </div> <!-- end of col -->

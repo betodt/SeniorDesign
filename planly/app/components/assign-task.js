@@ -4,10 +4,10 @@ export default Ember.Component.extend({
 	filteredUsers: null, //set by userQuery
 	selectedUsers: [], //set by addSelected
 	userQuery: function() {
-		var input = this.get('team-member');
+		var input = this.get('members-assigned');
 		if(input != undefined) {
 			if(input.length > 0) {
-				var newUsers = $('#teamCreation').prop('currentProject').get('users').filter(function(item, index, self){
+				var newUsers = $('#assignTaskModal').prop('selectedProject').get('users').filter(function(item, index, self){
 					if(item.get('firstName').toLowerCase().substr(0, input.length) ===  input.toLowerCase() || item.get('lastName').toLowerCase().substr(0, input.length) ===  input.toLowerCase()) {
 						return true;
 					}
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
 				this.setProperties({enabled: false});
 			}
 		}
-	}.observes('team-member').on('init'),
+	}.observes('members-assigned').on('init'),
 	actions: {
 		addSelected: function(user) {
 			this.get('filteredUsers').removeObject(user);
@@ -29,14 +29,6 @@ export default Ember.Component.extend({
 		removeSelected: function(user) {
 			this.get('selectedUsers').removeObject(user);
 			this.get('filteredUsers').pushObject(user);
-		},
-		cancelTeamCreation: function(){
-			$('#teamCreation').closeModal();
-			$('#projectCreation').openModal();
-		},
-		openSkipTeamModal: function(){
-			$('#teamCreation').closeModal();
-			$('#skipTeamModal').openModal();
 		},
 		closeTeamCreation: function() {
 			

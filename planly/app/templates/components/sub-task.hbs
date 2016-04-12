@@ -1,43 +1,38 @@
 {{yield}}
-<div id="sub-task">
+<div>
 	<div class="row">
 	    <form class="col s12">
 	    	<div class="card z-depth-0">
 	      		<div class="row">
-				        <div class="input-field col s12">
+				        <div class="input-field col s12 l4">
 				        	<i class="material-icons prefix close" {{action "closeSubtask"}}>close</i>
-							{{input value=sub-task-name id='sub-task-name' class="validate" required="" aria-required="true"}}
-							<label for="task-name" data-error="Please enter the task name" data-success="valid">Subtask </label>
+				        	{{input value=sub-task-name class="validate" required="" aria-required="true"}}
+							<label for="sub-task-name" data-error="Please enter a sub task" data-success="valid">Subtask!</label>
 				        </div>
-				        <div class="input-field col s12">
-				        	<i class="material-icons prefix">date_range</i>
-				          {{input type="date" value=sub-task-deadline  class="datepicker" id="sub-task-deadline" required="" aria-required="true"}}
-						  <label for="task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
+						<div class="input-field col s12 l2">
+				          {{input type="date" value=subtask-deadline  class="datepicker" required="" aria-required="true"}}
+						  <label for="subtask-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
 				        </div>
-				 </div>
-				        <div class="card-action">
-				        	<div class="row">
-					        	<div class="col s4">
-			    					<a class="btn-floating blue"{{action "createSubtask"}}><i class="material-icons">list</i></a>
-			    				</div>
-			    				<div class="col s4">
-			    					<a class="btn-floating yellow darken-1"><i class="material-icons">person_add</i></a>
-			    				</div>
-			    				<div class="col s4">
-			    					<div class="file-field">
-			    					     <div class="btn-floating green">
-			    					       <span><i class="material-icons">attach_file</i></span>
-			    					       <input type="file" multiple>
-			    					     </div>
-			    					</div>
-			    				</div>
-			    			</div>
-		    			</div><!--end of card-action-->
-				
+				        <div class="col s12 l6 input-field">
+		    					{{input value=subtask-assigned name='subtask-assigned'}}
+		    					{{#if enabled}}
+		    						<ul class="collection z-depth-3">
+		    						{{#each user in filteredUsers}}
+		    							{{user-chip user=user addSelected="addSelected" isChip=false}}
+		    						{{/each}}
+		    						</ul>
+		    					{{/if}}
+		    					<label for="task-name" data-error="Please enter the task name" data-success="valid">Assigned to:</label>
+							
+							<ul id="membersAssigned" class="left-align">
+								<h6 class="grey-text"> Selected Members </h6>
+								{{#each user in selectedUsers}}
+									{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+								{{/each}}
+							</ul>
+						</div>
+					</div> <!-- end of input -->
 			</div> {{!-- end of card --}}
-			{{#if enabled}}
-		    	{{sub-task}}
-		    {{/if}}
 		</form>
 	</div> {{!-- end of row --}}
 </div>

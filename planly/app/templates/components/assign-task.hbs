@@ -1,0 +1,45 @@
+<div id="assignTaskModal" class="modal modal-fixed-footer">
+	<div class="header teal">
+		<h4 class="white-text center-align">Assign Team Members</h4></div>
+	<div class="modal-content">
+		<div class="row">
+			<form class="col s12">
+				<div class="center-align">
+					<!-- Assign Members -->
+					<div class="input-field col s12">
+						{{input value=members-assigned name='members-assigned' id='members-assigned'}}
+						<ul id="membersAssigned" class="left-align">
+							<h6 class="grey-text"> Selected Members </h6>
+							{{#each user in selectedUsers}}
+								{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+							{{/each}}
+						</ul>
+						
+						{{#if enabled}}
+							<ul class="collection">
+							{{#each user in filteredUsers}}
+								{{user-chip user=user addSelected="addSelected" isChip=false}}
+							{{/each}}
+							</ul>
+						{{/if}}
+						<label for="assignMembers" data-error="Please choose at least one member to assign this task too." data-success="valid">Please type the member(s) you want to assign this task too</label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="input-field col s6">
+				<button class="btn waves-effect waves-light red darken-1 center-align"> Cancel
+			</button>
+		</div>
+		<div class="input-field col s6 center-align">
+			<button class="btn waves-effect waves-light deep-purple darken-3"> Done
+			</button>
+	</div>
+</div>
+</div>
+</div>
+
+{{yield}}

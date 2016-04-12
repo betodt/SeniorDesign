@@ -1,5 +1,6 @@
 <h1 class="center-align">{{model.name}}</h1>
-{{create-task createTask='createTask'}}
+{{create-task createTask='createTask' initCreateTask='initCreateTask' createSubtask='createSubtask'}}
+{{edit-task-modal openEditTaskModal='openEditTaskModal' }} 
 
 {{#each model.tasks as |task|}}
 	{{project-task model=task removeTask='removeTask'}}

@@ -48,6 +48,7 @@ module.exports = function(defaults) {
  app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.ttf');
  app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff');
  app.import('bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff2');
+ app.import('bower_components/moment/moment.js');
  
   return app.toTree();
 };
