@@ -3,18 +3,11 @@
 	{{outlet}}
 	<div class="row">
 			{{#each model.projects as |project|}}
-				<div class="col s12 m4 l4 project">
-					<div class="card hoverable" {{action "projectLink" "projects.tasks" project}}>
-						<h5 class="center-align"><a>{{project.name}}</a></h5>
-						<ul>
-						{{#each project.users as |user|}}
-							<img class="thumbnail circle hoverable tooltipped"  data-position="top" data-delay="50" data-tooltip="{{user.fullName}}" src="{{user.picUrl}}">
-						{{/each}}
-						</ul>
-					</div>
-				</div>	
+				{{project-card project=project projectLink='projectLink' deleteProject='deleteProject' editProject='editProject'}}	
 			{{/each}}
 	</div>
 		<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
 </div>
+{{project-close confirmDelete='confirmDelete'}}
+{{project-edit currentProject=passedProject store=store}}
 

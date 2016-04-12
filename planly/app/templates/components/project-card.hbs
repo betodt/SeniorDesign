@@ -1,0 +1,15 @@
+<div class="col s12 m4 l4 project">
+	<div class="card hoverable" {{action "projectLink" "projects.tasks" project}}>
+		<a href='#!'><i class="material-icons dropdown-button grey-text more-horiz" data-activates="dropdown{{project.id}}" {{action 'doNothin' bubbles=false}}>more_horiz</i></a>
+		<ul id='dropdown{{project.id}}' class='dropdown-content'>
+		    <li><a href="#!" {{action 'editProject' project bubbles=false}}>Edit</a></li>
+		    <li><a href="#!" class='red-text' {{action 'deleteProject' project.id bubbles=false}}>Delete</a></li>
+		  </ul>
+		<h5 class="center-align"><a>{{project.name}}</a></h5>
+		<ul>
+		{{#each project.users as |user|}}
+			<img class="thumbnail circle hoverable tooltipped"  data-position="top" data-delay="50" data-tooltip="{{user.fullName}}" src="{{user.picUrl}}">
+		{{/each}}
+		</ul>
+	</div>
+</div>

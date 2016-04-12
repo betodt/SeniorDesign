@@ -36,7 +36,6 @@ export default Ember.Route.extend({
 
 			var currentUser = this.modelFor(this.routeName);
 
-			console.log(currentUser);
 			currentUser.set('lastProjectOpen', project);
 			currentUser.save();
 

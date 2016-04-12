@@ -1,0 +1,11 @@
+<div id="project-close-modal" class="modal">
+  <div class="modal-content">
+	  <div class="input-field col s12">
+	  	<label for="project-name-confirm">Enter the name of your project <em>exactly</em> (case sensitive) to delete it</label>
+	    {{input value=project-name-confirm name="project-name-confirm" id="project-name-confirm"}}
+	  </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" {{action 'confirmDelete'}}>Confirm</a>
+  </div>
+</div>

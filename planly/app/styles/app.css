@@ -294,7 +294,7 @@ a#googleIcon {
   height:10%;
 }
 
-#sub-task .close {
+.close {
   font-size: 1.5rem;
 }
 
@@ -303,6 +303,11 @@ a#googleIcon {
 ========================================================================== */
 #projectView .project img {
   height: 3em;
+}
+
+#projectView i.material-icons.more-horiz {
+ position: absolute;
+ right: 0.5em;
 }
 /* ==========================================================================
   Select Team Members 

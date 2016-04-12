@@ -40,18 +40,12 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<div class="row">
-			<div class="input-field col s6">
-				<button class="btn waves-effect waves-light red darken-1 center-align" 
-				{{action "closeProjectCreation"}}> Previous
-			</button>
-		</div>
-		<div class="input-field col s6 center-align">
-			<button class="btn waves-effect waves-light deep-purple darken-3" 
-			{{action "closeTeamCreation"}}> Create
+		<button class="btn-flat waves-effect waves-red grey lighten-5 red-text" 
+			{{action "closeProjectCreation"}}> Cancel
+		</button>
+		<button class="btn-flat waves-effect waves-teal grey lighten-5 teal-text" 
+			{{action "openTeamCreation"}}> Create
 		</button>
 	</div>
-</div>
-</div>
 </div>
 {{yield}}
