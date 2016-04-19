@@ -10,6 +10,7 @@ export default DS.Model.extend({
   teams: DS.hasMany('team',{async: true}),
   tasks: DS.hasMany('task',{async: true}),
   lastProjectOpen: DS.belongsTo('project', {async: true}),
+  comments: DS.hasMany('comment', {async:true});
   fullName: Ember.computed('firstName', 'lastName', function() {
     return this.get('firstName') + ' ' + this.get('lastName');
   })

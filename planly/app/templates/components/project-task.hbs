@@ -8,7 +8,7 @@
 
 							<div class="left-align">
      							<input type="checkbox" class=" checkbox" id="task{{model.id}}"/>
-      								<label for="task{{model.id}}" {{action "removeTask" model.id}}><h4 class="white-text">{{model.description}}</h4></label>
+      								<label for="task{{model.id}}" {{action "completeTask"}}><h4 class="white-text">{{model.description}}</h4></label>
       						</div>
 
     					</form>
@@ -50,7 +50,7 @@
 					<ul id="dropdown{{model.id}}" class="dropdown-content">
 						<li> <a href="#!" {{action "openEditTaskModal"}} >Edit </a> </li>
 						<li class="divider"> </li>
-						<li> <a href="#!">Delete </a> </li>
+						<li> <a href="#!" {{action "removeTask" model.id}}>Delete </a> </li>
 					</ul>
             	</div>
            </div><!-- end of card -->

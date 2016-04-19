@@ -23,6 +23,39 @@ export default Ember.Route.extend({
 			var currentProject = this.modelFor(this.routeName);
 			$('#teamCreation').prop('currentProject', currentProject);
 			$('#teamCreation').openModal();
+		},
+		closeTeamCreation: function(team) {
+			
+		    //create the project record
+		    var newTeam = this.store.createRecord('team', {
+		    	name: team.name,
+		    	description: team.description,
+		    	created: team.created,
+		    	members: team.members
+			});
+
+			this.store.findRecord('project', team.project).then(function(project) {
+
+			    newTeam.setProperties({ 'project': project });
+				//add to the project
+				// project.get('teams').pushObject(newTeam);
+				project.save();
+
+			    //add the project to each of the users in the project
+			    newTeam.get('members').forEach(function(user){
+			    	// user.get('teams').pushObject(newTeam);
+			    	user.save();
+			    });
+
+			    newTeam.save().then(function(value){ 
+				    this.modelFor(this.routeName).reload();
+			  	}.bind(this));
+			}.bind(this));
+
+			return false;
+		},
+		cancelTeamCreation: function(){
+			return false;
 		}
 	}
 });

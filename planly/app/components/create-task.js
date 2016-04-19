@@ -8,7 +8,6 @@ export default Ember.Component.extend({
                 this.sendAction('initCreateTask');
         },
         didRender: function() {
-            console.log('inserting');
             this.$('.datepicker').pickadate({
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: 15,// Creates a dropdown of 15 years to control year
@@ -35,17 +34,32 @@ export default Ember.Component.extend({
         }.observes('members-assigned').on('init'),
 	actions:{
 		createSubtask: function() {
-            this.get('subtasks').push("hello");
-            console.log(this.subtasks);
+            this.get('subtasks').push(this.store.createRecord('subtask', {
+                created: new Date()
+            }));
             this.rerender();
-        
                 },
                 createTask: function() {
+                    this.get('subtasks').map(function(subtask){
+                        console.log(subtask.get('deadline'));
+                        subtask.set('deadline', new Date(subtask.get('deadline')));
+                    });
                 	this.sendAction('createTask', {
                 		description: this.get('task-name'),
                 		created: new Date(),
-                		deadline: new Date(this.get('task-deadline'))
+                		deadline: new Date(this.get('task-deadline')),
+                        subtasks: this.get('subtasks'),
+                        users: this.get('selectedUsers')
                 	});
+                    //reset form
+                    this.setProperties({
+                        'subtasks': [],
+                        'selectedUsers': [],
+                        'filteredUsers':[],
+                        'task-deadline': '',
+                        'task-name': '',
+                        'members-assigned': ''
+                    });
                 },
                 openAssignModal: function(){
                         this.sendAction('openAssignModal');
@@ -58,8 +72,7 @@ export default Ember.Component.extend({
                         this.get('selectedUsers').removeObject(user);
                         this.get('filteredUsers').pushObject(user);
                 },
-                closeTeamCreation: function() {
-                                
+                closeTeamCreation: function() {       
                         this.sendAction("closeTeamCreation", {
                         name: this.get('team-name'),
                         description: this.get('team-description'),

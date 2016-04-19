@@ -32,5 +32,25 @@ export default Ember.Component.extend({
 	},
 	mouseEnter: function() {
 		this.set('currentProject', this.$('#project-edit-modal').prop('currentProject'));
+		this.set('selectedUsers', this.get('currentProject').get('users'));
+		this.set('name', this.get('currentProject').get('name'));
+		console.log(this.get('currentProject').get('name'));
+	},
+	actions: {
+		closeProjectCreation: function(){
+			$('#project-edit-modal').closeModal();
+		},
+		addSelected: function(user) {
+			this.get('filteredUsers').removeObject(user);
+			this.get('selectedUsers').pushObject(user);
+		},
+		removeSelected: function(user) {
+			this.get('selectedUsers').removeObject(user);
+			this.get('filteredUsers').pushObject(user);
+		},
+		updateProject: function() {
+			this.get('currentProject').save();
+			$('#project-edit-modal').closeModal();
+		}
 	}
 });
