@@ -1,27 +1,27 @@
-<div id="projectCreation" class="modal modal-fixed-footer">
-	<div class="header teal"><h4 class="center-align white-text">Create a Project{{name}}</h4></div>
+<div id="project-edit-modal" class="modal modal-fixed-footer">
+	<div class="header teal"><h4 class="center-align white-text">Edit {{currentProject.name}}</h4></div>
 	<div class="modal-content">
 		<div class="row">
 			<form class="col s12">
 				<div class="center-align">
 					<!-- Project name -->
 					<div class="input-field col s12">
-						{{input value=project-name name='project-name' id='project-name' class="validate" required="" aria-required="true"}}
-						<label for="project-name" data-error="Please enter a project name" data-success="valid">Project Name</label>
+						{{input value=currentProject.name name='project-edit-name' id='project-edit-name' class="validate active" required="" aria-required="true"}}
+						<label for="project-edit-name" data-error="Please enter a project name" data-success="valid" class="active">Project Name</label>
 					</div>
 					<!-- Project goal-->
 					<div class="input-field col s12">
-						{{input value=project-goal name='project-goal' id='project-goal' class="validate"}}
-						<label for="project-goal" data-error="Please enter a project goal" data-success="valid">Project Goal</label>
+						{{input value=currentProject.goal name='project-edit-goal' id='project-edit-goal' class="validate active"}}
+						<label for="project-edit-goal" data-error="Please enter a project goal" data-success="valid" class="active">Project Goal</label>
 					</div>
 					<!-- deadline -->
 					<div class="input-field col s12">
-						{{input type="date" value=project-deadline name='project-deadline' id='project-deadline' class="datepicker validate"}}
-						<label for="project-deadline" data-error="Please select a deadline" data-success="valid">Deadline</label> 
+						{{input type="date" value=currentProject.deadline name='project-edit-deadline' id='project-edit-deadline' class="datepicker validate active"}}
+						<label for="project-edit-deadline" data-error="Please select a deadline" data-success="valid" class="active">Deadline</label> 
 					</div>
 					<!-- team members -->
 					<div class="input-field col s12">
-						{{input value=project-member name='project-member' id='project-member'}}
+						{{input value=project-edit-member name='project-edit-member' id='project-edit-member'}}
 						<ul id="teamMembers" class="left-align">
 							<h6 class="grey-text"> Selected Members </h6>
 							{{#each user in selectedUsers}}
@@ -37,7 +37,7 @@
 							</ul>
 						{{/if}}
 						
-						<label for="project-member" data-error="Please enter a valid email" data-success="valid">Search for Team Members</label>
+						<label for="project-edit-member" data-error="Please enter a valid email" data-success="valid">Search for Team Members</label>
 					</div>
 				</div>
 			</form>

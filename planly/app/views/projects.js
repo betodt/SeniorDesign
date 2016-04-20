@@ -8,6 +8,5 @@ export default Ember.View.extend({
 		  selectYears: 15 // Creates a dropdown of 15 years to control year
 		}),
 		$('.tooltipped').tooltip({delay: 50});
-
 	}
 });
