@@ -297,6 +297,11 @@ a#googleIcon {
   font-size: 1.5rem;
 }
 
+#projectCreation div.userdiv{
+  width:100%;
+  height:30px;
+}
+
 /* ==========================================================================
   Project View
 ========================================================================== */
@@ -336,6 +341,10 @@ a#googleIcon {
   float:right;
 }
 
+#teamCreation li:hover{
+  background-color:#b0bec5
+}
+
 /* ==========================================================================
   Team View
 ========================================================================== */
@@ -359,6 +368,7 @@ input[type="checkbox"]:checked + label:before{
   border-bottom:2px solid white;
 }
 
+
 #project-task div.card{
   padding:0px;
 }
@@ -376,6 +386,9 @@ input[type="checkbox"]:checked + label:before{
   right:0.5em;
 }
 
+#project-task .card .card-reveal {
+  padding-top: 0;
+}
 
 #project-task img.responsive-img, video.responsive-video{
 height:2em;
@@ -459,6 +472,46 @@ vertical-align: text-top;
   margin-bottom: 0;
 }
 
+/* ==========================================================================
+  Progress Bar
+========================================================================== */
+.progress{
+  height:25px;
+  width:90%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding-right: 5px;
+  background-color: #b0bec5;
+}
+
+h1.center-align.projectTitle{
+  margin: 2.1rem 1.68rem 0;
+  margin-bottom: .25em;
+}
+
+.progress h6#progressText {
+  display:inline;
+  font-size:17px;
+  padding-right: 10px;
+  font-weight: bolder;
+}
+
+.progress .determinate{
+  padding-top:2px;
+}
+
+
+/* ==========================================================================
+  User Chip
+========================================================================== */
+.userdiv{
+  width:100%;
+  height: 100%;
+}
+.collection .collection-item.avatar{
+  height:60px;
+  min-height: 0px;
+}
 
 
 

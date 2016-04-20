@@ -1,11 +1,10 @@
-{{yield}}
-<div>
+<div class="subtask">
 	<div class="row">
 	    <form class="col s12">
 	    	<div class="card z-depth-0">
 	      		<div class="row">
 				        <div class="input-field col s12 l4">
-				        	<i class="material-icons prefix close" {{action "closeSubtask"}}>close</i>
+				        	<i style= "font-size:1.5em" class="material-icons prefix close" {{action "closeSubtask"}}>close</i>
 				        	{{input value=sub-task-name class="validate" required="" aria-required="true"}}
 							<label for="sub-task-name" data-error="Please enter a sub task" data-success="valid">Subtask!</label>
 				        </div>

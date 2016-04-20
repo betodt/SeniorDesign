@@ -1,6 +1,7 @@
 <div id="projectView">
 	<h2 class="center-align">Projects</h2>
 	{{outlet}}
+	<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
 	<div class="row">
 			{{#each model.projects as |project|}}
 				<div class="col s12 m4 l4 project">
@@ -15,7 +16,6 @@
 				</div>	
 			{{/each}}
 	</div>
-		<a class="btn-floating btn-small waves-effect waves-light grey" {{action "openProjectModel"}}><i class="material-icons">add</i></a>
 </div>
 
 {{skip-team-modal}}

@@ -18,6 +18,10 @@ export default Ember.View.extend({
 		  }
 		);
 		$(document).ready(function(){
+		    $('ul.tabs').tabs();
+		  });
+		
+		$(document).ready(function(){
     		$('.tooltipped').tooltip({delay: 50});
  		 });
 	}

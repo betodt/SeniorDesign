@@ -4,6 +4,7 @@ export default Ember.Component.extend({
         filteredUsers: null, //set by userQuery
         selectedUsers: [], //set by addSelected
         subtasks: [],
+
         didInsertElement: function() {
                 this.sendAction('initCreateTask');
         },
@@ -51,12 +52,16 @@ export default Ember.Component.extend({
                         this.sendAction('openAssignModal');
                 },
                 addSelected: function(user) {
-                        this.get('filteredUsers').removeObject(user);
+                        // this.get('filteredUsers').removeObject(user);
                         this.get('selectedUsers').pushObject(user);
+                    
+                       
                 },
                 removeSelected: function(user) {
                         this.get('selectedUsers').removeObject(user);
                         this.get('filteredUsers').pushObject(user);
+
+                        console.log(this.get('selectedUsers'));
                 },
                 closeTeamCreation: function() {
                                 
