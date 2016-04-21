@@ -8,7 +8,7 @@
 
 							<div class="left-align">
      							<input type="checkbox" class="checkbox" check="" id="task{{model.id}}"/>
-      								<label for="task{{model.id}}" {{action "fadeOut" model.id}}><h4 class="white-text">{{model.description}}</h4> </label>
+      								<label for="task{{model.id}}" {{action "completeTask"}}><h4 class="white-text">{{model.description}}</h4></label>
       						</div>
 
     					</form>
@@ -38,7 +38,7 @@
 					<ul id="dropdown{{model.id}}" class="dropdown-content">
 						<li> <a href="#!" {{action "openEditTaskModal"}} >Edit </a> </li>
 						<li class="divider"> </li>
-						<li> <a href="#!">Delete </a> </li>
+						<li> <a href="#!" {{action "removeTask" model.id}}>Delete </a> </li>
 					</ul>
             	</div>
             	<div class="card-reveal">
@@ -48,41 +48,52 @@
            		 	<div id= "tabRow" class="row">
            		 	    <div class="col s4 navbar-fixed">
            		 	      <ul class="tabs">
-           		 	        <li class=" tab col s3"><a class="active" href="#subtasks">Subtasks</a></li>
-           		 	        <li class="tab col s3"><a href="#comments">Comments</a></li>
+           		 	        <li class=" tab col s3"><a class="active" href="#subtasks{{model.id}}">Subtasks</a></li>
+           		 	        <li class="tab col s3"><a href="#comments{{model.id}}">Comments</a></li>
            		 	      </ul>
            		 	    </div>
 
            		 	    <!-- sub task --> 
-           		 	      <div id="subtasks" class="col s12">
+           		 	      <div id="subtasks{{model.id}}" class="col s12">
            		 	      	<span class="card-title grey-text text-darken-4">{{model.description}}'s Subtasks<i class="material-icons right">close</i></span>
-
-
-
+                        {{#each model.subtasks as |subtask|}}
+                          <div class="row">
+                            <div class="col s12 m12">
+                              <div class="left-align">
+                                  <input type="checkbox" class="checkbox subTaskCheck" check="" id="subtask{{subtask.id}}"/>
+                                  <label for="subtask{{subtask.id}}"><h5>{{subtask.description}}</h5></label>
+                              </div>
+                              <hr/>
+                              <p>Due: {{formatted-date subtask.deadline 'LL'}}
+                               Assigned to: 
+                                {{#each subtask.members as |member|}}
+                                  <img class= "hoverable circle responsive-img tooltipped" data-position="top" data-delay="50" data-tooltip="{{member.fullName}}" src="{{member.picUrl}}">  
+                                {{/each}}
+                              </p>
+                            </div>
+                          </div>
+                        {{/each}}
            		 	      </div>
            		 	       <!-- Comments --> 
-           		 	      <div id="comments" class="col s12">
+           		 	      <div id="comments{{model.id}}" class="col s12">
            		 	      	<span class="card-title grey-text text-darken-4">{{model.description}}'s Comments<i class="material-icons right">close</i></span>
            		 	      	<div class="row">
                 	    <form class="col s12 l12">
                 	      <div class="row">
                 	         <div class="input-field col s12 m10 l10">
-                	             <input id="comments" type="text" class="validate">
-                	              <label for="comments">Comment</label>
+                	             {{input value=comment id=model.id type="text" class="validate"}}
+                	              <label for="{{model.id}}">Comment</label>
                 	          </div>
 							<div class="input-field col s2 m2 l2">
-                	        	<a class="center-alignwaves-effect waves-light btn">Post</a>
+                	        	<a class="center-alignwaves-effect waves-light btn"{{action 'postComment'}}>Post</a>
                 	        </div> 
                 	      </div>
                 	    </form>
                 	  </div>
                 	  <ul class="collection">
-                	  	{{!-- {{#each model.comments as |comment|}} --}}
-                	  		{{task-comment}}
-                	  		{{task-comment}}
-                	  		{{task-comment}}
-                	  		{{!-- {{task-comment model=comment}} --}}
-                	  	{{!-- {{/each}} --}}
+                	  	{{#each model.comments as |comment|}}
+                	  		{{task-comment model=comment}}
+                	  	{{/each}}
                 	  </ul>
                 	</div>
            		 	     

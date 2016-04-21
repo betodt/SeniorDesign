@@ -5,15 +5,15 @@
 	      		<div class="row">
 				        <div class="input-field col s12 l4">
 				        	<i style= "font-size:1.5em" class="material-icons prefix close" {{action "closeSubtask"}}>close</i>
-				        	{{input value=sub-task-name class="validate" required="" aria-required="true"}}
+				        	{{input value=model.description class="validate" required="" aria-required="true"}}
 							<label for="sub-task-name" data-error="Please enter a sub task" data-success="valid">Subtask!</label>
 				        </div>
 						<div class="input-field col s12 l2">
-				          {{input type="date" value=subtask-deadline  class="datepicker" required="" aria-required="true"}}
+				          {{input type="date" value=model.deadline  class="datepicker" required="" aria-required="true"}}
 						  <label for="subtask-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
 				        </div>
 				        <div class="col s12 l6 input-field">
-		    					{{input value=subtask-assigned name='subtask-assigned'}}
+		    					<input disabled name='subtask-assigned' id="disabled" placeholder="Subtask Assignment Coming Soon!">
 		    					{{#if enabled}}
 		    						<ul class="collection z-depth-3">
 		    						{{#each user in filteredUsers}}
@@ -21,7 +21,7 @@
 		    						{{/each}}
 		    						</ul>
 		    					{{/if}}
-		    					<label for="task-name" data-error="Please enter the task name" data-success="valid">Assigned to:</label>
+		    					{{!-- <label for="disabled" data-error="Please enter the task name" data-success="valid">Assigned to:</label> --}}
 							
 							<ul id="membersAssigned" class="left-align">
 								<h6 class="grey-text"> Selected Members </h6>

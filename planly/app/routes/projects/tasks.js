@@ -17,6 +17,9 @@ export default Ember.Route.extend({
 	model: function(params) {
 		return this.get('store').find('project', params.project_id);
 	},
+	willTransition: function(transition){
+		console.log("tasks transitioning");
+	},
 	actions: {
 		removeTask: function(taskId) {
 			this.store.findRecord('task', taskId).then(function(task) {
@@ -30,19 +33,30 @@ export default Ember.Route.extend({
 				description: task.description,
 				created: task.created,
 				deadline: task.deadline,
-				project: project
+				project: project,
+				members: task.users
 			});	
+
+			task.subtasks.forEach(function(subtask){
+				console.log("setting task "+subtask+" with "+newTask);
+				subtask.set('task', newTask);
+			    // newTask.get('subtasks').pushObject(subtask);
+			    subtask.save();
+			});
 			
-			project.get('tasks').pushObject(newTask);
+			// project.get('tasks').pushObject(newTask);
 			project.save();
 
-			project.get('users').forEach(function(user) {
-				user.get('tasks').pushObject(newTask);
-				newTask.get('members').pushObject(user);
+			newTask.get('members').forEach(function(user) {
+				// user.get('tasks').pushObject(newTask);
 				user.save();
 			});
 
-			newTask.save();
+			newTask.save().then(function(value){
+			    project.reload();
+		  	});
+
+			return false;
 		},
 		createSubtask: function() {
 		},

@@ -4,6 +4,12 @@ export default Ember.Component.extend({
 	classNames:['animated'],
 	classNameBindings:['fade:fadeOut:fadeIn'],fade:false,
 	actions: {
+		completeTask: function(){
+			this.get('model').toggleProperty('completed');
+			this.set("fade",true);
+			console.log(this.get('model').get('completed'));
+			this.get('model').save();
+		},
 		removeTask: function(taskId) {
 			this.sendAction('removeTask', taskId);
 		},
@@ -14,11 +20,12 @@ export default Ember.Component.extend({
 			        
 			console.log('added task');
 		},
+		postComment: function(){
+			console.log('task');
+			this.sendAction('postComment', this.get('comment'), this.get('model'));
+			this.set('comment', '');
+		},
 		doNothin: function(){},
-
-		fadeOut: function(){
-			this.set("fade",true);
-		}
 	}
 
 });

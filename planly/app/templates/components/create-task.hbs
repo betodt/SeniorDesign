@@ -17,7 +17,7 @@
 		    					{{input value=members-assigned name='members-assigned' id='members-assigned'}}
 		    					{{#if enabled}}
 		    						<ul class="collection z-depth-3">
-		    						{{#each user in filteredUsers}}
+		    						{{#each filteredUsers as |user|}}
 		    							{{user-chip user=user addSelected="addSelected" isChip=false}}
 		    						{{/each}}
 		    						</ul>
@@ -33,7 +33,7 @@
 						</div>
 
 		    		{{#each subtasks as |subtask|}}
-		    			{{sub-task}}
+		    			{{sub-task model=subtask}}
 		    		{{/each}}
 
 		    		{{!-- </div><!-- end of card-content--> --}}

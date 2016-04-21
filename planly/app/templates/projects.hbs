@@ -4,7 +4,7 @@
 			<a href="#" data-activates="mobile-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
 		{{!-- <nav class="transparent z-depth-0"> --}}
 		  <ul class="hide-on-med-and-down">
-		  	<img src="{{model.picUrl}}" alt="Contact Person" id="profilePic" class="circle responsive-img materialboxed">
+		  	<img src="{{model.picUrl}}" data-caption={{model.fullName}} alt="Contact Person" id="profilePic" class="circle responsive-img materialboxed">
 		  	<h5 class="center-align black-text">{{model.firstName}}</h5>
 		    <li><a  {{action "sideBarLink" "projects.teams" model.lastProjectOpen}} class="black-text"><i class="material-icons left">perm_identity</i><span class="hide-on-med-only">Team</span></a></li>
 		    <li><a  {{action "sideBarLink" "projects.tasks" model.lastProjectOpen}} class="black-text"><i class="material-icons left">list</i><span class="hide-on-med-only">Tasks</span></a></li>

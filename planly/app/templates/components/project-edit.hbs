@@ -1,5 +1,5 @@
 <div id="project-edit-modal" class="modal modal-fixed-footer">
-	<div class="header teal"><h4 class="center-align white-text">Edit {{currentProject.name}}</h4></div>
+	<div class="header teal"><h4 class="center-align white-text">Edit {{name}}</h4></div>
 	<div class="modal-content">
 		<div class="row">
 			<form class="col s12">
@@ -48,7 +48,7 @@
 			{{action "closeProjectCreation"}}> Cancel
 		</button>
 		<button class="btn-flat waves-effect waves-teal grey lighten-5 teal-text" 
-			{{action "openTeamCreation"}}> Create
+			{{action "updateProject"}}> Create
 		</button>
 	</div>
 </div>

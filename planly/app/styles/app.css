@@ -366,13 +366,12 @@ input[type="checkbox"]+label:before{
   width:25px;
   height: 25px;
   margin-top: 20px;
-  border: 2px solid white;
+  border: 2px solid black;
 }
 input[type="checkbox"]:checked + label:before{
-  border-right:2px solid white;
-  border-bottom:2px solid white;
+  border-right:2px solid black;
+  border-bottom:2px solid black;
 }
-
 
 #project-task div.card{
   padding:0px;
@@ -498,6 +497,7 @@ h1.center-align.projectTitle{
   display:inline;
   font-size:17px;
   padding-right: 10px;
+  padding-left: 10px;
   font-weight: bolder;
 }
 

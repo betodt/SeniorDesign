@@ -47,20 +47,20 @@ export default Ember.Route.extend({
 			else
 				this.transitionTo(route);
 		},
-		openTeamCreation: function(project){
-            // this.sendAction("createProject", );
-            console.log('opening team creation in projects');
+		// openTeamCreation: function(project){
+  //           // this.sendAction("createProject", );
+  //           console.log('opening team creation in projects');
 
-            //get the current user
-            var user = this.modelFor(this.routeName);
+  //           //get the current user
+  //           var user = this.modelFor(this.routeName);
 
-            //push the user
-            project.users.push(user);
-            project.currentUser = user;
+  //           //push the user
+  //           project.users.push(user);
+  //           project.currentUser = user;
 
-            //bubble up to application router to open up the next modal
-        	return true;
-		},
+  //           //bubble up to application router to open up the next modal
+  //       	return true;
+		// },
 		closeTeamCreation: function(team) {
 			
 		    //create the project record
@@ -75,17 +75,26 @@ export default Ember.Route.extend({
 
 			    newTeam.setProperties({ 'project': project });
 				//add to the project
-				project.get('teams').pushObject(newTeam);
+				// project.get('teams').pushObject(newTeam);
 				project.save();
 
 			    //add the project to each of the users in the project
 			    newTeam.get('members').forEach(function(user){
-			    	user.get('teams').pushObject(newTeam);
+			    	// user.get('teams').pushObject(newTeam);
 			    	user.save();
 			    });
 
 			    newTeam.save();
 			});
+			return false;
+		},
+		postComment: function(comment, task){
+			console.log(comment + task);
+			this.store.createRecord('comment', {
+				comment: comment,
+				user: this.modelFor(this.routeName),
+				task: task
+			}).save();
 		}
 	}
 });
