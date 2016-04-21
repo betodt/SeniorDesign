@@ -476,6 +476,12 @@ vertical-align: text-top;
   margin-bottom: 0;
 }
 
+#createTask .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 /* ==========================================================================
   Progress Bar
 ========================================================================== */

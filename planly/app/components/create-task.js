@@ -41,6 +41,9 @@ export default Ember.Component.extend({
             }));
             this.rerender();
         },
+        closeUsers: function(){
+            this.setProperties({enabled: false, 'members-assigned': ''});
+        },
         createTask: function() {
             this.get('subtasks').forEach(function(subtask){
                 console.log(subtask.get('deadline'));

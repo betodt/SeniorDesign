@@ -15,6 +15,7 @@
 				        </div>
 				        <div class="col s12 l6 input-field">
 		    					{{input value=members-assigned name='members-assigned' id='members-assigned'}}
+		    					<i style= "font-size:1.5em" class="material-icons right-align close" {{action "closeUsers"}}>close</i>
 		    					{{#if enabled}}
 		    						<ul class="collection z-depth-3">
 		    						{{#each filteredUsers as |user|}}
@@ -26,7 +27,7 @@
 		
 							<ul id="membersAssigned" class="left-align">
 								<h6 class="grey-text"> Selected Members </h6>
-								{{#each user in selectedUsers}}
+								{{#each selectedUsers as |user|}}
 									{{user-chip user=user isChip=true removeSelected='removeSelected'}}
 								{{/each}}
 							</ul>
