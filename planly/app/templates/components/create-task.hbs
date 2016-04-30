@@ -15,9 +15,10 @@
 				        </div>
 				        <div class="col s12 l6 input-field">
 		    					{{input value=members-assigned name='members-assigned' id='members-assigned'}}
+		    					<i style= "font-size:1.5em" class="material-icons right-align close" {{action "closeUsers"}}>close</i>
 		    					{{#if enabled}}
 		    						<ul class="collection z-depth-3">
-		    						{{#each user in filteredUsers}}
+		    						{{#each filteredUsers as |user|}}
 		    							{{user-chip user=user addSelected="addSelected" isChip=false}}
 		    						{{/each}}
 		    						</ul>
@@ -26,14 +27,14 @@
 		
 							<ul id="membersAssigned" class="left-align">
 								<h6 class="grey-text"> Selected Members </h6>
-								{{#each user in selectedUsers}}
+								{{#each selectedUsers as |user|}}
 									{{user-chip user=user isChip=true removeSelected='removeSelected'}}
 								{{/each}}
 							</ul>
 						</div>
 
 		    		{{#each subtasks as |subtask|}}
-		    			{{sub-task}}
+		    			{{sub-task model=subtask}}
 		    		{{/each}}
 
 		    		{{!-- </div><!-- end of card-content--> --}}

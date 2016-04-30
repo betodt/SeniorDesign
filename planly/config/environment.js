@@ -9,7 +9,9 @@ module.exports = function(environment) {
       //'default-src': "'none'",
 
       // Allow scripts from https://cdn.mxpnl.com
-      'script-src': ["'self'", "https://apis.google.com", "https://*.firebaseio.com"],
+      'script-src': ["'self'", "https://apis.google.com", "https://*.firebaseio.com", "'unsafe-inline'"],
+
+      'frame-src': ["'self'", "https://*.firebaseio.com"],
 
       // Allow fonts to be loaded from http://fonts.gstatic.com
       'font-src': ["'self'", "http://fonts.gstatic.com"],

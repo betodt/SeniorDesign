@@ -1,10 +1,12 @@
 <h1 class="center-align projectTitle">{{model.name}}</h1>
-{{progress-bar}}
-{{create-task createTask='createTask' initCreateTask='initCreateTask' createSubtask='createSubtask'}}
+{{progress-bar pct=model.pctComplete}}
+{{create-task createTask='createTask' initCreateTask='initCreateTask' createSubtask='createSubtask' store=store}}
 {{edit-task-modal openEditTaskModal='openEditTaskModal' }} 
 
 {{#each model.tasks as |task|}}
-	{{project-task model=task removeTask='removeTask'}}
+	{{#unless task.completed}}
+		{{project-task model=task removeTask='removeTask' postComment='postComment'}}
+	{{/unless}}
 {{/each}}
 
 {{outlet}}

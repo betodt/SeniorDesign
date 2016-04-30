@@ -1,53 +1,53 @@
 <div id="editTaskModal" class="modal modal-fixed-footer">
 	<div class="row">
-	    <form class="col s12">
-	    	<div class="card">
-	      		<div class="row">
-				        <div class="input-field col s12 l4">
-							{{input value=edit-task-name id='edit-task-name' class="validate" required="" aria-required="true"}}
-							<label for="edit-task-name" data-error="Please enter the task name" data-success="valid">Add a new task!</label>
-				        </div>
+		<form class="col s12">
+			<div class="">
+				<div class="row">
+					<div class="input-field col s12 l4">
+						{{input value=edit-task-name id='edit-task-name' class="validate" required="" aria-required="true"}}
+						<label for="edit-task-name" data-error="Please enter the task name" data-success="valid">Add a new task!</label>
+					</div>
 
-				        <div class="input-field col s12 l2">
-				          {{input type="date" value=edit-task-deadline  class="datepicker" id="edit-task-deadline" required="" aria-required="true"}}
-						  <label for="edit-task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
-				        </div>
-				        <div class="col s12 l6">
-					        <div class="input-field ">
-		    					{{input value=edit-members-assigned name='edit-members-assigned' id='edit-members-assigned'}}
-		    					{{#if enabled}}
-		    						<ul class="collection z-depth-3">
-		    						{{#each user in filteredUsers}}
-		    							{{user-chip user=user addSelected="addSelected" isChip=false}}
-		    						{{/each}}
-		    						</ul>
-		    					{{/if}}
-		    					<label for="edit-task-name" data-error="Please enter the task name" data-success="valid">Assigned to:</label>
-		    				</div>
-							<ul id="membersAssigned" class="left-align">
-								<h6 class="grey-text"> Selected Members </h6>
-								{{#each user in selectedUsers}}
-									{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+					<div class="input-field col s12 l2">
+						{{input type="date" value=edit-task-deadline  class="datepicker" id="edit-task-deadline" required="" aria-required="true"}}
+						<label for="edit-task-deadline" data-error="Please select deadline" data-success="valid">Deadline</label>
+					</div>
+					<div class="col s12 l6">
+						<div class="input-field ">
+							{{input value=edit-members-assigned name='edit-members-assigned' id='edit-members-assigned'}}
+							{{#if enabled}}
+							<ul class="collection z-depth-3">
+								{{#each user in filteredUsers}}
+								{{user-chip user=user addSelected="addSelected" isChip=false}}
 								{{/each}}
 							</ul>
+							{{/if}}
+							<label for="edit-task-name" data-error="Please enter the task name" data-success="valid">Assigned to:</label>
 						</div>
+						<ul id="membersAssigned" class="left-align">
+							<h6 class="grey-text"> Selected Members </h6>
+							{{#each user in selectedUsers}}
+							{{user-chip user=user class='chip' isChip=true removeSelected='removeSelected'}}
+							{{/each}}
+						</ul>
+					</div>
 
-		    		{{!-- </div><!-- end of card-content--> --}}
-		    		<div class="card-action">
-		    			<div class="row">
-		    				<div class="col s2">
-		    					<a class="btn-floating blue"{{action "createSubtask"}}><i class="material-icons">list</i></a>
-		    				</div>
-		    			
-		    			</div>
-		    		</div><!--end of card-action-->
+					{{!-- </div><!-- end of card-content--> --}}
+					<div class="card-action">
+						<div class="row">
+							<div class="col s2">
+								<a class="btn-floating blue"{{action "createSubtask"}}><i class="material-icons">list</i></a>
+							</div>
+							
+						</div>
+					</div><!--end of card-action-->
 
-		    		<div class="card-action">
-		    			<button class="waves-effect waves-light btn right" style="margin-bottom:20px;" onclick="Materialize.fadeInImage()">Done</button>
-		    		</div>
-		      	</div>
-		     </div><!--end of card-->
-	     </form>
-	 </div><!-- end of row-->
- </div>
- {{yield}}
+					<div class="card-action">
+						<button class="btn-flat waves-effect waves-red grey lighten-5 red-text" style="margin-bottom:20px;" onclick="Materialize.fadeInImage()">Done</button>
+					</div>
+				</div>
+			</div><!--end of card-->
+		</form>
+	</div><!-- end of row-->
+</div>
+{{yield}}

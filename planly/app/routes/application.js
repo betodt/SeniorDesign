@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   beforeModel: function() { 
-    return this.get("session").fetch().then(function(success) {
+    return this.get("session").fetch().then(function() {
       console.log("fetched");
       this.transitionTo('projects');
     }.bind(this), function(error) {
@@ -25,7 +25,7 @@ export default Ember.Route.extend({
     },
     signIn: function(provider) {      
       this.get("session").open("firebase", provider).then(function(data) {
-        if(provider.provider == "google" || provider.provider == "facebook") {
+        if(provider.provider === "google" || provider.provider === "facebook") {
           this.store.query('user', {
             orderBy: 'email', 
             equalTo: data.currentUser.cachedUserProfile.id
@@ -41,7 +41,7 @@ export default Ember.Route.extend({
                 picUrl: data.currentUser.profileImageURL,
                 joined: new Date()  
               });
-              if(provider.provider == "facebook") {
+              if(provider.provider === "facebook") {
                 user.set('firstName', data.currentUser.cachedUserProfile.first_name);
                 user.set('lastName', data.currentUser.cachedUserProfile.last_name);
               }
@@ -62,40 +62,42 @@ export default Ember.Route.extend({
     closeTeamCreation: function() {
       console.log('why am i here');
     },
-    openTeamCreation: function(project){
-      //create the project record
-      var newProject = this.store.createRecord('project', {
-        name: project.name,
-        goal: project.goal,
-        created: project.created,
-        deadline: project.deadline,
-        users: project.users
-      });
+    // openTeamCreation: function(project){
+    //   //create the project record
+    //   var newProject = this.store.createRecord('project', {
+    //     name: project.name,
+    //     goal: project.goal,
+    //     created: project.created,
+    //     deadline: project.deadline,
+    //     users: project.users
+    //   });
 
-      //add the project to each of the users in the project
-      newProject.get('users').forEach(function(user){
-        user.get('projects').pushObject(newProject);
-        user.save();
-      });
+    //   //add the project to each of the users in the project
+    //   newProject.get('users').forEach(function(user){
+    //     user.get('projects').pushObject(newProject);
+    //     user.save();
+    //   });
 
-      console.log(project.currentUser);
-      project.currentUser.set('lastProjectOpen', newProject);
-      project.currentUser.save();
+    //   project.currentUser.set('lastProjectOpen', newProject);
+    //   project.currentUser.save();
 
-      newProject.save();
-      $('#teamCreation').prop('currentProject', newProject);
-      $('#teamCreation').openModal();
-    },
+    //   newProject.save().then(function(value){ 
+    //     console.log(value);
+    //   });
+    //   this.modelFor(this.routeName).rollback(); 
+
+    //   $('#teamCreation').prop('currentProject', newProject);
+    //   $('#teamCreation').openModal();
+    // },
     signOut: function() {   
       this.get("session").close();
       this.transitionTo('/');
     },
 
-    submit: function(data) {
+    submit: function(data) 
+      {
       var __this__ = this;
-      var ref = new Firebase("https://planly.firebaseio.com");
-      var profPic;
-      
+      var ref = new this.Firebase("https://planly.firebaseio.com");
       ref.createUser({
         email    : data.email,
         password : data.password
