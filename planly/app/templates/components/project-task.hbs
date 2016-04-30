@@ -31,9 +31,9 @@
 					</div>
 				</div> <!--end of card content -->
 				<div class="card-action">
-					<a><i class="activator material-icons">list</i></a>
-              		<a><i class="activator material-icons">chat_bubble_outline</i></a>
-              		<a href="#"><i class="material-icons">favorite_border</i> </a>
+					<a><i class="activator material-icons tool-tipped" data-position="top" data-delay="50" data-tooltip="Subtasks">list</i></a>
+          <a><i class="activator material-icons tool-tipped" data-position="top" data-delay="50" data-tooltip="Comments">chat_bubble_outline</i></a>
+
 					<a href="#!"><i class="dropdown-button material-icons more-horiz" data-activates="dropdown{{model.id}}" {{action "doNothin" bubbles=false}}>more_horiz</i></a>
 					<ul id="dropdown{{model.id}}" class="dropdown-content">
 						<li> <a href="#!" {{action "openEditTaskModal"}} >Edit </a> </li>

@@ -1,10 +1,13 @@
 {{partial "partials/nav"}}
 
-<main>
+<main id ="homepage">
 	{{project-creation openTeamCreation='openTeamCreation' users=model}}
 	{{team-creation closeTeamCreation='closeTeamCreation'}}
 	{{login-modal signIn='signIn' submit='submit'}} 
 	{{outlet}}
+	<div class="center-align"> <img id="bg" src="/assets/images/bg.jpg"> 
+		<h2 id= "header"> dis some text </h2>
+	</div>
 </main>
 
 {{partial "partials/footer"}}
