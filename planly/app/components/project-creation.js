@@ -21,6 +21,13 @@ export default Ember.Component.extend({
 			}
 		}
 	}.observes('project-member').on('init'),
+	isValid: function() {
+		if(this.get('project-name') && this.get('project-deadline') && this.get('project-goal')) {
+			console.log('didnt fill out');
+			return true;
+		}
+		return false; 
+	}.observes('project-name', 'project-deadline', 'project-goal').on('init'),
 	actions:{
 		addSelected: function(user) {
 			this.get('filteredUsers').removeObject(user);
@@ -39,6 +46,10 @@ export default Ember.Component.extend({
 		},
 		openTeamCreation: function(){
             console.log('opening team creation');
+            if(!this.isValid()) {
+            	console.log('somethings wrong');
+            	return false;
+            }
 			$('#projectCreation').closeModal();
 			this.sendAction("openTeamCreation", {
             	name: this.get('project-name'),
