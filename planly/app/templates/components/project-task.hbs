@@ -5,14 +5,12 @@
 			<div class= "card">
 					<div class="card-title teal">
 						<form action="#">
-
 							<div class="left-align">
-     							<input type="checkbox" class="checkbox" check="" id="task{{model.id}}"/>
-      								<label for="task{{model.id}}" {{action "completeTask"}}><h4 class="white-text">{{model.description}}</h4></label>
-      						</div>
-
-    					</form>
-    				</div>	
+     							<input type="checkbox" class="checkbox" check="" id="task{{model.id}}" {{action "completeTask"}}/>
+  								<label for="task{{model.id}}"><h4 class="white-text">{{model.description}}</h4></label>
+  						</div>
+  					</form>
+  				</div>	
 
 				<div class= "card-content">
 					<div class="row">
@@ -81,8 +79,8 @@
                 	    <form class="col s12 l12">
                 	      <div class="row">
                 	         <div class="input-field col s12 m10 l10">
-                	             {{input value=comment id=model.id type="text" class="validate"}}
-                	              <label for="{{model.id}}">Comment</label>
+                	             {{input value=comment id=(concat 'comment-input' model.id) type="text" class="validate"}}
+                	              <label for="comment-input{{model.id}}">Comment</label>
                 	          </div>
 							<div class="input-field col s2 m2 l2">
                 	        	<a class="center-alignwaves-effect waves-light btn"{{action 'postComment'}}>Post</a>

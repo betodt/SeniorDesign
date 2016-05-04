@@ -1,9 +1,9 @@
 {{partial "partials/nav"}}
 
 <main>
-	{{project-creation openTeamCreation='openTeamCreation' users=model}}
-	{{team-creation closeTeamCreation='closeTeamCreation'}}
-	{{login-modal signIn='signIn' submit='submit' errorMessage='errorMessage'}} 
+	{{project-creation openTeamCreation='openTeamCreation' users=model.users errorMessage=model.errorMessage}}
+	{{team-creation cancelTeamCreation='cancelTeamCreation' closeTeamCreation='closeTeamCreation'}}
+	{{login-modal signIn='signIn' submit='submit' errorMessage=model.errorMessage}} 
 	{{outlet}}
 </main>
 

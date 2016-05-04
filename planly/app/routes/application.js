@@ -2,6 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  errorMessage: 'nil',
 
   beforeModel: function() { 
     return this.get("session").fetch().then(function() {
@@ -13,7 +14,10 @@ export default Ember.Route.extend({
   },
 
   model: function() {
-    return this.store.findAll('user');
+    return {
+      users:this.store.findAll('user'),
+      errorMessage: ''
+    };
   },
 
   actions: {
@@ -55,10 +59,11 @@ export default Ember.Route.extend({
             console.log("User exists");
             this.transitionTo('/projects');
         }
+        Ember.set(this.modelFor(this.routeName),'errorMessage','');
         $('#login').closeModal();
       }.bind(this), function(error) {
-        console.log("Could not log in: " + Object.getOwnPropertyNames(error));
-        this.set('errorMessage', error.message);
+        console.log("Could not log in: " + error.message);
+        Ember.set(this.modelFor(this.routeName),'errorMessage',"Incorrect e-mail or password.");
       }.bind(this));
     },
     closeTeamCreation: function() {

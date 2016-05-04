@@ -4,9 +4,9 @@
 {{edit-task-modal openEditTaskModal='openEditTaskModal' }} 
 
 {{#each model.tasks as |task|}}
-	{{!-- {{#unless task.completed}} --}}
+	{{#unless task.completed}}
 		{{project-task model=task removeTask='removeTask' postComment='postComment'}}
-	{{!-- {{/unless}} --}}
+	{{/unless}}
 {{/each}}
 
 {{outlet}}

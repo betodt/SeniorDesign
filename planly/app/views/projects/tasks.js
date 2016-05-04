@@ -17,12 +17,7 @@ export default Ember.View.extend({
 		    alignment: 'right' // Displays dropdown with edge aligned to the left of button
 		  }
 		);
-		$(document).ready(function(){
-		    $('ul.tabs').tabs();
-		  });
-		
-		$(document).ready(function(){
-    		$('.tooltipped').tooltip({delay: 50});
- 		 });
+	    $('ul.tabs').tabs();
+		$('.tooltipped').tooltip({delay: 50});
 	}
 });

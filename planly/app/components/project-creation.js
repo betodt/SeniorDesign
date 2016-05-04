@@ -17,7 +17,7 @@ export default Ember.Component.extend({
 				this.setProperties({enabled: true, filteredUsers: newUsers});
 			}
 			else {
-				this.setProperties({enabled: false});
+				this.setProperties({enabled: false, filteredUsers: null});
 			}
 		}
 	}.observes('project-member').on('init'),
@@ -28,7 +28,27 @@ export default Ember.Component.extend({
 		}
 		return false; 
 	}.observes('project-name', 'project-deadline', 'project-goal').on('init'),
+	resetFields: function() {
+		this.setProperties({
+			'project-name': '',
+			'project-goal': '',
+			'project-deadline': '',
+			'project-member': '',
+			'selectedUsers': []
+		});
+		$('label[for="project-name"]').removeClass('active');
+		$('#project-name').removeClass('valid');
+		$('label[for="project-goal"]').removeClass('active');
+		$('#project-goal').removeClass('valid');
+		$('label[for="project-deadline"]').removeClass('active');
+		$('#project-deadline').removeClass('valid');
+		$('label[for="project-member"]').removeClass('active');
+		$('#project-member').removeClass('valid');
+	},
 	actions:{
+		closeUsers: function() {
+			this.setProperties({enabled: false, 'project-member': ''});
+		},
 		addSelected: function(user) {
 			this.get('filteredUsers').removeObject(user);
 			this.get('selectedUsers').pushObject(user);
@@ -42,12 +62,14 @@ export default Ember.Component.extend({
 			this.sendAction("createProject");
 		},
 		closeProjectCreation: function(){
+			this.resetFields();
 			$('#projectCreation').closeModal();
 		},
 		openTeamCreation: function(){
             console.log('opening team creation');
             if(!this.isValid()) {
             	console.log('somethings wrong');
+            	this.set('errorMessage', 'Make sure you gave your project a name, goal, and deadline.');
             	return false;
             }
 			$('#projectCreation').closeModal();
