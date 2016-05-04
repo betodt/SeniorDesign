@@ -7,6 +7,7 @@
 				{{action "openSkipTeamModal"}}> Skip </button>
 				<div class="center-align">
 					<!-- Team name -->
+					<div style="color: red;">{{errorMessage}}</div> 
 					<div class="input-field col s12">
 						{{input value=team-name id='team-name' class="validate" required="" aria-required="true"}}
 						<label for="name" data-error="Please enter a team name" data-success="valid">Team Name</label>
@@ -18,7 +19,8 @@
 					</div>
 					<!-- team members -->
 					<div class="input-field col s12">
-						{{input value=team-member name='team-member' id='team-member'}}
+						{{input value=team-member name='team-member' id='team-member' autocomplete='off'}}
+						<i style= "font-size:1.5em" class="material-icons right-align close" {{action "closeUsers"}}>close</i>
 						<ul id="teamMembers" class="left-align">
 							<h6 class="grey-text"> Selected Members </h6>
 							{{#each user in selectedUsers}}

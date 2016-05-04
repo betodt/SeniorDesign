@@ -21,7 +21,31 @@ export default Ember.Component.extend({
 			}
 		}
 	}.observes('team-member').on('init'),
+	isValid: function() {
+		if(this.get('team-name') && this.get('team-description')) {
+			console.log('didnt fill out');
+			return true;
+		}
+		return false; 
+	}.observes('team-name', 'team-description').on('init'),
+	resetFields: function() {
+		this.setProperties({
+			'team-name': '',
+			'team-description': '',
+			'team-member': '',
+			'selectedUsers': []
+		});
+		$('label[for="team-name"]').removeClass('active');
+		$('#team-name').removeClass('valid');
+		$('label[for="team-description"]').removeClass('active');
+		$('#team-description').removeClass('valid');
+		$('label[for="team-member"]').removeClass('active');
+		$('#team-member').removeClass('valid');
+	},
 	actions: {
+		closeUsers: function(){
+		    this.setProperties({enabled: false, 'team-member': ''});
+		},
 		addSelected: function(user) {
 			this.get('filteredUsers').removeObject(user);
 			this.get('selectedUsers').pushObject(user);
@@ -32,13 +56,18 @@ export default Ember.Component.extend({
 		},
 		cancelTeamCreation: function(){
 			$('#teamCreation').closeModal();
-			$('#projectCreation').openModal();
+			this.sendAction('cancelTeamCreation');
 		},
 		openSkipTeamModal: function(){
 			$('#teamCreation').closeModal();
 			$('#skipTeamModal').openModal();
 		},
 		closeTeamCreation: function() {
+			if(!this.isValid()) {
+				console.log('somethings wrong');
+				this.set('errorMessage', 'Make sure you gave your team a name and description.')
+				return false;
+			}
 			
 			this.sendAction("closeTeamCreation", {
             	name: this.get('team-name'),

@@ -5,6 +5,7 @@
 			<form class="col s12">
 				<div class="center-align">
 					<!-- Project name -->
+					<div style="color: red;">{{errorMessage}}</div> 
 					<div class="input-field col s12">
 						{{input value=project-name name='project-name' id='project-name' class="validate" required="" aria-required="true"}}
 						<label for="project-name" data-error="Please enter a project name" data-success="valid">Project Name</label>
@@ -21,7 +22,8 @@
 					</div>
 					<!-- team members -->
 					<div class="input-field col s12">
-						{{input value=project-member name='project-member' id='project-member'}}
+						{{input value=project-member name='project-member' id='project-member' autocomplete='off'}}
+						<i style= "font-size:1.5em" class="material-icons right-align close" {{action "closeUsers"}}>close</i>
 						<ul id="teamMembers" class="left-align">
 							<h6 class="grey-text"> Selected Members </h6>
 							{{#each user in selectedUsers}}

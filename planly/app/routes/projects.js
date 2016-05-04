@@ -62,7 +62,6 @@ export default Ember.Route.extend({
   //       	return true;
 		// },
 		closeTeamCreation: function(team) {
-			
 		    //create the project record
 		    var newTeam = this.store.createRecord('team', {
 		    	name: team.name,

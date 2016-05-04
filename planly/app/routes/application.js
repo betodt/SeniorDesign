@@ -2,6 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  errorMessage: 'nil',
 
   beforeModel: function() { 
     return this.get("session").fetch().then(function() {
@@ -13,7 +14,10 @@ export default Ember.Route.extend({
   },
 
   model: function() {
-    return this.store.findAll('user');
+    return {
+      users:this.store.findAll('user'),
+      errorMessage: ''
+    };
   },
 
   actions: {
@@ -55,9 +59,12 @@ export default Ember.Route.extend({
             console.log("User exists");
             this.transitionTo('/projects');
         }
+        Ember.set(this.modelFor(this.routeName),'errorMessage','');
+        $('#login').closeModal();
       }.bind(this), function(error) {
-        console.log("Could not log in: " + error);
-      });
+        console.log("Could not log in: " + error.message);
+        Ember.set(this.modelFor(this.routeName),'errorMessage',"Incorrect e-mail or password.");
+      }.bind(this));
     },
     closeTeamCreation: function() {
       console.log('why am i here');
@@ -97,7 +104,7 @@ export default Ember.Route.extend({
     submit: function(data) 
       {
       var __this__ = this;
-      var ref = new this.Firebase("https://planly.firebaseio.com");
+      var ref = new Firebase("https://planly.firebaseio.com");
       ref.createUser({
         email    : data.email,
         password : data.password
@@ -121,6 +128,7 @@ export default Ember.Route.extend({
               joined: new Date()
            }).save(); 
           });
+          $('#login').closeModal();
         }
       });
     }

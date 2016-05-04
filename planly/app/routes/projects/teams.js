@@ -55,6 +55,10 @@ export default Ember.Route.extend({
 			return false;
 		},
 		cancelTeamCreation: function(){
+			console.log(this.routeName);
+			if(this.routeName == 'projects.teams')
+				return false;
+			$('#projectCreation').openModal();
 			return false;
 		}
 	}
