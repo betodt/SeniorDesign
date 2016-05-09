@@ -2,9 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	classNames:['animated'],
-	classNameBindings:['fade:fadeOut:fadeIn'],fade:false,
+	classNameBindings:['fade:fadeOut:fadeIn'],
+	fade:false,
+	didInsertElement: function() {
+	    $('ul.tabs').tabs();
+		$('.tooltipped').tooltip({delay: 50});
+	},
 	actions: {
 		completeTask: function(){
+			console.log(this.get('model').get('completed'));
 			this.get('model').toggleProperty('completed');
 			this.set("fade",true);
 			console.log(this.get('model').get('completed'));

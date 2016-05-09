@@ -1,14 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    // errorMessage: "hello world",
     actions: {
         signIn: function(provider) {
+            console.log(this.get('errorMessage'));
             this.sendAction('signIn', {
                 provider: provider,
                 email: this.get('email'),
                 password: this.get('password') 
             });
-            $('#login').closeModal();
+            this.set('email', '');
+            this.set('password', '');
         },
         toggleForm: function() {
         	this.toggleProperty('enabled');
@@ -22,7 +25,6 @@ export default Ember.Component.extend({
                 email: data.email,
                 password: data.password
             });
-            $('#login').closeModal();
         }
     }
 });

@@ -33,6 +33,13 @@ export default Ember.Component.extend({
                         }
                 }
         }.observes('members-assigned').on('init'),
+        isValid: function() {
+            if(this.get('task-name') && this.get('task-deadline')) {
+                console.log('did fill out');
+                return true;
+            }
+            return false; 
+        }.observes('task-name', 'task-deadline').on('init'),
 	actions:{
 		createSubtask: function() {
             var selectedUsers = this.get('selectedUsers');
@@ -49,6 +56,11 @@ export default Ember.Component.extend({
                 console.log(subtask.get('deadline'));
                 subtask.set('deadline', new Date(subtask.get('deadline')));
             });
+            if(!this.isValid()) {
+                console.log('somethings wrong');
+                this.set('errorMessage', 'Make sure you gave your task a description and deadline.');
+                return false;
+            }
         	this.sendAction('createTask', {
         		description: this.get('task-name'),
         		created: new Date(),
@@ -63,8 +75,10 @@ export default Ember.Component.extend({
                 'filteredUsers':[],
                 'task-deadline': '',
                 'task-name': '',
-                'members-assigned': ''
+                'members-assigned': '',
+                'errorMessage': ''
             });
+            this.set('errorMessage', '');
         },
         openAssignModal: function(){
                 this.sendAction('openAssignModal');

@@ -6,6 +6,7 @@
      <div class=""><a id="googleIcon"class="waves-effect waves-blue btn white col s10 m10 l10" {{action "signIn" "google"}}><img class="" src="assets/g-logo.png" alt="google">Sign In with Google</a></div>
      <div class=""><a id="facebookIcon" class="waves-effect waves-blue btn fbBlue col s10 m10 l10" {{action "signIn" "facebook"}}><img class="" src="assets/facebooklogo.png" alt="facebook">Sign In with Facebook</a></div>
       <h5><span>or</span></h5>
+      <div style="color: red;">{{errorMessage}}</div>
       <div class="center-align">
         {{#unless enabled}}
         <!-- email -->

@@ -302,6 +302,12 @@ a#googleIcon {
   height:30px;
 }
 
+#projectCreation ul.collection {
+  position: absolute;
+  width: 100%;
+  top: 30px;
+}
+
 /* ==========================================================================
   Project View
 ========================================================================== */
@@ -348,6 +354,12 @@ a#googleIcon {
 
 #teamCreation li:hover{
   background-color:#b0bec5
+}
+
+#teamCreation ul.collection {
+  position: absolute;
+  width: 100%;
+  top: 30px;
 }
 
 /* ==========================================================================
@@ -476,7 +488,7 @@ vertical-align: text-top;
   margin-bottom: 0;
 }
 
-#createTask .close {
+.close {
   position: absolute;
   right: 10px;
   top: 10px;
