@@ -530,3 +530,7 @@ h1.center-align.projectTitle{
 #homepage img#bg{
   width:100%;
 }
+
+.activeClicked{
+   background-color:#eceff1;
+}

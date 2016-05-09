@@ -42,6 +42,12 @@ export default Ember.Route.extend({
 			this.transitionTo(route, project);
 		},
 		sideBarLink: function(route, model) {
+			$('li').removeClass("activeClicked");
+			var target = route.split(".");
+			console.log(target);
+			$('#'+target[target.length -1]).addClass("activeClicked");
+			console.log(this.get('currentPath'));
+
 			if(model)
 				this.transitionTo(route, model);
 			else
