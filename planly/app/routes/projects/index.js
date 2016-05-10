@@ -32,6 +32,7 @@ export default Ember.Route.extend({
         });
 	},
 	actions: {
+		//project save
 		openTeamCreation: function(project){
 		  var user = this.modelFor(this.routeName);
 		  project.users.push(user);

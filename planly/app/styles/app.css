@@ -436,6 +436,16 @@ vertical-align: text-top;
     font-size:0.65em;
 }
 
+#project-task .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating){
+  color:teal;
+}
+
+#project-task .tabs .tab a{
+  color:teal;
+}
+#project-task .tabs .indicator{
+  background-color:teal;
+}
 @media only screen and (min-width: 992px) {
   #loginContent{
     width: 50%;

@@ -42,19 +42,19 @@ export default Ember.Route.extend({
 				console.log("setting task "+subtask+" with "+newTask);
 				subtask.set('task', newTask);
 			    // newTask.get('subtasks').pushObject(subtask);
-			    // subtask.save();
+			    subtask.save();
 			});
 			
 			// project.get('tasks').pushObject(newTask);
-			// project.save();
+			project.save();
 
-			// newTask.get('members').forEach(function(user) {
+			newTask.get('members').forEach(function(user) {
 				// user.get('tasks').pushObject(newTask);
-				// user.save();
-			// });
+				user.save();
+			});
 
 			newTask.save().then(function(value){
-			    // project.reload();
+			    project.reload();
 		  	});
 
 			return false;

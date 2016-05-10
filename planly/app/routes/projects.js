@@ -33,7 +33,10 @@ export default Ember.Route.extend({
 	},
 	actions: {
 		projectLink: function(route, project) {
-
+			$('li').removeClass("activeClicked");
+			var target = route.split(".");
+			$('#'+target[target.length -1]).addClass("activeClicked");
+			console.log(this.get('currentPath'));
 			var currentUser = this.modelFor(this.routeName);
 
 			currentUser.set('lastProjectOpen', project);
@@ -100,6 +103,12 @@ export default Ember.Route.extend({
 				user: this.modelFor(this.routeName),
 				task: task
 			}).save();
+			task.save();
+			this.modelFor(this.routeName).save().then(function(value){
+				task.reload();
+			});
+
+
 		}
 	}
 });

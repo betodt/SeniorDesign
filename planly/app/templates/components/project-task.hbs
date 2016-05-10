@@ -3,11 +3,11 @@
 	<div class="row">
 	    <div class="col s12">
 			<div class= "card">
-					<div class="card-title teal">
+					<div class="card-title white" style="border-bottom: 2px solid teal">
 						<form action="#">
 							<div class="left-align">
-     							<input type="checkbox" class="checkbox" check="" id="task{{model.id}}" {{action "completeTask"}}/>
-  								<label for="task{{model.id}}"><h4 class="white-text">{{model.description}}</h4></label>
+     							<input type="checkbox" id="taskCheckbox" class="checkbox" check="" id="task{{model.id}}" {{action "completeTask"}}/>
+  								<label for="task{{model.id}}"><h4 class="black-text">{{model.description}}</h4></label>
   						</div>
   					</form>
   				</div>	
@@ -44,21 +44,28 @@
            		 </div>
            		 <div class="card-reveal">
            		 	<div id= "tabRow" class="row">
-           		 	    <div class="col s4 navbar-fixed">
+                   <div class="col s4 m2 l2">
+                    <h5 class="center-align">{{model.description}}</h5>
+                    </div>
+           		 	    <div class="col s4 m5 l5 navbar-fixed">
            		 	      <ul class="tabs">
            		 	        <li class=" tab col s3"><a class="active" href="#subtasks{{model.id}}">Subtasks</a></li>
            		 	        <li class="tab col s3"><a href="#comments{{model.id}}">Comments</a></li>
            		 	      </ul>
-           		 	    </div>
 
+           		 	    </div>
+                    <div class="col s1 m5 l5 navbar-fixed">
+                      <span class="card-title grey-text text-darken-4 right-align">{{!-- {{model.description}}'s Subtasks --}}<i class="material-icons" style="margin-top:10px">close</i></span>
+
+                    </div>
+                    
            		 	    <!-- sub task --> 
            		 	      <div id="subtasks{{model.id}}" class="col s12">
-           		 	      	<span class="card-title grey-text text-darken-4">{{model.description}}'s Subtasks<i class="material-icons right">close</i></span>
                         {{#each model.subtasks as |subtask|}}
                           <div class="row">
                             <div class="col s12 m12">
                               <div class="left-align">
-                                  <input type="checkbox" class="checkbox subTaskCheck" check="" id="subtask{{subtask.id}}"/>
+                                  <input type="checkbox" id="subTaskCheckbox" class="checkbox subTaskCheck" check="" id="subtask{{subtask.id}}"/>
                                   <label for="subtask{{subtask.id}}"><h5>{{subtask.description}}</h5></label>
                               </div>
                               <hr/>
@@ -74,7 +81,6 @@
            		 	      </div>
            		 	       <!-- Comments --> 
            		 	      <div id="comments{{model.id}}" class="col s12">
-           		 	      	<span class="card-title grey-text text-darken-4">{{model.description}}'s Comments<i class="material-icons right">close</i></span>
            		 	      	<div class="row">
                 	    <form class="col s12 l12">
                 	      <div class="row">
@@ -82,7 +88,7 @@
                 	             {{input value=comment id=(concat 'comment-input' model.id) type="text" class="validate"}}
                 	              <label for="comment-input{{model.id}}">Comment</label>
                 	          </div>
-							<div class="input-field col s2 m2 l2">
+							<div class="input-field col s2 m2 l2 right-align">
                 	        	<a class="center-alignwaves-effect waves-light btn"{{action 'postComment'}}>Post</a>
                 	        </div> 
                 	      </div>
