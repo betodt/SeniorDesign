@@ -2,7 +2,7 @@
 
 \section{Motivation}
 
-Individuals currently live in a society that revolves around productivity. People from managers to students are bombarded with numerous tasks and daunting deadlines, making it extremely difficult to stay organized. In addition, people have multiple commitments in their lives, adding to the stress of keeping up with their already busy schedules. Currently, individuals are faced with a variety of organization methods. However, the two tools most people resort to are e-mail and notepads. Without a doubt, people are often drawn to the simplicity of typing out a quick note or sending an e-mail. However, it becomes extremely difficult to keep track of all these notes and e-mails. Before you know it, lines of communication become broken and trains of thought are lost forever. Older conventions are becoming outdated as e-mail searches often yield innumerable results, and text files are never where they need to be. Team members need a way arrange their tasks and ensure that every member is on track.
+Individuals currently live in a society that revolves around productivity. People from managers to students are bombarded with numerous tasks and daunting deadlines, making it extremely difficult to stay organized. In addition, these individuals have multiple commitments in their lives, adding to the stress of keeping up with their already busy schedules. Currently, individuals are faced with a variety of organization methods. However, the two tools most people resort to are e-mail and notepads. Without a doubt, people are often drawn to the simplicity of typing out a quick note or sending an e-mail. However, it becomes extremely difficult to keep track of all these notes and e-mails. Before you know it, lines of communication become broken and trains of thought are lost forever. Older conventions are becoming outdated as e-mail searches often yield innumerable results, and text files are never where they need to be. Team members need a way arrange their tasks and ensure that every member is on track.
 
 \section{Current Solutions} 
 
@@ -12,13 +12,15 @@ Previous solutions have failed to provide an accessible and simple project manag
 	\item Current solutions are exceedingly expensive, thus community organizations and students tend to avoid these applications. 
 	\item Current solutions have a steep learning curves that often require additional training. 
 	\item Present solutions, such as Pivotal Tracker and Microsoft Outlook, have poor user interface design and are not straightforward, thus making it difficult to setup a meeting or look up a contact. 
+	\item Present solutions, such as to-do applications are too constrained since the application's main focus is on individual use. 
 	\item Present project management applications are visually unappealing and not user-friendly. Most applications follow the conventional three panel layout, as seen in Outlook, pushing your tasks into some sidebar crevice where these tasks can easily be overlooked. These applications are not designed for students or small groups with minimal project management experience.
 \end{enumerate}
 
 \section{Literature Review}
 
 In order to build a new system, we needed to seek previous research in order to gain a strong foundation of project management and web applications. 
-\par Below is a summary of  the relevant literatures and its contribution to our project.
+
+Below is a summary of  the relevant literatures and its contribution to our project.
 
 \par The sources we discovered have not only given my team a foundation in project management, the sources further contributed to our understandings of the web. Through researching previous projects, we have taken to consideration all of the past projects and will carefully implement the best qualities into our design. 
 
@@ -63,13 +65,12 @@ In order to build a new system, we needed to seek previous research in order to 
 We propose a simple, yet powerful, web-based solution that lives entirely within a browser. The goal is to have an easily accessible place for not only small groups of students or professionals to host a collaborative environment, but, we also want individuals to use our system for personal projects. To achieve our goal: 
 \begin{enumerate}
 	\item Our accessibility will be achieved through a simple sign-on system without the hassle of painful payment systems and complex learning curves. 
-	\item Instead of struggling to learn the software, the user will be guided through a quick, interactive tutorial where he or she will establish goals, deadlines, and other project management tasks. 
-	\item The user will then be able to begin collaborating by creating groups and inviting other team members. Here, the user has the ability to add deadlines as well as assign internal tasks for him/herself or external tasks for others to view. 
-	\item The application will include a progress bar showing where the project is, where it was, and most importantly, where it needs to go. 
-	\item Current solutions provide users with a static page of checklists. In our application, when progress is made, the interface will reflect those changes. We will allow the user to travel through their project timeline, revealing a snapshot of previous or future tasks. 
-	\item Lastly, to further promote organization, we plan to allow teams to store files within their project portals, eliminating time spent searching for important documents. 
+	\item After signing in, the user will be able to begin collaborating by creating a project and creating multiple teams for the project. 
+	\item After the project and teams are created, the user has the ability to add deadlines as well as assign tasks for him/herself or for others. The users can also assign subtasks that pertain to a certain task. All tasks can be viewed by all members of the project.
+	\item Users can also comment on tasks. 
+	\item The application will include a progress bar showing the current progress of the project.
 \end{enumerate}
-Our product will be tested in live working environments, showing how teams use our solution to better organize their projects in an effort to help us help them achieve their organizational goals. 
+Once our product was completed, we then performed a usability study, where we asked participants to compelete a series of tasks and provide us with feedback after finishing each task. In addition, we had an exit survey where we further asked for the participant's feedback and opinons.
 
 \section{Requirements}
 We defined a set of functional and nonfunctional requirements for our web application. Functional requirements specifies criteria that can be used to judge the operations of a system. In other words, functional requirements define what must be done by the system. Nonfunctional requirements describe the behavior and the limits of the application. 
@@ -101,7 +102,7 @@ We defined a set of functional and nonfunctional requirements for our web applic
 
 \par The critical requirements for our web application are summarized below.
 	\begin{enumerate}
-	\item[A.] The system will allow users to create teams and assign members to those teams as well as add a project lead who oversees the project. 
+	\item[A.] The system will allow users to create teams and assign members to those teams.
 	\item[B.] The system will allow users to assign tasks to team members.
 	\item[C.] The system will allow users to define project goals and requirements.
 
