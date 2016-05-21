@@ -7,6 +7,15 @@ export default Ember.Component.extend({
 
         didInsertElement: function() {
                 this.sendAction('initCreateTask');
+                this.setProperties({
+                    'subtasks': [],
+                    'selectedUsers': [],
+                    'filteredUsers':null,
+                    'task-deadline': '',
+                    'task-name': '',
+                    'members-assigned': '',
+                    'errorMessage': ''
+                });
         },
         didRender: function() {
             this.$('.datepicker').pickadate({
@@ -72,13 +81,12 @@ export default Ember.Component.extend({
             this.setProperties({
                 'subtasks': [],
                 'selectedUsers': [],
-                'filteredUsers':[],
+                'filteredUsers':null,
                 'task-deadline': '',
                 'task-name': '',
                 'members-assigned': '',
                 'errorMessage': ''
             });
-            this.set('errorMessage', '');
         },
         openAssignModal: function(){
                 this.sendAction('openAssignModal');
@@ -94,18 +102,7 @@ export default Ember.Component.extend({
                 this.get('filteredUsers').pushObject(user);
 
                 console.log(this.get('selectedUsers'));
-        },
-        closeTeamCreation: function() {       
-                this.sendAction("closeTeamCreation", {
-                name: this.get('team-name'),
-                description: this.get('team-description'),
-                created: new Date(),
-                members: this.get('selectedUsers'),
-                project: $('#teamCreation').prop('currentProject').get('id')
-            });
-
-            $('#teamCreation').closeModal();
-        },
+        }
     }
 
 });
