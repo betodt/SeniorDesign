@@ -1,14 +1,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Entity Relationship Diagram}}{8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Activity Diagram: Creating a project.}}{8}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Activity Diagram: Creating a team.}}{9}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Activity Diagram: Assigning tasks.}}{10}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces A mockup of our system concept.}}{10}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Use Case Diagram}}{11}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagram describing the technology stack for our application.}}{14}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces The interface for Microsoft Project}}{17}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Entity Relationship Diagram}}{7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Activity Diagram: Creating a project.}}{7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Activity Diagram: Creating a team.}}{8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Activity Diagram: Assigning tasks.}}{9}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces A mockup of our system concept.}}{9}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Use Case Diagram}}{10}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagram describing the technology stack for our application.}}{13}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces The interface for Microsoft Project}}{16}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The Fall quarter development timeline}}{22}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The Winter quarter development timeline}}{23}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces The Spring quarter development timeline}}{24}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Fall quarter development timeline}}{21}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The Winter quarter development timeline}}{22}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The Spring quarter development timeline}}{23}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Homepage}}{26}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sign In / Login Screen}}{27}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Projects View}}{27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Project Creation Form}}{28}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Task View}}{29}
