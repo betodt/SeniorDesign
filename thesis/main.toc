@@ -26,13 +26,13 @@
 \contentsline {subsection}{\numberline {3.4.1}Ethical Justification for Our Project}{24}
 \contentsline {subsection}{\numberline {3.4.2}Team and Organizational Ethics}{24}
 \contentsline {subsection}{\numberline {3.4.3}Product Development}{24}
-\contentsline {subsection}{\numberline {3.4.4}Social and Cultural Issues}{25}
-\contentsline {chapter}{\numberline {4}Conclusion}{26}
-\contentsline {section}{\numberline {4.1}The Final Application}{26}
-\contentsline {subsection}{\numberline {4.1.1}Login}{26}
-\contentsline {subsection}{\numberline {4.1.2}Creating Projects and Teams}{27}
-\contentsline {subsection}{\numberline {4.1.3}Adding Tasks and Subtasks}{28}
-\contentsline {section}{\numberline {4.2}User Testing and Results}{29}
-\contentsline {section}{\numberline {4.3}Lessons Learned}{29}
-\contentsline {subsection}{\numberline {4.3.1}Challenges}{29}
-\contentsline {subsection}{\numberline {4.3.2}Future Work}{29}
+\contentsline {subsection}{\numberline {3.4.4}Social and Cultural Issues}{26}
+\contentsline {chapter}{\numberline {4}Conclusion}{27}
+\contentsline {section}{\numberline {4.1}The Final Application}{27}
+\contentsline {subsection}{\numberline {4.1.1}Login}{27}
+\contentsline {subsection}{\numberline {4.1.2}Creating Projects and Teams}{28}
+\contentsline {subsection}{\numberline {4.1.3}Adding Tasks and Subtasks}{29}
+\contentsline {section}{\numberline {4.2}User Testing and Results}{30}
+\contentsline {section}{\numberline {4.3}Lessons Learned}{31}
+\contentsline {subsection}{\numberline {4.3.1}Challenges}{31}
+\contentsline {subsection}{\numberline {4.3.2}Future Work}{31}
