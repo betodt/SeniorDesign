@@ -23,7 +23,7 @@ An activity diagram is a flowchart of a user\textsc{\char13}s actions to accompl
 \label{activityOne}
 \end{figure}
 \FloatBarrier
-\par The next activity diagram, figure \ref{activityTwo}, describes team creation. If the user wishes to add team members of his project, he must first add a team description. Next, he/she will add a team member by entering his/her email. If the member has an account in our application, he/she will be successfully added to the team. If he/she is not a member, our system will send him/her an e-mail invitation. The user will then have the option to continue adding team members. Lastly, the project creator will assign a project lead role to either him/herself or another member. Once the project lead role is assigned, he/she has completed the team creation process. 
+\par The next activity diagram, figure \ref{activityTwo}, describes team creation. If the user wishes to add team members of his project, he must first add a team description. Next, he/she will add a team member by entering his/her e-mail. If the member has an account in our application, he/she will be successfully added to the team. If he/she is not a member, our system will send him/her an e-mail invitation. The user will then have the option to continue adding team members. Lastly, the project creator will assign a project lead role to either him/herself or another member. Once the project lead role is assigned, he/she has completed the team creation process. 
 
 
 \begin{figure}[ht]
@@ -47,11 +47,12 @@ An activity diagram is a flowchart of a user\textsc{\char13}s actions to accompl
 
 \subsection{Mockups}
 
-Our final model, the mock-up, gives us a rough overview of the layout for the application. The nav bar and left side bar are minimalistic, having only as many features as necessary to accomplish any logistics such as account management and login buttons. The main feature, a blank canvas, will provide users with any interactivity related to the current projects they are viewing, including tasks, timelines, and upcoming deadlines. 
+Our final model, the mock-up, represented in Figure \ref{mockup}, gives us a rough overview of the layout for the application. The nav bar and left side bar are minimalistic, having only as many features as necessary to accomplish any logistics such as account management and login buttons. The main feature, a blank canvas, will provide users with any interactivity related to the current projects they are viewing, including tasks, timelines, and upcoming deadlines. 
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{mockup.png}
 \caption{A mockup of our system concept.}
+\label{mockup}
 \end{figure}
 \FloatBarrier
 
@@ -87,6 +88,14 @@ A use case defines the steps required to accomplish a specific goal. The followi
 \item Define project goals and deadlines
 \item Add people to the project
 \item Save the project
+}
+
+\addscenario{Exceptions:}{
+\item[A.] Project with the same name already exists
+\begin{enumerate}
+\item[1.] System shows failure message
+\item[2.] User must rename his project
+\end{enumerate}
 }
 
 %Extensions: Alternate scenarios of success or failure.
@@ -186,14 +195,14 @@ A use case defines the steps required to accomplish a specific goal. The followi
 \section{Technologies Used}
 In this section, we describe the technologies we chose to develop our application and the features they provide for us.
 
-\begin{enumerate}
+\begin{itemized}
 \item HTML5 \par The latest version of the standard web markup language
 \item JavaScript \par A high-level, untyped, and interpreted programming  language supported by all modern web browser
 \item CSS3 \par A stylesheet language used to describe the presentation of HTML documents
 \item Ember.js \par A front-end javascript framework based on the model-view-controller (MVC) model and applies programming conventions to build scalable applications
-\item Ember-CLI \par A command line utility that provides a fast asset pipeline.
+\item Ember-CLI \par A command line utility that provides a fast asset pipeline. An asset pipeline allows us to precompile, concatenate and minify assets into one central path.\cite{embercli}
 \item  Firebase \par A backend-as-a-service that provides client-side APIs, and services such as databases, web hosting, and authentication.
-\end{enumerate}
+\end{itemized}
 
 \section{Design Rationale}
 In this section, we describe why we chose these technologies and the advantages and disadvantages associated with each of those technologies. 
