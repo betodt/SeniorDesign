@@ -76,7 +76,7 @@ Branch.addMem;
 Activity.contact("Enter member contact");
 Branch.cFound;
 Activity.addToTeam("Add member to team");
-Activity.invite("Send email invite");
+Activity.invite("Send e-mail invite");
 Branch.cFoundJoin;
 Activity.assProj("Assign project lead role");
 Activity.submit("Submit Team");

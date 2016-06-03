@@ -1,13 +1,13 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Entity Relationship Diagram}}{7}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Entity Relationship Diagram}}{6}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Activity Diagram: Creating a project.}}{7}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Activity Diagram: Creating a team.}}{8}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Activity Diagram: Assigning tasks.}}{9}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces A mockup of our system concept.}}{9}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Use Case Diagram}}{10}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagram describing the technology stack for our application.}}{13}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces The interface for Microsoft Project}}{16}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagram describing the technology stack for our application.}}{14}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces The interface for Microsoft Project}}{17}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces The Fall quarter development timeline}}{21}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces The Winter quarter development timeline}}{22}
@@ -18,3 +18,5 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Projects View}}{28}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Project Creation Form}}{29}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Task View}}{30}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces User Testing Results}}{31}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces User Testing Results Continued}}{32}
